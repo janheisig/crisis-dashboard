@@ -28,8 +28,11 @@ export const STATUS_COLOR: Record<ImpactStatus, string> = {
   hormuz: '#ef4444',
   dual: '#be123c',
   minimal: '#64748b',
+  insufficient: '#3a4454',
 };
 const NOT_ASSESSED = '#1c2430';
+/** Countries smaller than this projected area (px^2 at zoom 1) get a marker so they stay clickable. */
+const SMALL_AREA = 14;
 
 const ROUTE_COLOR: Record<RouteStatus, string> = {
   blocked: '#ef4444',
@@ -71,7 +74,6 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [showRoutes, setShowRoutes] = useState(true);
-  const [showLegend, setShowLegend] = useState(() => typeof window === 'undefined' || window.innerWidth >= 768);
 
   const { countries, projection, path, graticule } = useMemo(() => {
     const topo = worldTopo as unknown as Topology<{ countries: GeometryCollection<CountryProps> }>;
@@ -141,7 +143,8 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
   const k = transform.k;
 
   return (
-    <div ref={wrapRef} className="relative h-full w-full overflow-hidden rounded-xl border border-room-700 bg-room-900">
+    <div ref={wrapRef} className="relative w-full overflow-hidden rounded-xl border border-room-700 bg-room-900">
+      <div className="relative aspect-[1000/520] w-full">
       <svg
         ref={svgRef}
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
@@ -195,6 +198,41 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
                     lines: profile
                       ? [`${STATUS_LABEL[profile.status]} · Risk: ${RISK_LABEL[profile.risk]}`, profile.headline]
                       : ['Not assessed in this dataset'],
+                  })
+                }
+              />
+            );
+          })}
+
+          {/* Markers for small island and city states that are hard to click at world scale */}
+          {countries.map((f, i) => {
+            const iso3 = resolveIso3(f);
+            const profile = iso3 ? crisisData.countries[iso3] : undefined;
+            if (!profile || !f.id || path.area(f) > SMALL_AREA) return null;
+            const c = path.centroid(f);
+            if (!Number.isFinite(c[0])) return null;
+            const isSelected = iso3 === selected;
+            const dimmed = !!highlightRegion && profile.region !== highlightRegion;
+            return (
+              <circle
+                key={`m-${f.id}-${i}`}
+                cx={c[0]}
+                cy={c[1]}
+                r={(isSelected ? 4 : 2.8) / k}
+                fill={STATUS_COLOR[profile.status]}
+                fillOpacity={dimmed ? 0.3 : 0.95}
+                stroke={isSelected ? '#ffffff' : '#0a0d12'}
+                strokeWidth={0.8 / k}
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onCountrySelect(profile.iso3);
+                }}
+                onMouseMove={(e) =>
+                  showTip(e, {
+                    title: profile.name,
+                    accent: STATUS_COLOR[profile.status],
+                    lines: [`${STATUS_LABEL[profile.status]} · Risk: ${RISK_LABEL[profile.risk]}`, profile.headline],
                   })
                 }
               />
@@ -311,44 +349,32 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
         </MapButton>
       </div>
 
-      {/* Legend */}
-      <button
-        type="button"
-        onClick={() => setShowLegend((v) => !v)}
-        className="absolute bottom-3 left-3 z-10 rounded-md border border-room-700 bg-room-950/85 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-room-300 hover:text-white"
-        aria-expanded={showLegend}
-      >
-        {showLegend ? 'Hide legend' : 'Legend'}
-      </button>
-      {showLegend && (
-      <div className="pointer-events-none absolute bottom-11 left-3 max-w-[calc(100%-1.5rem)] rounded-lg border border-room-700/80 bg-room-950/85 px-3 py-2.5 text-[11px] backdrop-blur">
-        <div className="mb-1.5 font-mono text-[10px] uppercase tracking-widest text-room-400">Country status</div>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-          {(Object.keys(STATUS_COLOR) as ImpactStatus[]).map((s) => (
-            <LegendSwatch key={s} color={STATUS_COLOR[s]} label={STATUS_LABEL[s]} />
-          ))}
-          <LegendSwatch color={NOT_ASSESSED} label="Not assessed" border />
-        </div>
-        {showRoutes && (
-          <>
-            <div className="mb-1.5 mt-2.5 font-mono text-[10px] uppercase tracking-widest text-room-400">Energy flows</div>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-              {(['blocked', 'disrupted', 'diverted', 'operating'] as RouteStatus[]).map((s) => (
-                <span key={s} className="flex items-center gap-2 text-room-200">
-                  <svg width="22" height="6" aria-hidden>
-                    <line x1="1" y1="3" x2="21" y2="3" stroke={ROUTE_COLOR[s]} strokeWidth="2" strokeDasharray="4 3" />
-                  </svg>
-                  {ROUTE_STATUS_LABEL[s]}
-                </span>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-      )}
-
       <div className="pointer-events-none absolute bottom-3 right-3 hidden max-w-[260px] text-right text-[10px] leading-snug text-room-500 md:block">
         Boundaries from Natural Earth; they do not imply official endorsement. Scroll or pinch to zoom, drag to pan.
+      </div>
+      </div>
+
+      {/* Legend strip below the map, so it never covers countries */}
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 border-t border-room-700 bg-room-950/60 px-3 py-2 text-[11px] text-room-200">
+        <span className="font-mono text-[10px] uppercase tracking-widest text-room-400">Status</span>
+        {(Object.keys(STATUS_COLOR) as ImpactStatus[]).map((st) => (
+          <LegendSwatch key={st} color={STATUS_COLOR[st]} label={STATUS_LABEL[st]} />
+        ))}
+        <LegendSwatch color={NOT_ASSESSED} label="Not assessed" border />
+        {showRoutes && (
+          <>
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Flows</span>
+            {(['blocked', 'disrupted', 'diverted', 'operating'] as RouteStatus[]).map((st) => (
+              <span key={st} className="flex items-center gap-1.5">
+                <svg width="20" height="6" aria-hidden>
+                  <line x1="1" y1="3" x2="19" y2="3" stroke={ROUTE_COLOR[st]} strokeWidth="2" strokeDasharray="4 3" />
+                </svg>
+                {ROUTE_STATUS_LABEL[st]}
+              </span>
+            ))}
+          </>
+        )}
+        <span className="text-room-500">Dots mark small island and city states.</span>
       </div>
 
       {tooltip && (

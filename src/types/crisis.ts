@@ -10,7 +10,7 @@
 export type Iso3 = string;
 
 /** Which shock dominates a country's current exposure. */
-export type ImpactStatus = 'elnino' | 'hormuz' | 'dual' | 'minimal';
+export type ImpactStatus = 'elnino' | 'hormuz' | 'dual' | 'minimal' | 'insufficient';
 
 /**
  * Editorial risk rating. This is a qualitative analyst judgement derived from
@@ -22,6 +22,10 @@ export type RegionId =
   | 'southeast-asia'
   | 'south-asia'
   | 'east-asia'
+  | 'central-asia'
+  | 'south-america'
+  | 'central-america'
+  | 'caribbean'
   | 'horn-of-africa'
   | 'european-union'
   | 'gulf';
@@ -72,6 +76,8 @@ export interface CountryProfile {
   isoNumeric: string;
   name: string;
   region: RegionId;
+  /** full: all three sections researched; basic: status plus one or two sourced findings. */
+  tier?: 'full' | 'basic';
   status: ImpactStatus;
   risk: RiskLevel;
   riskRationale: string;
@@ -140,9 +146,10 @@ export interface CrisisDataset {
 
 export const STATUS_LABEL: Record<ImpactStatus, string> = {
   elnino: 'El Niño dominant',
-  hormuz: 'Hormuz dominant',
+  hormuz: 'Gulf war / Hormuz dominant',
   dual: 'Dual shock',
   minimal: 'Minimal direct impact',
+  insufficient: 'Insufficient data',
 };
 
 export const RISK_LABEL: Record<RiskLevel, string> = {

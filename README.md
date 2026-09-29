@@ -34,7 +34,9 @@ One-time setup: **Settings → Pages → Build and deployment → Deploy from a 
 ```
 src/
   types/crisis.ts        Types for countries, findings, sources, routes, regions
-  data/crisisData.ts     Dataset (ISO alpha-3 keyed), sources, routes, regional outlooks
+  data/crisisData.ts     Dataset core: sources, reference countries, routes, regional outlooks
+  data/countriesAsia.ts  South, Southeast, East and Central Asia profiles and sources
+  data/countriesLac.ts   Latin America and Caribbean profiles and sources
   components/WorldMap.tsx    Zoomable SVG map, status colouring, energy-flow overlay, tooltips
   components/DetailPanel.tsx Country analytics with citations and confidence flags
   components/ReportHub.tsx   Sub-region filter and PDF trigger
@@ -49,7 +51,12 @@ written rationale, not a computed index. Countries not in the dataset appear as 
 
 ### Known limitations
 
-- 19 archetype countries; Latin America and the Caribbean are not yet covered.
+- Coverage: all 30 states of South, Southeast, East and Central Asia and all 33 states of Latin America and
+  the Caribbean, plus reference countries in the Gulf, the Horn of Africa and the EU (73 in total).
+  Basic profiles rest on one or two sources, often subregional (CEPAL, CIMH, IFRC); six countries are
+  listed as "insufficient data".
+- IMF PortWatch counts only AIS-visible transits; for Hormuz they understate traffic because many tankers
+  sail dark (Kpler put September crude flows at about half the pre-war level).
 - Some values are in-season or single-source figures (flagged `preliminary`), e.g. India's monsoon
   deficit before the IMD end-of-season statement.
 - Two Wikipedia pages serve as secondary compilations for timeline facts; check their primary

@@ -1,4 +1,6 @@
 import type { CrisisDataset, CountryProfile, Iso3, RegionId } from '../types/crisis';
+import { asiaCountries, asiaSources } from './countriesAsia';
+import { lacCountries, lacSources } from './countriesLac';
 
 /**
  * Crisis Room dataset.
@@ -30,7 +32,7 @@ const sources: CrisisDataset['sources'] = {
     publisher: 'International Research Institute for Climate and Society',
     title: 'ENSO Forecast: September 2026 Quick Look',
     url: 'https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/',
-    date: '2026-09-19',
+    date: '2026-09',
     type: 'research',
   },
   'ap-asia': {
@@ -160,6 +162,15 @@ const sources: CrisisDataset['sources'] = {
     url: 'https://straits.live/briefs/2026-09-28',
     date: '2026-09-28',
     type: 'industry',
+  },
+  'euronews-kpler': {
+    id: 'euronews-kpler',
+    tag: '[Kpler via Euronews, 29 Sep 2026]',
+    publisher: 'Euronews (reporting Kpler ship-tracking data)',
+    title: 'Middle East oil exports rise as LNG traffic through Hormuz picks up',
+    url: 'https://www.euronews.com/2026/09/29/middle-east-oil-exports-rise-as-lng-traffic-through-hormuz-picks-up',
+    date: '2026-09-29',
+    type: 'news',
   },
   portwatch: {
     id: 'portwatch',
@@ -365,6 +376,11 @@ const countryList: CountryProfile[] = [
         text: 'Commercial crop monitoring reports the worst planting-period drought on record for Vietnamese rice this season (100th historical percentile).',
         sourceIds: ['helios'],
         confidence: 'preliminary',
+      },
+      {
+        text: 'The national hydro-meteorological service warns that 350,000 hectares of winter-spring rice in the Mekong Delta are at risk, with saltwater intrusion and reduced hydropower.',
+        sourceIds: ['vns-mekong'],
+        confidence: 'reported',
       },
     ],
     energy: [
@@ -1010,7 +1026,11 @@ const countryList: CountryProfile[] = [
   },
 ];
 
-const countries = Object.fromEntries(countryList.map((c) => [c.iso3, c])) as Record<Iso3, CountryProfile>;
+const countries = Object.fromEntries(
+  [...countryList, ...asiaCountries, ...lacCountries].map((c) => [c.iso3, c]),
+) as Record<Iso3, CountryProfile>;
+
+const allSources: CrisisDataset['sources'] = { ...sources, ...asiaSources, ...lacSources };
 
 const regions: CrisisDataset['regions'] = {
   'southeast-asia': {
@@ -1062,6 +1082,71 @@ const regions: CrisisDataset['regions'] = {
       'Assess how selective transit permissions change relative competitiveness in Asian refining.',
     ],
   },
+  'central-asia': {
+    id: 'central-asia',
+    name: 'Central Asia',
+    risk: 'elevated',
+    outlook:
+      'Central Asia is exposed less through Gulf shipping than through trade routes via Iran and its dependence on Russian fuel. Uzbekistan loses part of its southern corridor via Iranian ports, and Tajikistan was hit by an Iranian ban on food exports. Fuel stress in 2026 stems largely from outages at Russian refineries. Kazakhstan is buffered by domestic refining, and higher oil prices may raise remittances from Russia and Kazakhstan to Uzbekistan. El Niño signals are weak here, and data for Turkmenistan are not available.',
+    stakeholderRecommendations: [
+      'Support diversification of transport corridors, for example the Middle Corridor, to reduce dependence on single routes.',
+      'Strengthen fuel storage and regional supply arrangements that lower dependence on a single supplier.',
+      'Monitor food import channels where Iranian export restrictions affect local markets.',
+    ],
+    analystRecommendations: [
+      'Separate effects of the Gulf war from those of the Russian fuel crunch, which currently dominates price developments.',
+      'Track remittance flows from Russia as a key buffer for Kyrgyzstan, Tajikistan and Uzbekistan.',
+    ],
+  },
+  'south-america': {
+    id: 'south-america',
+    name: 'South America',
+    risk: 'high',
+    outlook:
+      'South America shows the most heterogeneous picture. Net energy exporters such as Argentina and Guyana gain from higher prices, while Bolivia abolished diesel subsidies under an IMF programme and Peru draws on its stabilisation fund. El Niño splits the continent: an extraordinary coastal El Niño is likely in Peru and Ecuador, where CEPAL expects growth losses above 4 percentage points in an extreme scenario; Colombia faces hydropower stress and possible rationing into 2027; northern Brazil turns dry while the south and the Argentine Litoral face floods. Brazil’s dependence on imported fertiliser links the region to the Gulf shock through agriculture.',
+    stakeholderRecommendations: [
+      'Prepare flood response and anticipatory action on the northern coast of Peru and in coastal Ecuador before the peak in the coming months.',
+      'Secure power supply reserves and demand management in Colombia ahead of the dry season.',
+      'Accompany subsidy reforms such as in Bolivia with targeted transfers and clear communication to limit social conflict.',
+      'Support diversified fertiliser sourcing and efficient use in Brazil and Argentina.',
+    ],
+    analystRecommendations: [
+      'Track ENFEN communiqués and Colombian reservoir levels weekly.',
+      'Treat CEPAL growth effects as an extreme scenario, not a baseline forecast.',
+    ],
+  },
+  'central-america': {
+    id: 'central-america',
+    name: 'Central America and Mexico',
+    risk: 'high',
+    outlook:
+      'Central America combines the strongest relative increase in acute food insecurity worldwide with full dependence on imported fuels. WFP expects an 83 percent rise in acute food insecurity in Central America, and surveys in El Salvador, Guatemala and Honduras show near-total maize losses for many households after the first season. CEPAL expects the trade balance of the subregion to worsen by about 0.9 percent of GDP from higher oil prices, which governments cushion through temporary subsidies. Hydropower-reliant grids and the Panama Canal face falling water levels. Mexico absorbs the fuel shock through foregone excise revenue.',
+    stakeholderRecommendations: [
+      'Scale up anticipatory action and cash transfers in the Dry Corridor before the lean season.',
+      'Replace broad fuel subsidies with targeted support for transport and food producers.',
+      'Protect grid reliability through diversified generation and early warning for hydropower basins.',
+    ],
+    analystRecommendations: [
+      'Monitor second-season (postrera) planting and maize prices in the Dry Corridor.',
+      'Follow Panama Canal draft announcements as an indicator for trade costs.',
+    ],
+  },
+  caribbean: {
+    id: 'caribbean',
+    name: 'Caribbean',
+    risk: 'high',
+    outlook:
+      'Caribbean small island states are net fuel importers and face below-normal rainfall through the peak of the wet season, with severe long-term drought likely to expand from December into 2027. CEPAL estimates a trade balance loss of about 0.5 percent of GDP for Caribbean economies without their own hydrocarbons. Haiti is the most critical case, with more than half of the population acutely food insecure and fuel price increases feeding into transport costs. Cuba’s power crisis is driven mainly by restricted fuel imports, not by the Gulf. The Dominican Republic and Jamaica cushion fuel prices at considerable fiscal cost.',
+    stakeholderRecommendations: [
+      'Strengthen risk financing for slow-onset drought alongside existing disaster insurance.',
+      'Support water storage and rationing plans ahead of the 2026-27 dry season.',
+      'Maintain humanitarian access and food assistance in Haiti.',
+    ],
+    analystRecommendations: [
+      'Use the monthly CIMH drought bulletins to update country ratings.',
+      'Distinguish Gulf-related price effects from other drivers such as the US embargo on Cuba.',
+    ],
+  },
   'horn-of-africa': {
     id: 'horn-of-africa',
     name: 'Horn of Africa',
@@ -1099,7 +1184,7 @@ const regions: CrisisDataset['regions'] = {
     name: 'Persian Gulf / GCC',
     risk: 'critical',
     outlook:
-      'The Gulf is the centre of the energy shock. IMF PortWatch counts about 4 transits per day through the strait in September, against about 68 per day in the eight weeks before the war. Bypass capacity is limited and itself under attack, as the September strikes on the Saudi East-West pipeline showed. Qatar and Kuwait have no bypass, and Iraq’s southern output collapsed in the first week. Diplomatic efforts continue, but the latest Iranian proposal was reported rejected on 28 September. The outlook remains binary: a negotiated reopening would ease prices quickly, while further escalation would push more infrastructure out of service.',
+      'The Gulf is the centre of the energy shock. Crude flows through the strait recovered to roughly half of the pre-war level in September according to Kpler, while AIS-based transit counts remain far lower because many ships sail with transponders off. Bypass capacity is limited and itself under attack, as the September strikes on the Saudi East-West pipeline showed. Qatar and Kuwait have no bypass, and Iraq’s southern output collapsed in the first week. Diplomatic efforts continue, but the latest Iranian proposal was reported rejected on 28 September. The outlook remains binary: a negotiated reopening would ease prices quickly, while further escalation would push more infrastructure out of service.',
     stakeholderRecommendations: [
       'Support multilateral diplomacy and seafarer protection, including evacuation of stranded crews.',
       'Protect bypass infrastructure and coordinate its use to prioritise the most vulnerable importing countries.',
@@ -1119,14 +1204,15 @@ export const crisisData: CrisisDataset = {
     methodology:
       'Findings are compiled from official, intergovernmental, research and news sources with links. Each finding carries a confidence level. Status and risk ratings are editorial judgements based on these findings, not a computed index. Countries not listed are not assessed.',
     limitations: [
-      'Coverage is limited to 19 archetype countries and does not include Latin America and the Caribbean, which is also strongly affected by El Niño.',
+      'Coverage: all states of South, Southeast, East and Central Asia and of Latin America and the Caribbean, plus reference countries in the Gulf, the Horn of Africa and the EU. West Asia beyond the Gulf and the Pacific islands are not covered.',
+      'Basic profiles rest on one or two sources and often on subregional estimates (CEPAL, CIMH, IFRC); they are marked as such. Some countries are listed as "insufficient data".',
       'Several values are in-season or single-source figures (marked preliminary) and must be updated once official data are released.',
       'Two Wikipedia pages are used as secondary compilations for timeline facts; their primary references should be checked before external use.',
       'Risk ratings are qualitative and not comparable to quantitative indices such as INFORM.',
       'The situation in the Strait of Hormuz changes daily; the dataset reflects the state as of 29 September 2026.',
     ],
   },
-  sources,
+  sources: allSources,
   global: {
     asOf: '2026-09-29',
     elNino: [
@@ -1143,13 +1229,18 @@ export const crisisData: CrisisDataset = {
     ],
     hormuz: [
       {
-        text: 'Commercial traffic has been largely blocked since 28 February. Before the war, about a quarter of seaborne oil trade and a fifth of LNG trade passed the strait.',
+        text: 'Traffic has been heavily restricted since 28 February. Before the war, about a quarter of seaborne oil trade and a fifth of LNG trade passed the strait.',
         sourceIds: ['wiki-hormuz'],
         confidence: 'reported',
       },
       {
-        text: 'IMF PortWatch counts about 4 transits per day through the strait in September 2026 (to 27 September), against about 68 per day in the eight weeks before the war. Brent traded at USD 106.31 on 28 September.',
-        sourceIds: ['portwatch', 'straits-0928'],
+        text: 'Kpler ship-tracking data point to about 9.7 million barrels per day of crude through the strait in September, roughly half the February level of 19.5 million. Many tankers transit with transponders off, so AIS-based counts such as IMF PortWatch (about 4 transits per day in September) understate traffic.',
+        sourceIds: ['euronews-kpler', 'portwatch'],
+        confidence: 'reported',
+      },
+      {
+        text: 'Brent traded at USD 106.31 on 28 September after the US rejected an Iranian proposal for a phased reopening.',
+        sourceIds: ['straits-0928'],
         confidence: 'reported',
       },
       {
@@ -1171,11 +1262,11 @@ export const crisisData: CrisisDataset = {
       id: 'gulf-lane',
       name: 'Persian Gulf to Arabian Sea via Hormuz',
       kind: 'sea-lane',
-      status: 'blocked',
+      status: 'disrupted',
       coordinates: [
         [48.8, 29.3], [50.4, 27.4], [52.4, 26.4], [54.8, 26.1], [56.4, 26.55], [57.2, 25.8], [58.8, 24.2], [61.0, 21.5],
       ],
-      note: 'Core export lane for Saudi, Iraqi, Kuwaiti, Qatari and Emirati oil and LNG. Effectively closed to commercial traffic.',
+      note: 'Core export lane for Saudi, Iraqi, Kuwaiti, Qatari and Emirati oil and LNG. Heavily restricted; crude flows at roughly half the pre-war level in September (Kpler).',
       sourceIds: ['straits-0928', 'wiki-hormuz'],
     },
     {
@@ -1265,9 +1356,9 @@ export const crisisData: CrisisDataset = {
       id: 'hormuz',
       name: 'Strait of Hormuz',
       coordinates: [56.45, 26.45],
-      status: 'blocked',
-      note: 'Commercial traffic effectively halted since 28 February; see the chokepoint monitor for daily counts.',
-      sourceIds: ['portwatch', 'straits-0928'],
+      status: 'disrupted',
+      note: 'Heavily restricted since 28 February. Kpler: crude flows about half of pre-war in September; AIS counts understate traffic because many ships transit dark.',
+      sourceIds: ['euronews-kpler', 'portwatch'],
     },
     {
       id: 'bab-el-mandeb',

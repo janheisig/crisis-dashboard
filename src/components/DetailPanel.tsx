@@ -82,6 +82,14 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
           <span className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs font-semibold ${RISK_STYLE[country.risk]}`}>
             <AlertTriangle size={12} /> Risk: {RISK_LABEL[country.risk]}
           </span>
+          {country.tier === 'basic' && (
+            <span
+              className="rounded-full border border-room-600 px-2.5 py-1 text-[11px] text-room-300"
+              title="Status plus one or two sourced findings, often from subregional assessments"
+            >
+              Basic profile
+            </span>
+          )}
         </div>
         <p className="mt-3 text-sm font-medium leading-snug text-room-100">{country.headline}</p>
         <p className="mt-1.5 text-xs leading-relaxed text-room-400">

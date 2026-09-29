@@ -96,6 +96,12 @@ function ChokepointCard({ cp, label, status }: { cp: ChokepointTransits; label: 
         <span className="text-room-400">vs. {cp.baseline} baseline</span>
       </div>
       <Sparkline cp={cp} />
+      {cp.portid === 'chokepoint6' && (
+        <p className="mt-2 text-[10px] leading-snug text-amber-300/90">
+          AIS count only. Many tankers transit with transponders off; Kpler put September crude flows at about half the pre-war
+          level.
+        </p>
+      )}
     </article>
   );
 }

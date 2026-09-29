@@ -15,7 +15,7 @@ export default function App() {
   const hormuz = transit.status === 'ready' ? transit.data.chokepoints.hormuz : undefined;
 
   const counts = useMemo(() => {
-    const c: Record<ImpactStatus, number> = { elnino: 0, hormuz: 0, dual: 0, minimal: 0 };
+    const c: Record<ImpactStatus, number> = { elnino: 0, hormuz: 0, dual: 0, minimal: 0, insufficient: 0 };
     Object.values(crisisData.countries).forEach((p) => (c[p.status] += 1));
     return c;
   }, []);
@@ -52,7 +52,7 @@ export default function App() {
             <Kpi icon={<CloudRain size={14} />} label="El Niño" value="Very strong event >90%" tone="amber" />
             <Kpi
               icon={<Anchor size={14} />}
-              label="Hormuz transits, 7-day avg."
+              label="Hormuz AIS transits, 7-day avg."
               value={hormuz ? `${hormuz.avg7}/day vs. ${hormuz.baseline} pre-war` : 'Loading…'}
               tone="red"
             />
@@ -63,7 +63,7 @@ export default function App() {
 
       <main className="mx-auto grid max-w-[1600px] gap-4 px-4 py-4 md:px-6 xl:grid-cols-[minmax(0,1fr)_420px]">
         <div className="flex min-w-0 flex-col gap-4">
-          <div className="aspect-[1000/520] w-full min-h-[300px]">
+          <div className="w-full">
             <WorldMap
               selected={selected}
               onCountrySelect={handleSelect}

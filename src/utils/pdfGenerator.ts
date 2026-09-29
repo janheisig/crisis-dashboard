@@ -34,6 +34,7 @@ const STATUS_RGB: Record<ImpactStatus, RGB> = {
   hormuz: [239, 68, 68],
   dual: [190, 18, 60],
   minimal: [100, 116, 139],
+  insufficient: [110, 118, 130],
 };
 
 const PAGE_W = 210;
