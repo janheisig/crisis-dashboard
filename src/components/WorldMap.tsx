@@ -17,6 +17,7 @@ import {
   type Iso3,
   type RegionId,
   type RouteStatus,
+  type TransitSnapshot,
 } from '../types/crisis';
 
 const WIDTH = 1000;
@@ -52,6 +53,8 @@ export interface WorldMapProps {
   selected: Iso3 | null;
   onCountrySelect: (iso3: Iso3 | null) => void;
   highlightRegion?: RegionId | null;
+  /** Optional PortWatch snapshot used to enrich chokepoint tooltips. */
+  transits?: TransitSnapshot;
 }
 
 /** Somaliland has no ISO code in Natural Earth; it is shown as part of Somalia (UN practice). */
@@ -61,7 +64,7 @@ function resolveIso3(f: CountryFeature): Iso3 | undefined {
   return undefined;
 }
 
-export default function WorldMap({ selected, onCountrySelect, highlightRegion }: WorldMapProps) {
+export default function WorldMap({ selected, onCountrySelect, highlightRegion, transits }: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null);
@@ -250,7 +253,15 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion }:
                       showTip(e, {
                         title: c.name,
                         accent: color,
-                        lines: [`Chokepoint · ${ROUTE_STATUS_LABEL[c.status]}`, c.note],
+                        lines: [
+                          `Chokepoint · ${ROUTE_STATUS_LABEL[c.status]}`,
+                          ...(transits?.chokepoints[c.id]
+                            ? [
+                                `IMF PortWatch: ${transits.chokepoints[c.id].avg7} transits/day (7-day avg. to ${transits.chokepoints[c.id].latest.d}) vs. ${transits.chokepoints[c.id].baseline} pre-war.`,
+                              ]
+                            : []),
+                          c.note,
+                        ],
                       })
                     }
                   >

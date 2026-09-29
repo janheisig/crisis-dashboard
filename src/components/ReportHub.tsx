@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, FileDown, Loader2 } from 'lucide-react';
 import { countriesInRegion, crisisData } from '../data/crisisData';
-import { RISK_LABEL, type Iso3, type RegionId } from '../types/crisis';
+import { RISK_LABEL, type Iso3, type RegionId, type TransitSnapshot } from '../types/crisis';
 import { RISK_STYLE } from './DetailPanel';
 import { STATUS_COLOR } from './WorldMap';
 
@@ -9,9 +9,10 @@ interface ReportHubProps {
   region: RegionId | null;
   onRegionChange: (region: RegionId | null) => void;
   onCountrySelect: (iso3: Iso3) => void;
+  transits?: TransitSnapshot;
 }
 
-export default function ReportHub({ region, onRegionChange, onCountrySelect }: ReportHubProps) {
+export default function ReportHub({ region, onRegionChange, onCountrySelect, transits }: ReportHubProps) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const regionIds = Object.keys(crisisData.regions) as RegionId[];
@@ -25,7 +26,7 @@ export default function ReportHub({ region, onRegionChange, onCountrySelect }: R
     try {
       // Loaded on demand so the PDF engine does not slow down the first paint.
       const { downloadRegionalReport } = await import('../utils/pdfGenerator');
-      downloadRegionalReport(region);
+      downloadRegionalReport(region, transits);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'PDF generation failed.');
     } finally {

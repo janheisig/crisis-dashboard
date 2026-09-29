@@ -55,3 +55,16 @@ written rationale, not a computed index. Countries not in the dataset appear as 
 - Two Wikipedia pages serve as secondary compilations for timeline facts; check their primary
   references before external use.
 - The Hormuz situation changes daily; update `crisisData.ts` and `meta.asOf` when refreshing.
+
+## Chokepoint transit data (IMF PortWatch)
+
+`scripts/fetch-portwatch.mjs` pulls daily transit counts for Hormuz, Bab el-Mandeb, Suez, Malacca and
+the Cape of Good Hope from the public IMF PortWatch ArcGIS service (no API key) and writes
+`public/data/chokepoints.json`. The deploy workflow runs it on every push and daily at 06:17 UTC,
+commits a changed snapshot and redeploys; if PortWatch is unreachable, the committed snapshot is used.
+The browser only loads this same-origin JSON file. Baseline = mean daily transits 3 Jan to 27 Feb 2026.
+PortWatch counts are satellite-AIS estimates; recent days may be revised.
+
+```bash
+node scripts/fetch-portwatch.mjs   # refresh locally
+```

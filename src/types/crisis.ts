@@ -158,3 +158,34 @@ export const ROUTE_STATUS_LABEL: Record<RouteStatus, string> = {
   diverted: 'Diversion route',
   operating: 'Operating',
 };
+
+/** Snapshot produced by scripts/fetch-portwatch.mjs (public/data/chokepoints.json). */
+export interface TransitPoint {
+  /** ISO date */
+  d: string;
+  /** all vessel types */
+  t: number;
+  /** tankers */
+  tk: number;
+  /** container ships */
+  ct: number;
+}
+
+export interface ChokepointTransits {
+  portid: string;
+  name: string;
+  /** mean daily transits in the pre-war baseline window */
+  baseline: number;
+  baselineDays: number;
+  latest: TransitPoint;
+  avg7: number;
+  series: TransitPoint[];
+}
+
+export interface TransitSnapshot {
+  fetchedAt: string;
+  latestDate: string;
+  baselineWindow: { from: string; to: string };
+  source: { publisher: string; dataset: string; url: string; method: string; terms: string; note: string };
+  chokepoints: Record<string, ChokepointTransits>;
+}

@@ -3,9 +3,13 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Daily refresh of the IMF PortWatch chokepoint data (06:17 UTC).
+  schedule:
+    - cron: '17 6 * * *'
   workflow_dispatch:
 
-# GITHUB_TOKEN needs write access to push the compiled site to the gh-pages branch.
+# GITHUB_TOKEN needs write access to push the compiled site to gh-pages
+# and to commit the refreshed data snapshot to main.
 permissions:
   contents: write
 
@@ -28,6 +32,25 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # If PortWatch is unreachable, the build continues with the committed snapshot.
+      - name: Refresh IMF PortWatch chokepoint data
+        id: refresh
+        continue-on-error: true
+        run: node scripts/fetch-portwatch.mjs
+
+      - name: Commit refreshed data snapshot
+        if: steps.refresh.outcome == 'success'
+        run: |
+          if git diff --quiet -- public/data/chokepoints.json; then
+            echo "Data unchanged."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/data/chokepoints.json
+            git commit -m "data: refresh PortWatch chokepoint transits [skip ci]"
+            git push
+          fi
 
       - name: Type-check and build (npm run build)
         run: npm run build

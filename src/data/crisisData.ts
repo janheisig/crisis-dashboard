@@ -161,6 +161,15 @@ const sources: CrisisDataset['sources'] = {
     date: '2026-09-28',
     type: 'industry',
   },
+  portwatch: {
+    id: 'portwatch',
+    tag: '[IMF PortWatch, daily]',
+    publisher: 'IMF PortWatch (International Monetary Fund / University of Oxford)',
+    title: 'Daily Chokepoint Transit Calls (satellite AIS estimates)',
+    url: 'https://portwatch.imf.org/',
+    date: '2026-09-27',
+    type: 'intergovernmental',
+  },
   'iea-release': {
     id: 'iea-release',
     tag: '[IEA, 11 Mar 2026]',
@@ -1090,7 +1099,7 @@ const regions: CrisisDataset['regions'] = {
     name: 'Persian Gulf / GCC',
     risk: 'critical',
     outlook:
-      'The Gulf is the centre of the energy shock. Transits through the strait remain close to zero against a pre-crisis baseline of about 85 per day. Bypass capacity is limited and itself under attack, as the September strikes on the Saudi East-West pipeline showed. Qatar and Kuwait have no bypass, and Iraq’s southern output collapsed in the first week. Diplomatic efforts continue, but the latest Iranian proposal was reported rejected on 28 September. The outlook remains binary: a negotiated reopening would ease prices quickly, while further escalation would push more infrastructure out of service.',
+      'The Gulf is the centre of the energy shock. IMF PortWatch counts about 4 transits per day through the strait in September, against about 68 per day in the eight weeks before the war. Bypass capacity is limited and itself under attack, as the September strikes on the Saudi East-West pipeline showed. Qatar and Kuwait have no bypass, and Iraq’s southern output collapsed in the first week. Diplomatic efforts continue, but the latest Iranian proposal was reported rejected on 28 September. The outlook remains binary: a negotiated reopening would ease prices quickly, while further escalation would push more infrastructure out of service.',
     stakeholderRecommendations: [
       'Support multilateral diplomacy and seafarer protection, including evacuation of stranded crews.',
       'Protect bypass infrastructure and coordinate its use to prioritise the most vulnerable importing countries.',
@@ -1139,8 +1148,8 @@ export const crisisData: CrisisDataset = {
         confidence: 'reported',
       },
       {
-        text: 'IMF PortWatch recorded one transit on 20 September against a pre-crisis baseline of 85 per day; Brent traded at USD 106.31 on 28 September.',
-        sourceIds: ['straits-0928'],
+        text: 'IMF PortWatch counts about 4 transits per day through the strait in September 2026 (to 27 September), against about 68 per day in the eight weeks before the war. Brent traded at USD 106.31 on 28 September.',
+        sourceIds: ['portwatch', 'straits-0928'],
         confidence: 'reported',
       },
       {
@@ -1257,15 +1266,15 @@ export const crisisData: CrisisDataset = {
       name: 'Strait of Hormuz',
       coordinates: [56.45, 26.45],
       status: 'blocked',
-      note: '1 recorded transit on 20 September vs. a pre-crisis baseline of 85 per day.',
-      sourceIds: ['straits-0928'],
+      note: 'Commercial traffic effectively halted since 28 February; see the chokepoint monitor for daily counts.',
+      sourceIds: ['portwatch', 'straits-0928'],
     },
     {
       id: 'bab-el-mandeb',
       name: 'Bab el-Mandeb',
       coordinates: [43.4, 12.6],
       status: 'disrupted',
-      note: 'Houthi pressure on shipping; no major alternative corridor fully open.',
+      note: 'Renewed Houthi threats against shipping since 28 February; daily transits are below the January-February 2026 level.',
       sourceIds: ['wiki-hormuz'],
     },
     {
@@ -1273,7 +1282,7 @@ export const crisisData: CrisisDataset = {
       name: 'Suez Canal',
       coordinates: [32.55, 29.95],
       status: 'disrupted',
-      note: 'Traffic rerouted around the Cape of Good Hope.',
+      note: 'Daily transits are close to the January-February 2026 level; that level was already reduced by the Red Sea crisis that began in late 2023.',
       sourceIds: ['wiki-hormuz'],
     },
     {
@@ -1289,7 +1298,7 @@ export const crisisData: CrisisDataset = {
       name: 'Cape of Good Hope',
       coordinates: [18.5, -34.8],
       status: 'diverted',
-      note: 'Main diversion for Europe-bound traffic.',
+      note: 'Main diversion for Europe-bound traffic since the Red Sea crisis; daily transits are close to the January-February 2026 level.',
       sourceIds: ['wiki-hormuz'],
     },
   ],

@@ -3,12 +3,16 @@ import { Activity, Anchor, CloudRain, Radio } from 'lucide-react';
 import WorldMap from './components/WorldMap';
 import DetailPanel from './components/DetailPanel';
 import ReportHub from './components/ReportHub';
+import ChokepointMonitor from './components/ChokepointMonitor';
+import { useTransitData } from './hooks/useTransitData';
 import { crisisData } from './data/crisisData';
 import type { ImpactStatus, Iso3, RegionId } from './types/crisis';
 
 export default function App() {
   const [selected, setSelected] = useState<Iso3 | null>(null);
   const [region, setRegion] = useState<RegionId | null>(null);
+  const transit = useTransitData();
+  const hormuz = transit.status === 'ready' ? transit.data.chokepoints.hormuz : undefined;
 
   const counts = useMemo(() => {
     const c: Record<ImpactStatus, number> = { elnino: 0, hormuz: 0, dual: 0, minimal: 0 };
@@ -46,7 +50,12 @@ export default function App() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Kpi icon={<CloudRain size={14} />} label="El Niño" value="Very strong event >90%" tone="amber" />
-            <Kpi icon={<Anchor size={14} />} label="Hormuz transits" value="1/day vs. 85 baseline" tone="red" />
+            <Kpi
+              icon={<Anchor size={14} />}
+              label="Hormuz transits, 7-day avg."
+              value={hormuz ? `${hormuz.avg7}/day vs. ${hormuz.baseline} pre-war` : 'Loading…'}
+              tone="red"
+            />
             <Kpi icon={<Activity size={14} />} label="Dual-shock countries" value={`${counts.dual} of ${Object.keys(crisisData.countries).length}`} tone="crimson" />
           </div>
         </div>
@@ -55,9 +64,17 @@ export default function App() {
       <main className="mx-auto grid max-w-[1600px] gap-4 px-4 py-4 md:px-6 xl:grid-cols-[minmax(0,1fr)_420px]">
         <div className="flex min-w-0 flex-col gap-4">
           <div className="aspect-[1000/520] w-full min-h-[300px]">
-            <WorldMap selected={selected} onCountrySelect={handleSelect} highlightRegion={region} />
+            <WorldMap
+              selected={selected}
+              onCountrySelect={handleSelect}
+              highlightRegion={region}
+              transits={transit.status === 'ready' ? transit.data : undefined}
+            />
           </div>
-          <ReportHub region={region} onRegionChange={handleRegion} onCountrySelect={(iso) => handleSelect(iso)} />
+          <ChokepointMonitor state={transit} />
+          <ReportHub
+            transits={transit.status === 'ready' ? transit.data : undefined}
+            region={region} onRegionChange={handleRegion} onCountrySelect={(iso) => handleSelect(iso)} />
         </div>
         <div className="xl:sticky xl:top-4 xl:h-[calc(100vh-2rem)] h-[720px]">
           <DetailPanel iso3={selected} onClose={() => setSelected(null)} />

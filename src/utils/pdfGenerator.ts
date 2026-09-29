@@ -8,6 +8,7 @@ import {
   type RegionId,
   type RiskLevel,
   type ImpactStatus,
+  type TransitSnapshot,
 } from '../types/crisis';
 
 /** Mandatory regulatory footnote printed on every page. */
@@ -73,10 +74,11 @@ function findingsCell(findings: Finding[], refs: Map<string, number>, emptyText:
 export interface ReportOptions {
   region: RegionId;
   compiledAt?: Date;
+  transits?: TransitSnapshot;
 }
 
 /** Build the executive summary document for a sub-region. Returns the jsPDF instance. */
-export function buildRegionalReport({ region, compiledAt = new Date() }: ReportOptions): jsPDF {
+export function buildRegionalReport({ region, compiledAt = new Date(), transits }: ReportOptions): jsPDF {
   const doc = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
   const profile = crisisData.regions[region];
   const countries = countriesInRegion(region);
@@ -137,7 +139,12 @@ export function buildRegionalReport({ region, compiledAt = new Date() }: ReportO
     .map((s) => `${s.publisher} (${s.date})`)
     .join('; ');
   y = paragraph(doc, pdfSafe(`Sources: ${contextSources}.`), y, 7.4, MUTED);
-  y += 4;
+  y += 2;
+
+  if (transits) {
+    y = transitTable(doc, transits, y);
+  }
+  y += 2;
 
   // 2. Data grid
   y = sectionHeading(doc, 'Impact grid: El Niño climate effects vs. Hormuz energy supply effects', y);
@@ -246,14 +253,59 @@ export function buildRegionalReport({ region, compiledAt = new Date() }: ReportO
 }
 
 /** Build and download the report. */
-export function downloadRegionalReport(region: RegionId): void {
+export function downloadRegionalReport(region: RegionId, transits?: TransitSnapshot): void {
   const now = new Date();
-  const doc = buildRegionalReport({ region, compiledAt: now });
+  const doc = buildRegionalReport({ region, compiledAt: now, transits });
   const stamp = now.toISOString().slice(0, 10);
   doc.save(`CrisisRoom_Executive-Summary_${region}_${stamp}.pdf`);
 }
 
 // Layout helpers
+
+const CHOKEPOINT_ORDER: [string, string][] = [
+  ['hormuz', 'Strait of Hormuz'],
+  ['bab-el-mandeb', 'Bab el-Mandeb'],
+  ['suez', 'Suez Canal'],
+  ['malacca', 'Strait of Malacca'],
+  ['cape', 'Cape of Good Hope'],
+];
+
+function transitTable(doc: jsPDF, t: TransitSnapshot, y: number): number {
+  y = ensureSpace(doc, y, 40);
+  y = subHeading(doc, `Chokepoint transits (IMF PortWatch, data to ${t.latestDate})`, y);
+  const rows = CHOKEPOINT_ORDER.filter(([id]) => t.chokepoints[id]).map(([id, name]) => {
+    const c = t.chokepoints[id];
+    const pct = c.baseline > 0 ? Math.round(((c.avg7 - c.baseline) / c.baseline) * 100) : 0;
+    return [name, String(c.baseline), String(c.avg7), `${pct > 0 ? '+' : ''}${pct}%`, String(c.latest.t)];
+  });
+  autoTable(doc, {
+    startY: y,
+    margin: { left: MARGIN, right: MARGIN, bottom: FOOTER_H + 6 },
+    head: [['Chokepoint', 'Pre-war baseline / day', '7-day average / day', 'Change', `Latest day (${t.latestDate})`]],
+    body: rows,
+    theme: 'plain',
+    styles: { font: 'helvetica', fontSize: 8, cellPadding: { top: 1.4, bottom: 1.4, left: 2, right: 2 }, textColor: INK },
+    headStyles: { textColor: MUTED, fontStyle: 'bold', fontSize: 7.5, lineWidth: { bottom: 0.3 }, lineColor: RULE },
+    bodyStyles: { lineWidth: { bottom: 0.15 }, lineColor: RULE },
+    columnStyles: { 0: { fontStyle: 'bold' }, 1: { halign: 'right' }, 2: { halign: 'right' }, 3: { halign: 'right' }, 4: { halign: 'right' } },
+    didParseCell: (data) => {
+      if (data.section === 'body' && data.column.index === 3 && String(data.cell.raw).startsWith('-')) {
+        data.cell.styles.textColor = RISK_RGB.critical;
+        data.cell.styles.fontStyle = 'bold';
+      }
+    },
+  });
+  y = lastY(doc) + 3;
+  return paragraph(
+    doc,
+    pdfSafe(
+      `Baseline: mean daily transits ${t.baselineWindow.from} to ${t.baselineWindow.to}, the eight weeks before the war. Counts are satellite AIS estimates and recent days may be revised.`,
+    ),
+    y,
+    7.4,
+    MUTED,
+  );
+}
 
 function lastY(doc: jsPDF): number {
   return (doc as unknown as { lastAutoTable?: { finalY?: number } }).lastAutoTable?.finalY ?? 40;
