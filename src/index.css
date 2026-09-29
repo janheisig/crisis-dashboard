@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #07090d;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #323c4b transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flow,
+  .animate-flow-slow,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+}
