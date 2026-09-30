@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react';
 import { Ship, ExternalLink, TrendingDown, TrendingUp } from 'lucide-react';
 import { crisisData } from '../data/crisisData';
+import { AbbrText } from './AbbrText';
 import { pctVsBaseline, type TransitState } from '../hooks/useTransitData';
 import { ROUTE_STATUS_LABEL, type ChokepointTransits, type RouteStatus } from '../types/crisis';
 
@@ -62,8 +63,8 @@ export default function ChokepointMonitor({ state }: { state: TransitState }) {
               <ExternalLink size={10} className="ml-1 inline" />
             </a>
             . Baseline: mean daily transits {fmtDate(state.data.baselineWindow.from)} to {fmtDate(state.data.baselineWindow.to)} 2026, the
-            eight weeks before the war. {state.data.source.note} Counts derive from AIS signals, which ships can switch off and
-            which are subject to GNSS interference in the Gulf.
+            eight weeks before the war. {state.data.source.note}{' '}
+            <AbbrText text="Counts derive from AIS signals, which ships can switch off and which are subject to GNSS interference in the Gulf." />
           </p>
         </>
       )}
@@ -98,8 +99,7 @@ function ChokepointCard({ cp, label, status }: { cp: ChokepointTransits; label: 
       <Sparkline cp={cp} />
       {cp.portid === 'chokepoint6' && (
         <p className="mt-2 text-[10px] leading-snug text-amber-300/90">
-          AIS count only. Many tankers transit with transponders off; Kpler put September crude flows at about half the pre-war
-          level.
+          <AbbrText text="AIS count only. Many tankers transit with transponders off; Kpler put September crude flows at about half the pre-war level." />
         </p>
       )}
     </article>

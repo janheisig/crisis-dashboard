@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   AlertTriangle,
   BookOpen,
+  ChevronDown,
+  ChevronsUpDown,
   CloudRain,
   ExternalLink,
   Fuel,
@@ -11,6 +13,7 @@ import {
 } from 'lucide-react';
 import { collectSources, crisisData } from '../data/crisisData';
 import { STATUS_COLOR } from './WorldMap';
+import { AbbrText } from './AbbrText';
 import {
   RISK_LABEL,
   STATUS_LABEL,
@@ -52,6 +55,10 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
   const allItems = [...country.environmental, ...country.energy, ...country.policy, ...country.metrics];
   const sources = collectSources(allItems);
   const sourceIndex = new Map(sources.map((s, i) => [s.id, i + 1]));
+  const [open, setOpen] = useState({ env: false, energy: false, policy: false });
+  // Reset to collapsed when another country is selected.
+  useEffect(() => setOpen({ env: false, energy: false, policy: false }), [country.iso3]);
+  const allOpen = open.env && open.energy && open.policy;
 
   return (
     <>
@@ -91,10 +98,12 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
             </span>
           )}
         </div>
-        <p className="mt-3 text-sm font-medium leading-snug text-room-100">{country.headline}</p>
+        <p className="mt-3 text-sm font-medium leading-snug text-room-100">
+          <AbbrText text={country.headline} />
+        </p>
         <p className="mt-1.5 text-xs leading-relaxed text-room-400">
           <span className="font-semibold text-room-300">Rating rationale: </span>
-          {country.riskRationale}
+          <AbbrText text={country.riskRationale} />
         </p>
       </header>
 
@@ -104,7 +113,9 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
             {country.metrics.map((m) => (
               <div key={m.label} className="rounded-lg border border-room-700 bg-room-850 px-3 py-2.5">
                 <div className="font-mono text-lg font-semibold text-white">{m.value}</div>
-                <div className="mt-0.5 text-[11px] leading-snug text-room-400">{m.label}</div>
+                <div className="mt-0.5 text-[11px] leading-snug text-room-400">
+                  <AbbrText text={m.label} />
+                </div>
                 <div className="mt-1 font-mono text-[10px] text-room-500">
                   as of {m.asOf} <Refs ids={m.sourceIds} index={sourceIndex} />
                 </div>
@@ -113,9 +124,46 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
           </div>
         )}
 
-        <Section icon={<CloudRain size={15} />} title="Macro Environmental Shock Factors" accent="#f59e0b" findings={country.environmental} index={sourceIndex} empty="No sourced El Niño impact recorded for this country in the dataset." />
-        <Section icon={<Fuel size={15} />} title="Energy Vulnerability Metrics" accent="#ef4444" findings={country.energy} index={sourceIndex} empty="No sourced Hormuz-related energy finding recorded for this country." />
-        <Section icon={<Landmark size={15} />} title="Active Policy & Political Responses" accent="#22d3ee" findings={country.policy} index={sourceIndex} empty="No sourced policy response recorded in the dataset." />
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={() => setOpen({ env: !allOpen, energy: !allOpen, policy: !allOpen })}
+            className="inline-flex items-center gap-1 text-[11px] font-medium text-signal-cyan hover:underline"
+          >
+            <ChevronsUpDown size={12} />
+            {allOpen ? 'Collapse all' : 'Expand all'}
+          </button>
+        </div>
+        <Section
+          icon={<CloudRain size={15} />}
+          title="Macro Environmental Shock Factors"
+          accent="#f59e0b"
+          findings={country.environmental}
+          index={sourceIndex}
+          empty="No sourced El Niño impact recorded for this country in the dataset."
+          open={open.env}
+          onToggle={() => setOpen((o) => ({ ...o, env: !o.env }))}
+        />
+        <Section
+          icon={<Fuel size={15} />}
+          title="Energy Vulnerability Metrics"
+          accent="#ef4444"
+          findings={country.energy}
+          index={sourceIndex}
+          empty="No sourced energy finding recorded for this country."
+          open={open.energy}
+          onToggle={() => setOpen((o) => ({ ...o, energy: !o.energy }))}
+        />
+        <Section
+          icon={<Landmark size={15} />}
+          title="Active Policy & Political Responses"
+          accent="#22d3ee"
+          findings={country.policy}
+          index={sourceIndex}
+          empty="No sourced policy response recorded in the dataset."
+          open={open.policy}
+          onToggle={() => setOpen((o) => ({ ...o, policy: !o.policy }))}
+        />
 
         <SourceList sources={sources} />
         <p className="font-mono text-[10px] text-room-500">Last reviewed {country.lastReviewed}</p>
@@ -147,14 +195,16 @@ function GlobalView() {
         <Section icon={<Fuel size={15} />} title="Strait of Hormuz" accent="#ef4444" findings={global.hormuz} index={sourceIndex} empty="" />
         <div className="rounded-lg border border-room-700 bg-room-850 p-3 text-xs leading-relaxed text-room-300">
           <div className="mb-1 font-semibold text-room-100">Method</div>
-          {meta.methodology}
+          <AbbrText text={meta.methodology} />
           <button type="button" onClick={() => setShowLimits((v) => !v)} className="mt-2 block font-medium text-signal-cyan hover:underline">
             {showLimits ? 'Hide limitations' : 'Show limitations'}
           </button>
           {showLimits && (
             <ul className="mt-2 list-disc space-y-1 pl-4 text-room-400">
               {meta.limitations.map((l) => (
-                <li key={l}>{l}</li>
+                <li key={l}>
+                  <AbbrText text={l} />
+                </li>
               ))}
             </ul>
           )}
@@ -172,6 +222,8 @@ function Section({
   findings,
   index,
   empty,
+  open,
+  onToggle,
 }: {
   icon: React.ReactNode;
   title: string;
@@ -179,28 +231,65 @@ function Section({
   findings: Finding[];
   index: Map<string, number>;
   empty: string;
+  /** When omitted the section is always expanded (global view). */
+  open?: boolean;
+  onToggle?: () => void;
 }) {
+  const collapsible = onToggle !== undefined;
+  const expanded = !collapsible || open;
+  const heading = (
+    <>
+      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md" style={{ background: `${accent}22`, color: accent }}>
+        {icon}
+      </span>
+      <span className="flex-1 text-left">{title}</span>
+      {collapsible && (
+        <>
+          <span className="rounded-full border border-room-600 px-1.5 font-mono text-[10px] font-normal text-room-300">{findings.length}</span>
+          <ChevronDown size={15} className={`text-room-400 transition-transform ${expanded ? 'rotate-180' : ''}`} />
+        </>
+      )}
+    </>
+  );
   return (
-    <section>
-      <h3 className="mb-2 flex items-center gap-2 text-[13px] font-bold uppercase tracking-wide text-room-100">
-        <span className="flex h-6 w-6 items-center justify-center rounded-md" style={{ background: `${accent}22`, color: accent }}>
-          {icon}
-        </span>
-        {title}
-      </h3>
-      {findings.length === 0 ? (
-        <p className="text-xs italic text-room-500">{empty}</p>
+    <section className={collapsible ? 'rounded-lg border border-room-700/70 bg-room-900' : ''}>
+      {collapsible ? (
+        <h3>
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={expanded}
+            className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-[13px] font-bold uppercase tracking-wide text-room-100 hover:bg-room-850"
+          >
+            {heading}
+          </button>
+        </h3>
       ) : (
-        <ul className="space-y-2">
-          {findings.map((f, i) => (
-            <li key={i} className="rounded-md border-l-2 bg-room-850/60 py-2 pl-3 pr-2 text-[13px] leading-relaxed text-room-200" style={{ borderColor: accent }}>
-              {f.text} <Refs ids={f.sourceIds} index={index} />
-              <span className={`ml-1.5 inline-block rounded border px-1 py-px align-middle font-mono text-[9px] uppercase tracking-wide ${CONFIDENCE_STYLE[f.confidence]}`}>
-                {f.confidence}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <h3 className="mb-2 flex items-center gap-2 text-[13px] font-bold uppercase tracking-wide text-room-100">{heading}</h3>
+      )}
+      {expanded && (
+        <div className={collapsible ? 'px-2.5 pb-2.5' : ''}>
+          {findings.length === 0 ? (
+            <p className="text-xs italic text-room-500">{empty}</p>
+          ) : (
+            <ul className="space-y-2">
+              {findings.map((f, i) => (
+                <li
+                  key={i}
+                  className="rounded-md border-l-2 bg-room-850/60 py-2 pl-3 pr-2 text-[13px] leading-relaxed text-room-200"
+                  style={{ borderColor: accent }}
+                >
+                  <AbbrText text={f.text} /> <Refs ids={f.sourceIds} index={index} />
+                  <span
+                    className={`ml-1.5 inline-block rounded border px-1 py-px align-middle font-mono text-[9px] uppercase tracking-wide ${CONFIDENCE_STYLE[f.confidence]}`}
+                  >
+                    {f.confidence}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </section>
   );
@@ -233,7 +322,9 @@ function SourceList({ sources }: { sources: ReturnType<typeof collectSources> })
           <li key={s.id} id={`src-${s.id}`} className="flex gap-2 text-[11px] leading-snug text-room-300">
             <span className="font-mono text-signal-cyan">[{i + 1}]</span>
             <span>
-              <span className="font-mono text-room-400">{s.tag}</span>{' '}
+              <span className="font-mono text-room-400">
+                <AbbrText text={s.tag} />
+              </span>{' '}
               <a href={s.url} target="_blank" rel="noreferrer noopener" className="text-room-200 hover:text-white hover:underline">
                 {s.title}
                 <ExternalLink size={10} className="ml-1 inline align-baseline" />

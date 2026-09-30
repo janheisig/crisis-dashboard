@@ -4,6 +4,7 @@ import { countriesInRegion, crisisData } from '../data/crisisData';
 import { RISK_LABEL, type Iso3, type RegionId, type TransitSnapshot } from '../types/crisis';
 import { RISK_STYLE } from './DetailPanel';
 import { STATUS_COLOR } from './WorldMap';
+import { AbbrText } from './AbbrText';
 
 interface ReportHubProps {
   region: RegionId | null;
@@ -71,7 +72,9 @@ export default function ReportHub({ region, onRegionChange, onCountrySelect, tra
 
       {profile ? (
         <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto]">
-          <p className="text-[13px] leading-relaxed text-room-300">{profile.outlook}</p>
+          <p className="text-[13px] leading-relaxed text-room-300">
+            <AbbrText text={profile.outlook} />
+          </p>
           <div className="flex flex-col items-start gap-2 lg:items-end">
             <span className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${RISK_STYLE[profile.risk]}`}>
               Regional risk: {RISK_LABEL[profile.risk]}
