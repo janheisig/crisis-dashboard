@@ -298,11 +298,21 @@ function Section({
 function Refs({ ids, index }: { ids: string[]; index: Map<string, number> }) {
   return (
     <span className="font-mono text-[10px] text-signal-cyan">
-      {ids.map((id) => (
-        <a key={id} href={`#src-${id}`} className="hover:underline">
-          [{index.get(id)}]
-        </a>
-      ))}
+      {ids.map((id) => {
+        const s = crisisData.sources[id];
+        return (
+          <a
+            key={id}
+            href={s?.url ?? `#src-${id}`}
+            target={s ? '_blank' : undefined}
+            rel="noreferrer noopener"
+            title={s ? `${s.tag} ${s.title} (opens in new tab)` : undefined}
+            className="hover:underline"
+          >
+            [{index.get(id)}]
+          </a>
+        );
+      })}
     </span>
   );
 }
