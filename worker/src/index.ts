@@ -62,6 +62,10 @@ export class AisHub implements DurableObject {
   private lastMessage = 0;
   private connectedSince = 0;
   private messages = 0;
+  /** Raw frames from upstream, including ones outside the areas; for diagnostics. */
+  private frames = 0;
+  private frameTypes: Record<string, number> = {};
+  private lastFrame = 0;
   private lastError = '';
 
   constructor(
@@ -98,6 +102,10 @@ export class AisHub implements DurableObject {
       connectedSince: this.connectedSince ? new Date(this.connectedSince).toISOString() : null,
       lastMessage: this.lastMessage ? new Date(this.lastMessage).toISOString() : null,
       messagesReceived: this.messages,
+      framesReceived: this.frames,
+      frameTypes: this.frameTypes,
+      lastFrame: this.lastFrame ? new Date(this.lastFrame).toISOString() : null,
+      upstreamSilent: this.socket?.readyState === WebSocket.OPEN && this.frames === 0 && Date.now() - this.connectedSince > 2 * 60 * 1000,
       trackedVessels: this.vessels.size,
       lastError: this.lastError || null,
       generatedAt: new Date().toISOString(),
@@ -150,6 +158,10 @@ export class AisHub implements DurableObject {
     try {
       const text = typeof data === 'string' ? data : new TextDecoder().decode(data);
       const parsed = JSON.parse(text);
+      this.frames++;
+      this.lastFrame = Date.now();
+      const t = parsed && typeof parsed === 'object' && typeof (parsed as { MessageType?: unknown }).MessageType === 'string' ? (parsed as { MessageType: string }).MessageType : 'other';
+      this.frameTypes[t] = (this.frameTypes[t] ?? 0) + 1;
       if (parsed && typeof parsed === 'object' && 'error' in parsed) {
         this.lastError = `aisstream: ${String((parsed as { error: unknown }).error)}`;
         return;

@@ -415,7 +415,9 @@ export default function WorldMap({
           {vessels.status === 'not-configured' && 'relay not configured yet (see README)'}
           {vessels.status === 'error' && `relay unreachable (${vessels.message})`}
           {vessels.status === 'ready' &&
-            (vessels.vessels.length === 0 && vessels.warmingUp
+            (vessels.vessels.length === 0 && vessels.upstreamSilent
+              ? 'relay connected, but aisstream.io is currently sending no data (outage on their side)'
+              : vessels.vessels.length === 0 && vessels.warmingUp
               ? 'warming up, first positions arrive within a few minutes'
               : `${vessels.vessels.length.toLocaleString('en-GB')} vessels in Gulf, Red Sea, Malacca · updated ${new Date(vessels.generatedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`)}
           {vessels.status === 'ready' && vessels.lastError && <span className="text-rose-300"> · {vessels.lastError}</span>}

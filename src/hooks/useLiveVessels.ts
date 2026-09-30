@@ -24,6 +24,7 @@ export type LiveVesselState =
       vessels: LiveVessel[];
       connected: boolean;
       warmingUp: boolean;
+      upstreamSilent: boolean;
       generatedAt: string;
       lastError: string | null;
     };
@@ -84,6 +85,7 @@ export function useLiveVessels(enabled: boolean): LiveVesselState {
             vessels,
             connected: Boolean(json.connected),
             warmingUp: Boolean(json.warmingUp),
+            upstreamSilent: Boolean(json.upstreamSilent),
             generatedAt: String(json.generatedAt),
             lastError: json.lastError ?? null,
           });
