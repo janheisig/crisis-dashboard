@@ -1,0 +1,18 @@
+# Cloudflare Worker: live AIS relay for the Crisis Room dashboard.
+# Deployed by .github/workflows/deploy-worker.yml; the aisstream.io key is a Worker secret.
+name = "crisis-ais"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Browser origins allowed to read /vessels (comma-separated).
+ALLOWED_ORIGINS = "https://janheisig.github.io,http://localhost:5173,http://localhost:4173"
+
+[[durable_objects.bindings]]
+name = "AIS_HUB"
+class_name = "AisHub"
+
+# SQLite-backed Durable Objects are available on the Workers free plan.
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["AisHub"]

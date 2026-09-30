@@ -1,0 +1,18 @@
+{
+  "name": "crisis-ais-worker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cloudflare Worker that relays live AIS vessel positions from aisstream.io to the Crisis Room dashboard",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260901.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.0.0"
+  }
+}

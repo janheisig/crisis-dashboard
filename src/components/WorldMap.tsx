@@ -7,7 +7,8 @@ import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry, LineString } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import worldTopo from 'world-atlas/countries-50m.json';
-import { Layers, Minus, Plus, RotateCcw } from 'lucide-react';
+import { Layers, Minus, Plus, RotateCcw, Ship } from 'lucide-react';
+import type { LiveVessel, LiveVesselState, VesselKind } from '../hooks/useLiveVessels';
 import { crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
 import {
   RISK_LABEL,
@@ -58,6 +59,31 @@ export interface WorldMapProps {
   highlightRegion?: RegionId | null;
   /** Optional PortWatch snapshot used to enrich chokepoint tooltips. */
   transits?: TransitSnapshot;
+  /** Live AIS layer state (Cloudflare relay). */
+  vessels?: LiveVesselState;
+  showVessels?: boolean;
+  onToggleVessels?: () => void;
+}
+
+/** Validated for the dark surface (dataviz validator: CVD dE 17.3). Other types use neutral grey. */
+const VESSEL_COLOR: Record<VesselKind, string> = {
+  tanker: '#9085e9',
+  cargo: '#199e70',
+  passenger: '#7a8597',
+  other: '#7a8597',
+  unknown: '#7a8597',
+};
+const VESSEL_LABEL: Record<VesselKind, string> = {
+  tanker: 'Tanker',
+  cargo: 'Cargo',
+  passenger: 'Passenger',
+  other: 'Other type',
+  unknown: 'Type not yet reported',
+};
+
+function formatAge(seconds: number): string {
+  if (seconds < 90) return `${seconds} s ago`;
+  return `${Math.round(seconds / 60)} min ago`;
 }
 
 /** Somaliland has no ISO code in Natural Earth; it is shown as part of Somalia (UN practice). */
@@ -67,7 +93,15 @@ function resolveIso3(f: CountryFeature): Iso3 | undefined {
   return undefined;
 }
 
-export default function WorldMap({ selected, onCountrySelect, highlightRegion, transits }: WorldMapProps) {
+export default function WorldMap({
+  selected,
+  onCountrySelect,
+  highlightRegion,
+  transits,
+  vessels,
+  showVessels = false,
+  onToggleVessels,
+}: WorldMapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef<ZoomBehavior<SVGSVGElement, unknown> | null>(null);
@@ -330,8 +364,63 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
               })}
             </g>
           )}
+          {showVessels && vessels?.status === 'ready' && (
+            <g>
+              {vessels.vessels.map((v: LiveVessel) => {
+                const p = projection([v.lon, v.lat]);
+                if (!p) return null;
+                const color = VESSEL_COLOR[v.kind];
+                const moving = v.sog !== null && v.sog >= 0.5 && v.cog !== null;
+                const size = (v.kind === 'tanker' ? 3.4 : 2.6) / k;
+                const tip = (e: React.MouseEvent) =>
+                  showTip(e, {
+                    title: v.name || `MMSI ${v.mmsi}`,
+                    accent: color,
+                    lines: [
+                      `${VESSEL_LABEL[v.kind]} · MMSI ${v.mmsi}`,
+                      [
+                        v.sog !== null ? `${v.sog.toFixed(1)} kn` : 'speed n/a',
+                        v.cog !== null ? `course ${Math.round(v.cog)}\u00b0` : null,
+                        v.destination ? `to ${v.destination}` : null,
+                        `position ${formatAge(v.ageSeconds)}`,
+                      ]
+                        .filter(Boolean)
+                        .join(' · '),
+                    ],
+                  });
+                return moving ? (
+                  <path
+                    key={v.mmsi}
+                    d={`M0,${-size * 1.6} L${size},${size} L${-size},${size} Z`}
+                    transform={`translate(${p[0]},${p[1]}) rotate(${v.cog})`}
+                    fill={color}
+                    stroke="#0b0f15"
+                    strokeWidth={0.4 / k}
+                    onMouseMove={tip}
+                  />
+                ) : (
+                  <circle key={v.mmsi} cx={p[0]} cy={p[1]} r={size * 0.8} fill={color} stroke="#0b0f15" strokeWidth={0.4 / k} onMouseMove={tip} />
+                );
+              })}
+            </g>
+          )}
         </g>
       </svg>
+
+      {/* Live AIS status */}
+      {showVessels && vessels && (
+        <div className="pointer-events-none absolute left-3 top-3 max-w-[70%] rounded-md border border-room-700 bg-room-950/85 px-2.5 py-1.5 text-[11px] text-room-200">
+          <span className="font-mono text-[10px] uppercase tracking-widest text-room-400">Live AIS · </span>
+          {vessels.status === 'loading' && 'connecting…'}
+          {vessels.status === 'not-configured' && 'relay not configured yet (see README)'}
+          {vessels.status === 'error' && `relay unreachable (${vessels.message})`}
+          {vessels.status === 'ready' &&
+            (vessels.vessels.length === 0 && vessels.warmingUp
+              ? 'warming up, first positions arrive within a few minutes'
+              : `${vessels.vessels.length.toLocaleString('en-GB')} vessels in Gulf, Red Sea, Malacca · updated ${new Date(vessels.generatedAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`)}
+          {vessels.status === 'ready' && vessels.lastError && <span className="text-rose-300"> · {vessels.lastError}</span>}
+        </div>
+      )}
 
       {/* Controls */}
       <div className="absolute right-3 top-3 flex flex-col gap-1.5">
@@ -347,6 +436,11 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
         <MapButton label={showRoutes ? 'Hide energy routes' : 'Show energy routes'} active={showRoutes} onClick={() => setShowRoutes((v) => !v)}>
           <Layers size={15} />
         </MapButton>
+        {onToggleVessels && (
+          <MapButton label={showVessels ? 'Hide live vessels' : 'Show live vessels (AIS)'} active={showVessels} onClick={onToggleVessels}>
+            <Ship size={15} />
+          </MapButton>
+        )}
       </div>
 
       <div className="pointer-events-none absolute bottom-3 right-3 hidden max-w-[260px] text-right text-[10px] leading-snug text-room-500 md:block">
@@ -372,6 +466,15 @@ export default function WorldMap({ selected, onCountrySelect, highlightRegion, t
                 {ROUTE_STATUS_LABEL[st]}
               </span>
             ))}
+          </>
+        )}
+        {showVessels && (
+          <>
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Vessels</span>
+            <LegendSwatch color={VESSEL_COLOR.tanker} label="Tanker" />
+            <LegendSwatch color={VESSEL_COLOR.cargo} label="Cargo" />
+            <LegendSwatch color={VESSEL_COLOR.other} label="Other / not yet reported" />
+            <span className="text-room-500">Triangles point along the course. Ships with transponders off are not shown.</span>
           </>
         )}
         <span className="text-room-500">Dots mark small island and city states.</span>

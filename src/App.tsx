@@ -5,6 +5,7 @@ import DetailPanel from './components/DetailPanel';
 import ReportHub from './components/ReportHub';
 import ChokepointMonitor from './components/ChokepointMonitor';
 import { useTransitData } from './hooks/useTransitData';
+import { useLiveVessels } from './hooks/useLiveVessels';
 import { crisisData } from './data/crisisData';
 import type { ImpactStatus, Iso3, RegionId } from './types/crisis';
 
@@ -12,6 +13,8 @@ export default function App() {
   const [selected, setSelected] = useState<Iso3 | null>(null);
   const [region, setRegion] = useState<RegionId | null>(null);
   const transit = useTransitData();
+  const [showVessels, setShowVessels] = useState(false);
+  const vessels = useLiveVessels(showVessels);
   const hormuz = transit.status === 'ready' ? transit.data.chokepoints.hormuz : undefined;
 
   const counts = useMemo(() => {
@@ -69,6 +72,9 @@ export default function App() {
               onCountrySelect={handleSelect}
               highlightRegion={region}
               transits={transit.status === 'ready' ? transit.data : undefined}
+              vessels={vessels}
+              showVessels={showVessels}
+              onToggleVessels={() => setShowVessels((v) => !v)}
             />
           </div>
           <ChokepointMonitor state={transit} />

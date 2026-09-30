@@ -75,3 +75,29 @@ PortWatch counts are satellite-AIS estimates; recent days may be revised.
 ```bash
 node scripts/fetch-portwatch.mjs   # refresh locally
 ```
+
+## Live vessel tracking (AIS via Cloudflare)
+
+The ship button on the map shows live AIS positions for the Persian Gulf/Hormuz/Gulf of Oman, the
+Red Sea/Bab el-Mandeb/Gulf of Aden and the Strait of Malacca. Data come from
+[aisstream.io](https://aisstream.io), which does not allow browser connections, so a small
+Cloudflare Worker (`worker/`) holds the API key, keeps one WebSocket open while someone is viewing
+the map (it disconnects after 10 idle minutes) and serves snapshots at `/vessels`.
+
+One-time setup:
+
+1. Create an API key at aisstream.io (sign in with GitHub).
+2. In Cloudflare, create an API token with the template **Edit Cloudflare Workers** and copy your
+   **Account ID**. Make sure a workers.dev subdomain exists (Workers & Pages overview).
+3. In GitHub: **Settings → Secrets and variables → Actions → New repository secret**, add
+   `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` and `AISSTREAM_API_KEY`.
+4. **Actions → Deploy AIS relay → Run workflow.** It deploys the Worker, writes its URL to
+   `public/data/ais-config.json` and rebuilds the site.
+
+Limits: aisstream.io relies on terrestrial receivers, so coverage far offshore is patchy; ships
+with transponders off and GNSS-spoofed positions (both common in the Gulf) are missing or wrong.
+Positions older than 45 minutes are dropped. The Worker only answers requests from the origins in
+`worker/wrangler.toml` (`ALLOWED_ORIGINS`).
+
+Local test: `cd worker && npm ci && npm test`, then `npx wrangler dev` with a `.dev.vars` file
+containing `AISSTREAM_API_KEY=...`.
