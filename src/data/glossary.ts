@@ -89,6 +89,7 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   SST: { full: 'Sea surface temperature' },
   LPA: { full: 'Long period average', note: 'Reference rainfall average used by IMD (1971-2020, about 869 mm for the monsoon).' },
   OND: { full: 'October-November-December', note: 'The "short rains" season in East Africa.' },
+  Boro: { full: 'Boro rice season', note: 'Main irrigated dry-season rice crop in Bangladesh.' },
   IPC: { full: 'Integrated Food Security Phase Classification', note: 'Five-phase scale of food insecurity; Phase 3 = crisis, 4 = emergency, 5 = famine.' },
 
   // Energy and shipping

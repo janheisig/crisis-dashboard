@@ -352,6 +352,69 @@ const sources: CrisisDataset['sources'] = {
     date: '2026-04-24',
     type: 'news',
   },
+  'tha-examiner-oilfund': {
+    id: 'tha-examiner-oilfund',
+    tag: '[Thai Examiner, 23 Sep 2026]',
+    publisher: 'Thai Examiner',
+    title: 'Oil Fund bleeds nearly 5 billion baht a week as government struggles to cope with Middle Eastern crisis',
+    url: 'https://www.thaiexaminer.com/thai-news-foreigners/2026/09/23/oil-fund-bleeds-nearly-5-billion-baht-a-week-as-government-struggles-to-cope-with-middle-eastern-crisis/',
+    date: '2026-09-23',
+    type: 'news',
+  },
+  'phl-star-puv': {
+    id: 'phl-star-puv',
+    tag: '[The Star, 9 Apr 2026]',
+    publisher: 'The Star (Malaysia)',
+    title: "Philippines' President Marcos okays P10-per-litre fuel subsidy for public utility vehicles",
+    url: 'https://www.thestar.com.my/aseanplus/aseanplus-news/2026/04/09/philippines039-president-marcos-okays-p10-per-litre-fuel-subsidy-for-public-utility-vehicles',
+    date: '2026-04-09',
+    type: 'news',
+  },
+  'vnm-res34': {
+    id: 'vnm-res34',
+    tag: '[RegFollower, Jul 2026]',
+    publisher: 'RegFollower (summary of Government Resolution 34/2026/NQ-CP)',
+    title: 'Vietnam extends tax relief on fuel, qualifying raw materials through September 2026',
+    url: 'https://regfollower.com/vietnam-extends-tax-relief-on-fuel-qualifying-raw-materials-through-september-2026/',
+    date: '2026-07-01',
+    type: 'reference',
+  },
+  'idn-antara-rice': {
+    id: 'idn-antara-rice',
+    tag: '[Antara, 26 Sep 2026]',
+    publisher: 'Antara News Agency',
+    title: 'Indonesia secures 4.8 million tons of rice stock through year-end',
+    url: 'https://en.antaranews.com/amp/news/432979/indonesia-secures-48-million-tons-of-rice-stock-through-year-end',
+    date: '2026-09-26',
+    type: 'news',
+  },
+  'pak-dawn-austerity': {
+    id: 'pak-dawn-austerity',
+    tag: '[Dawn, 17 Sep 2026]',
+    publisher: 'Dawn',
+    title: 'Markets to close at 9pm as govt reintroduces austerity measures for fuel conservation',
+    url: 'https://www.dawn.com/news/2030636/markets-to-close-at-9pm-as-govt-reintroduces-austerity-measures-for-fuel-conservation',
+    date: '2026-09-17',
+    type: 'news',
+  },
+  'bgd-wb-emergency': {
+    id: 'bgd-wb-emergency',
+    tag: '[World Bank, 26 Jun 2026]',
+    publisher: 'World Bank',
+    title: 'Bangladesh: World Bank provides $1.1 billion emergency support to safeguard food security, livelihoods',
+    url: 'https://www.worldbank.org/en/news/press-release/2026/06/26/bangladesh-world-bank-provides-1-1-billion-emergency-support-to-safeguard-food-security-livelihoods',
+    date: '2026-06-26',
+    type: 'intergovernmental',
+  },
+  'bgd-ds-urea': {
+    id: 'bgd-ds-urea',
+    tag: '[The Daily Star, Mar 2026]',
+    publisher: 'The Daily Star (Bangladesh)',
+    title: 'Gas rationing shuts five urea factories',
+    url: 'https://www.thedailystar.net/business/economy/news/gas-rationing-shuts-five-urea-factories-4121941',
+    date: '2026-03-01',
+    type: 'news',
+  },
 };
 
 const countryList: CountryProfile[] = [
@@ -406,6 +469,11 @@ const countryList: CountryProfile[] = [
         sourceIds: ['aj-sea', 'caseforsea'],
         confidence: 'reported',
       },
+      {
+        text: 'Government Resolution 34/2026/NQ-CP of 30 June set import duty and excise tax on fuels to zero and suspended the environmental protection tax and VAT on major fuels from 1 July to 30 September 2026.',
+        sourceIds: ['vnm-res34'],
+        confidence: 'reported',
+      },
     ],
     metrics: [
       { label: 'Diesel retail price change (end Feb to 10 Mar)', value: '+56%', sourceIds: ['fox-vn'], asOf: '2026-03-10' },
@@ -441,6 +509,16 @@ const countryList: CountryProfile[] = [
         sourceIds: ['spg-thai'],
         confidence: 'confirmed',
       },
+      {
+        text: 'As of 20 September 2026 the Oil Fuel Fund was about 92 billion baht in deficit and losing around 700 million baht a day; officials expected the deficit to pass 100 billion baht by early October.',
+        sourceIds: ['tha-examiner-oilfund'],
+        confidence: 'reported',
+      },
+      {
+        text: 'On 18 September ordinary diesel was held at 40.69 baht per litre against an underlying market price of about 54.19 baht, a subsidy gap of 13.50 baht per litre.',
+        sourceIds: ['tha-examiner-oilfund'],
+        confidence: 'reported',
+      },
     ],
     policy: [
       {
@@ -451,6 +529,11 @@ const countryList: CountryProfile[] = [
       {
         text: 'The government introduced a temporary diesel price cap and on 28 March reported an agreement with Iran on safe passage for Thai oil vessels.',
         sourceIds: ['aj-sea', 'malaymail-thai'],
+        confidence: 'reported',
+      },
+      {
+        text: 'In September the Energy Ministry was considering a further borrowing programme of close to 100 billion baht for the Oil Fuel Fund; no date for subsidy cuts had been set.',
+        sourceIds: ['tha-examiner-oilfund'],
         confidence: 'reported',
       },
     ],
@@ -495,6 +578,11 @@ const countryList: CountryProfile[] = [
         sourceIds: ['wiki-ph'],
         confidence: 'reported',
       },
+      {
+        text: 'From 9 April 2026 the President approved a subsidy of P10 per litre, capped at 150 litres a week, for public utility vehicles for three months, starting in Metro Manila before a nationwide rollout.',
+        sourceIds: ['phl-star-puv'],
+        confidence: 'reported',
+      },
     ],
     metrics: [
       { label: 'Oil imports from the Middle East', value: '~98%', sourceIds: ['wiki-ph'], asOf: '2026-03-24' },
@@ -535,6 +623,11 @@ const countryList: CountryProfile[] = [
       {
         text: 'On 30 March the President confirmed the B50 biodiesel mandate to reduce fuel import costs; analysts warn El Niño may limit palm oil feedstock.',
         sourceIds: ['mongabay-idn'],
+        confidence: 'reported',
+      },
+      {
+        text: 'The state rice reserve stood at about 4.8 million tonnes on 26 September 2026 and was projected at 3.2 million tonnes at year-end, a buffer against El Niño harvest losses.',
+        sourceIds: ['idn-antara-rice'],
         confidence: 'reported',
       },
     ],
@@ -613,6 +706,11 @@ const countryList: CountryProfile[] = [
         sourceIds: ['fortune-asia'],
         confidence: 'reported',
       },
+      {
+        text: 'On 17 September 2026 the government reintroduced austerity for fuel conservation for three months: markets close at 9 pm, fuel for official vehicles is cut by 50 percent, and official foreign travel and vehicle purchases are banned.',
+        sourceIds: ['pak-dawn-austerity'],
+        confidence: 'confirmed',
+      },
     ],
     metrics: [],
     lastReviewed: '2026-09-29',
@@ -633,12 +731,22 @@ const countryList: CountryProfile[] = [
         sourceIds: ['iea-me'],
         confidence: 'preliminary',
       },
+      {
+        text: 'Gas rationing in March 2026 shut five of the six urea fertiliser factories for an initial 15 days; stocks of 468,000 tonnes were reported sufficient for the Boro rice season.',
+        sourceIds: ['bgd-ds-urea'],
+        confidence: 'reported',
+      },
     ],
     policy: [
       {
         text: 'Bangladesh brought forward the Eid holiday, closed universities early and rationed fuel for most vehicles.',
         sourceIds: ['fortune-asia'],
         confidence: 'reported',
+      },
+      {
+        text: 'On 26 June 2026 the World Bank approved USD 1.1 billion in emergency support, including financing for 600,000 tonnes of fertiliser imports for 1.4 million hectares of rice and cash transfers.',
+        sourceIds: ['bgd-wb-emergency'],
+        confidence: 'confirmed',
       },
     ],
     metrics: [],
