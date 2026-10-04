@@ -82,6 +82,19 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   PDR: { full: "People's Democratic Republic", note: 'Part of the official name of Lao PDR.' },
   ABC: { full: 'Aruba, Bonaire and Curaçao', note: 'The "ABC Islands" in the southern Caribbean.' },
 
+  AMRO: { full: 'ASEAN+3 Macroeconomic Research Office', note: 'Regional macroeconomic surveillance institution of the ASEAN member states plus China, Japan and Korea.' },
+  EBRD: { full: 'European Bank for Reconstruction and Development' },
+  YPFB: { full: 'Yacimientos Petrolíferos Fiscales Bolivianos', note: 'Bolivian state oil and gas company.' },
+  ACPM: { full: 'Aceite Combustible para Motores', note: 'Colombian term for diesel fuel.' },
+  Andesco: { full: 'Asociación Nacional de Empresas de Servicios Públicos y Comunicaciones', note: 'Colombian association of utility and communications companies.' },
+  BTU: { full: 'British thermal unit', note: 'Energy unit used to price LNG (per million BTU).' },
+  'AI-92': { full: 'Gasoline grade with octane rating 92', note: 'Russian and Central Asian designation for 92-octane gasoline.' },
+  Rs: { full: 'Rupees', note: 'Currency of Nepal, Pakistan, India and Sri Lanka; the country is given by the text.' },
+  Tk: { full: 'Bangladeshi taka' },
+  MNT: { full: 'Mongolian tugrik' },
+  COP: { full: 'Colombian peso' },
+  KPL: { full: 'Lao News Agency (Khaosan Pathet Lao)', note: 'State news agency of Lao PDR.' },
+
   // Climate
   ENSO: { full: 'El Niño-Southern Oscillation', note: 'Natural climate cycle of the tropical Pacific with warm (El Niño) and cold (La Niña) phases.' },
   RONI: { full: 'Relative Oceanic Niño Index', note: "NOAA's official El Niño index since 2026; removes the general ocean warming trend." },

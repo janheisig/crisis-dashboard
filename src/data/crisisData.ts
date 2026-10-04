@@ -1,5 +1,6 @@
 import type { CrisisDataset, CountryProfile, Iso3, RegionId } from '../types/crisis';
 import { asiaCountries, asiaSources } from './countriesAsia';
+import { enrichments, enrichmentSources } from './enrichment';
 import { lacCountries, lacSources } from './countriesLac';
 
 /**
@@ -1134,11 +1135,27 @@ const countryList: CountryProfile[] = [
   },
 ];
 
+/** Countries that are BMZ bilateral partners in Asia and LAC (bmz.de, checked 4 Oct 2026) get the full profile. */
+const BMZ_PARTNERS = new Set<Iso3>(['BGD', 'KHM', 'LAO', 'NPL', 'PAK', 'UZB', 'MNG', 'BOL', 'COL', 'ECU']);
+
 const countries = Object.fromEntries(
-  [...countryList, ...asiaCountries, ...lacCountries].map((c) => [c.iso3, c]),
+  [...countryList, ...asiaCountries, ...lacCountries].map((c) => {
+    const e = enrichments[c.iso3];
+    if (!e) return [c.iso3, c];
+    const merged: CountryProfile = {
+      ...c,
+      tier: BMZ_PARTNERS.has(c.iso3) ? 'full' : c.tier,
+      environmental: [...c.environmental, ...(e.environmental ?? [])],
+      energy: [...c.energy, ...(e.energy ?? [])],
+      policy: [...c.policy, ...(e.policy ?? [])],
+      metrics: [...c.metrics, ...(e.metrics ?? [])],
+      lastReviewed: '2026-10-04',
+    };
+    return [c.iso3, merged];
+  }),
 ) as Record<Iso3, CountryProfile>;
 
-const allSources: CrisisDataset['sources'] = { ...sources, ...asiaSources, ...lacSources };
+const allSources: CrisisDataset['sources'] = { ...sources, ...asiaSources, ...lacSources, ...enrichmentSources };
 
 const regions: CrisisDataset['regions'] = {
   'southeast-asia': {
