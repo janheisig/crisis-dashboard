@@ -29,6 +29,12 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   NE: { full: 'North-eastern' },
   Q2: { full: 'Second quarter of the year' },
 
+  CGTN: { full: 'China Global Television Network', note: 'Chinese state broadcaster.' },
+  UNB: { full: 'United News of Bangladesh', note: 'Bangladeshi news agency.' },
+  UNI: { full: 'United News of India', note: 'Indian news agency.' },
+  AIR: { full: 'All India Radio', note: 'Indian public radio broadcaster.' },
+  DW: { full: 'Deutsche Welle', note: 'German international broadcaster.' },
+
   // Organisations
   ADB: { full: 'Asian Development Bank', note: 'Multilateral development bank for Asia and the Pacific, based in Manila.' },
   ADNOC: { full: 'Abu Dhabi National Oil Company', note: 'State oil and gas company of the UAE.' },
@@ -94,6 +100,30 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   MNT: { full: 'Mongolian tugrik' },
   COP: { full: 'Colombian peso' },
   KPL: { full: 'Lao News Agency (Khaosan Pathet Lao)', note: 'State news agency of Lao PDR.' },
+
+  BMKG: { full: 'Badan Meteorologi, Klimatologi, dan Geofisika', note: 'Indonesian meteorological, climatological and geophysical agency.' },
+  PTT: { full: 'PTT Public Company Limited', note: 'Thai state-controlled energy company.' },
+  PTTEP: { full: 'PTT Exploration and Production', note: 'Oil and gas exploration subsidiary of PTT.' },
+  MMBtu: { full: 'Million British thermal units', note: 'Price unit for LNG.' },
+  G7: { full: 'Group of Seven', note: 'Canada, France, Germany, Italy, Japan, the United Kingdom and the United States.' },
+  'POWERR Asia': { full: 'Partnership On Wide Energy and Resources Resilience for Asia', note: 'Japanese-led energy security initiative for Asia.' },
+  SDR: { full: 'Special Drawing Rights', note: 'International reserve asset of the IMF.' },
+  BUDI95: { full: 'Budi Madani RON95', note: 'Malaysian targeted RON95 petrol subsidy programme at RM1.99 per litre.' },
+  CBSL: { full: 'Central Bank of Sri Lanka' },
+  MetMalaysia: { full: 'Malaysian Meteorological Department' },
+  INMET: { full: 'Instituto Nacional de Meteorologia', note: 'Brazilian national meteorological institute.' },
+  COPECO: { full: 'Comisión Permanente de Contingencias', note: 'Honduran national risk and contingency agency.' },
+  INSMET: { full: 'Instituto de Meteorología de Cuba', note: 'Cuban national meteorological institute.' },
+  UNE: { full: 'Unión Eléctrica', note: 'Cuban state electricity utility.' },
+  'OPEC+': { full: 'OPEC and allied producers', note: 'OPEC members plus Russia and other producers.' },
+  WAM: { full: 'Emirates News Agency', note: 'State news agency of the UAE.' },
+  SAR: { full: 'Saudi riyal' },
+  QAR: { full: 'Qatari riyal' },
+  KD: { full: 'Kuwaiti dinar' },
+  ENOC: { full: 'Emirates National Oil Company', note: 'Dubai-based state oil company.' },
+  INES: { full: 'Initiative Energien Speichern', note: 'German association of gas storage operators.' },
+  Rp: { full: 'Indonesian rupiah' },
+  'R$': { full: 'Brazilian real' },
 
   // Climate
   ENSO: { full: 'El Niño-Southern Oscillation', note: 'Natural climate cycle of the tropical Pacific with warm (El Niño) and cold (La Niña) phases.' },

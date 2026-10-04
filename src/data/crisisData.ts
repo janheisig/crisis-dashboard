@@ -844,8 +844,8 @@ const countryList: CountryProfile[] = [
     ],
     policy: [
       {
-        text: 'VAT on petroleum products was cut from 16 to 13 percent in April and about KSh 6.2 billion from the Petroleum Development Levy Fund was used to stabilise pump prices.',
-        sourceIds: ['kws-apr'],
+        text: 'VAT on petroleum products was halved from 16 to 8 percent in April 2026 and the reduction was later extended by three months; about KSh 6.2 billion from the Petroleum Development Levy Fund was used to stabilise pump prices.',
+        sourceIds: ['ken-star-subsidy', 'kws-apr'],
         confidence: 'reported',
       },
       {
