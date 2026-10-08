@@ -53,7 +53,7 @@ export default function ChokepointMonitor({ state }: { state: TransitState }) {
               const cp = state.data.chokepoints[id];
               const meta = crisisData.chokepoints.find((c) => c.id === id);
               if (!cp || !meta) return null;
-              return <ChokepointCard key={id} cp={cp} label={meta.name} status={meta.status} />;
+              return <ChokepointCard key={id} cp={cp} label={meta.name} status={meta.status} window={state.data.baselineWindow} />;
             })}
           </div>
           <p className="mt-3 text-[11px] leading-relaxed text-room-500">
@@ -72,7 +72,7 @@ export default function ChokepointMonitor({ state }: { state: TransitState }) {
   );
 }
 
-function ChokepointCard({ cp, label, status }: { cp: ChokepointTransits; label: string; status: RouteStatus }) {
+function ChokepointCard({ cp, label, status, window: bw }: { cp: ChokepointTransits; label: string; status: RouteStatus; window: { from: string; to: string } }) {
   const pct = pctVsBaseline(cp.avg7, cp.baseline);
   const down = pct < 0;
   return (
@@ -86,7 +86,7 @@ function ChokepointCard({ cp, label, status }: { cp: ChokepointTransits; label: 
       </header>
       <div className="mt-2 flex items-baseline gap-2">
         <span className="font-mono text-2xl font-semibold text-white">{cp.avg7.toLocaleString('en-GB')}</span>
-        <span className="text-[11px] text-room-400">per day, 7-day avg.</span>
+        <span className="text-[11px] text-room-400">transits per day, mean of the 7 days to {fmtDate(cp.latest.d)}</span>
       </div>
       <div className="mt-0.5 flex items-center gap-1.5 text-[11px] text-room-300">
         {down ? <TrendingDown size={13} className="text-rose-400" /> : <TrendingUp size={13} className="text-emerald-400" />}
@@ -94,9 +94,13 @@ function ChokepointCard({ cp, label, status }: { cp: ChokepointTransits; label: 
           {pct > 0 ? '+' : ''}
           {pct}%
         </span>
-        <span className="text-room-400">vs. {cp.baseline} baseline</span>
+        <span className="text-room-400">vs. {cp.baseline} per day before the war</span>
       </div>
+      <p className="mt-0.5 text-[10px] leading-snug text-room-500">
+        Baseline: mean of {cp.baselineDays} days, {fmtDate(bw.from)} to {fmtDate(bw.to)} 2026. Latest day {fmtDate(cp.latest.d)}: {cp.latest.t}.
+      </p>
       <Sparkline cp={cp} />
+      <p className="mt-1 text-[9px] leading-snug text-room-500">Line: daily transits since 1 Jan 2026 · dashed: baseline · red: war begins 28 Feb</p>
       {cp.portid === 'chokepoint6' && (
         <p className="mt-2 text-[10px] leading-snug text-amber-300/90">
           <AbbrText text="AIS count only. Many tankers transit with transponders off; Kpler put September crude flows at about half the pre-war level." />

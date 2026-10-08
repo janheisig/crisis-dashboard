@@ -12,6 +12,24 @@ const OUT = fileURLToPath(new URL('../public/data/ports.json', import.meta.url))
 /** Coastal BMZ partner countries (landlocked ones have no seaports). */
 const COUNTRIES = ['IND', 'PAK', 'BGD', 'VNM', 'KHM', 'IDN', 'BRA', 'MEX', 'PER', 'COL', 'ECU'];
 const PORTS_PER_COUNTRY = 4;
+/**
+ * Context ports on the coloured routes and around the Hormuz and El Niño themes (not BMZ partners):
+ * Gulf and Hormuz exporters, Red Sea and Suez, East Africa and Cape, Asian hubs, European gateways, Panama and Pacific coast.
+ * Entries are [ISO3, name fragment]; the busiest port of that country matching the fragment is used.
+ */
+const CONTEXT = [
+  ['SAU', 'Ras Tanura'], ['SAU', 'Jubail'], ['SAU', 'Yanbu'], ['SAU', 'Dammam'], ['SAU', 'Jeddah'],
+  ['ARE', 'Jebel Ali'], ['ARE', 'Fujairah'], ['ARE', 'Khalifa'], ['ARE', 'Ruwais'],
+  ['KWT', 'Shuaiba'], ['KWT', 'Ahmadi'], ['QAT', 'Ras Laffan'], ['QAT', 'Hamad'], ['IRQ', 'Umm Qasr'], ['IRQ', 'Basra'],
+  ['IRN', 'Shahid Rajaee'], ['IRN', 'Kharg'], ['OMN', 'Sohar'], ['OMN', 'Salalah'], ['BHR', 'Sitrah'],
+  ['EGY', 'Port Said'], ['EGY', 'Sokhna'], ['DJI', 'Djibouti'], ['JOR', 'Aqaba'],
+  ['KEN', 'Mombasa'], ['TZA', 'Dar Es Salaam'], ['ZAF', 'Durban'], ['ZAF', 'Cape Town'], ['ZAF', 'Richards Bay'],
+  ['LKA', 'Colombo'], ['SGP', 'Singapore'], ['MYS', 'Port Klang'], ['MYS', 'Tanjung Pelepas'], ['THA', 'Laem Chabang'], ['PHL', 'Manila'],
+  ['CHN', 'Shanghai'], ['CHN', 'Ningbo'], ['CHN', 'Qingdao'], ['CHN', 'Nansha'], ['CHN', 'Tianjin'], ['CHN', 'Shenzhen'],
+  ['KOR', 'Busan'], ['KOR', 'Ulsan'], ['JPN', 'Yokohama'], ['JPN', 'Chiba'], ['TWN', 'Kaohsiung'],
+  ['NLD', 'Rotterdam'], ['BEL', 'Antwerp'], ['DEU', 'Hamburg'], ['FRA', 'Le Havre'], ['ESP', 'Algeciras'], ['ITA', 'Genova'], ['GRC', 'Piraeus'], ['MAR', 'Tangier'],
+  ['PAN', 'Balboa'], ['PAN', 'Colon'], ['CHL', 'San Antonio'], ['ARG', 'Rosario'],
+];
 const SERIES_START = '2026-01-03';
 const BASELINE = { from: '2026-01-03', to: '2026-02-27' };
 
@@ -42,7 +60,17 @@ async function main() {
     returnGeometry: 'false',
   });
   const chosen = [];
-  for (const iso of COUNTRIES) chosen.push(...meta.filter((m) => m.ISO3 === iso).slice(0, PORTS_PER_COUNTRY));
+  for (const iso of COUNTRIES) chosen.push(...meta.filter((m) => m.ISO3 === iso).slice(0, PORTS_PER_COUNTRY).map((m) => ({ ...m, group: 'bmz' })));
+  for (const [iso, frag] of CONTEXT) {
+    const found = await query('PortWatch_ports_database', {
+      where: `ISO3='${iso}' AND portname LIKE '%${frag}%'`,
+      outFields: 'portid,portname,ISO3,lat,lon,vessel_count_total,share_country_maritime_import',
+      orderByFields: 'vessel_count_total DESC',
+      returnGeometry: 'false',
+    });
+    if (found.length === 0) { console.warn(`context port not found: ${iso} ${frag}`); continue; }
+    if (!chosen.some((c) => c.portid === found[0].portid)) chosen.push({ ...found[0], group: 'context' });
+  }
   const ports = [];
   let latest = '';
   for (const m of chosen) {
@@ -61,7 +89,7 @@ async function main() {
     const weekly = [];
     for (let i = rows.length; i > 0 && weekly.length < 12; i -= 7) weekly.unshift(r1(mean(rows.slice(Math.max(0, i - 7), i).map((r) => r.portcalls))));
     ports.push({
-      id: m.portid, name: m.portname, iso3: m.ISO3, lat: m.lat, lon: m.lon,
+      id: m.portid, name: m.portname, iso3: m.ISO3, group: m.group, lat: m.lat, lon: m.lon,
       importShare: m.share_country_maritime_import ? r1(m.share_country_maritime_import) : null,
       baseline: r1(mean(base)), avg7: r1(mean(last7.map((r) => r.portcalls))),
       tankerAvg7: r1(mean(last7.map((r) => r.portcalls_tanker))), containerAvg7: r1(mean(last7.map((r) => r.portcalls_container))),

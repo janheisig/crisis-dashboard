@@ -22,7 +22,6 @@ export interface TradeLane {
 }
 
 const SHANGHAI: [number, number] = [122.6, 30.6];
-const SINGAPORE: [number, number] = [104.0, 1.2];
 const PANAMA_PAC: [number, number] = [-79.5, 8.6];
 const COLON: [number, number] = [-79.9, 9.6];
 
@@ -49,7 +48,7 @@ export const tradeLanes: TradeLane[] = [
     id: 'asia-mexico-pacific',
     name: 'East Asia to the Mexican Pacific coast (Manzanillo, Lázaro Cárdenas)',
     group: 'asia-lac',
-    waypoints: [SHANGHAI, [127, 28], [145, 26], [-175, 22], [-140, 17], [-110, 14], [-103.4, 17.6]],
+    waypoints: [SHANGHAI, [127, 28], [145, 26], [-175, 17.5], [-140, 13], [-110, 12], [-103.4, 17.6]],
     baseShips: 6,
     mix: { container: 5, car: 2, bulk: 1 },
     note: 'Main entry for Asian consumer goods, components and vehicles into Mexico.',
@@ -59,7 +58,7 @@ export const tradeLanes: TradeLane[] = [
     name: 'East Asia via the Panama Canal to the Caribbean and Gulf of Mexico',
     group: 'asia-lac',
     waypoints: [
-      SHANGHAI, [127, 28], [145, 26], [-175, 22], [-140, 12], [-110, 6], [-90, 6.5], PANAMA_PAC, COLON,
+      SHANGHAI, [127, 28], [145, 26], [-175, 17.5], [-140, 11], [-110, 6], [-90, 6.0], [-80.0, 6.2], [-79.2, 7.6], PANAMA_PAC, COLON,
       [-76.0, 10.7],
     ],
     baseShips: 6,
@@ -72,7 +71,7 @@ export const tradeLanes: TradeLane[] = [
     name: 'East Asia to Brazil via Malacca and the Cape of Good Hope',
     group: 'asia-lac',
     waypoints: [
-      SHANGHAI, [122, 26.5], [119.5, 23.5], [117, 18], [112, 10], SINGAPORE, [102.5, 2.0], [100, 3.6], [97.5, 5.8],
+      SHANGHAI, [122, 26.5], [119.5, 23.5], [117, 18], [112, 10], [108, 6], [105.5, 2.5], [104.4, 1.0], [103.4, 1.1], [102.0, 2.1], [100, 3.6], [97.5, 5.8], [94.5, 6.6],
       [93, 3.5], [85, -2], [70, -15], [50, -28], [30, -36.5], [18, -37.5], [0, -34], [-25, -30], [-40, -26], [-45.5, -24.6],
     ],
     baseShips: 11,
@@ -85,7 +84,7 @@ export const tradeLanes: TradeLane[] = [
     name: 'Europe to Brazil (Rotterdam to Santos)',
     group: 'europe-lac',
     waypoints: [
-      [4.0, 52.0], [1.8, 51.0], [-2, 49.5], [-6.5, 47.5], [-10.5, 43.5], [-12.5, 37], [-20, 27], [-28, 11], [-31, -2],
+      [3.4, 52.0], [1.8, 51.0], [-0.5, 50.2], [-3, 50.0], [-5.5, 49.0], [-6.5, 47.5], [-10.5, 43.5], [-12.5, 37], [-20, 27], [-28, 11], [-31, -2],
       [-33, -8], [-36, -15], [-40, -22], [-45.5, -24.6],
     ],
     baseShips: 9,
@@ -97,7 +96,7 @@ export const tradeLanes: TradeLane[] = [
     name: 'Europe to the Caribbean and Colombia (Rotterdam to Cartagena)',
     group: 'europe-lac',
     waypoints: [
-      [4.0, 52.0], [1.8, 51.0], [-2, 49.5], [-7, 46.5], [-25, 39], [-45, 28], [-62, 20], [-63.9, 18.0], [-68, 15.5], [-73, 13],
+      [3.4, 52.0], [1.8, 51.0], [-0.5, 50.2], [-3, 50.0], [-5.5, 49.0], [-7, 46.5], [-25, 39], [-45, 28], [-62, 20], [-63.9, 18.0], [-68, 15.5], [-73, 13],
       [-76.0, 10.7],
     ],
     baseShips: 7,
@@ -109,7 +108,7 @@ export const tradeLanes: TradeLane[] = [
     name: 'Europe to the Gulf of Mexico (Veracruz)',
     group: 'europe-lac',
     waypoints: [
-      [4.0, 52.0], [1.8, 51.0], [-2, 49.5], [-7, 46.5], [-25, 40], [-50, 33], [-70, 29.5], [-79.4, 27.0], [-79.8, 24.8], [-81.5, 23.8],
+      [3.4, 52.0], [1.8, 51.0], [-0.5, 50.2], [-3, 50.0], [-5.5, 49.0], [-7, 46.5], [-25, 40], [-50, 33], [-70, 29.5], [-79.4, 27.0], [-79.8, 24.8], [-81.5, 23.8],
       [-85, 24.2], [-88, 23], [-92, 21.8], [-95.7, 19.7],
     ],
     baseShips: 4,

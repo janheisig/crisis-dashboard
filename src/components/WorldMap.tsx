@@ -450,10 +450,10 @@ export default function WorldMap({
                 key={pt.id}
                 transform={`translate(${xy[0]},${xy[1]})`}
                 className="cursor-help"
-                onClick={(e) => { e.stopPropagation(); onCountrySelect(pt.iso3 as never); }}
+                onClick={(e) => { e.stopPropagation(); if (crisisData.countries[pt.iso3 as never]) onCountrySelect(pt.iso3 as never); }}
                 onMouseMove={(e) =>
                   showTip(e, {
-                    title: `${pt.name} (port)`,
+                    title: `${pt.name} (${pt.group === 'bmz' ? 'port, BMZ partner country' : 'port on the routes / Gulf'})`,
                     accent: color,
                     lines: [
                       `Port calls per day, 7-day avg. to ${pt.latestDate}: ${pt.avg7} vs. ${pt.baseline} in Jan-Feb 2026${r !== null ? ` (${r >= 1 ? '+' : ''}${Math.round((r - 1) * 100)}%)` : ''}`,
@@ -464,8 +464,15 @@ export default function WorldMap({
                   })
                 }
               >
-                <rect x={-3 / k} y={-3 / k} width={6 / k} height={6 / k} transform="rotate(45)" fill="#0b0f15" stroke={color} strokeWidth={1.3 / k} strokeDasharray={vol ? `${1.4 / k} ${1 / k}` : undefined} />
-                <rect x={-1.2 / k} y={-1.2 / k} width={2.4 / k} height={2.4 / k} transform="rotate(45)" fill={color} />
+                {(() => {
+                  const sz = pt.group === 'bmz' ? 1 : 0.75;
+                  return (
+                    <>
+                      <rect x={(-3 * sz) / k} y={(-3 * sz) / k} width={(6 * sz) / k} height={(6 * sz) / k} transform="rotate(45)" fill="#0b0f15" stroke={color} strokeWidth={1.3 / k} strokeDasharray={vol ? `${1.4 / k} ${1 / k}` : undefined} />
+                      <rect x={(-1.2 * sz) / k} y={(-1.2 * sz) / k} width={(2.4 * sz) / k} height={(2.4 * sz) / k} transform="rotate(45)" fill={pt.group === 'bmz' ? color : 'none'} />
+                    </>
+                  );
+                })()}
                 {k >= 3 && (
                   <text x={6 / k} y={3 / k} fontSize={8 / k} fill="#cdd3dc" stroke="#07090d" strokeWidth={2.2 / k} paintOrder="stroke" pointerEvents="none">
                     {pt.name.replace(/ \(.*\)/, '')}
@@ -610,7 +617,7 @@ export default function WorldMap({
             <LegendSwatch color="#f4c95d" label="below 80%" />
             <LegendSwatch color="#5eead4" label="80 to 125%" />
             <LegendSwatch color="#6ea8fe" label="above 125%" />
-            <span className="text-room-500">Dashed outline: change of more than 50% up or 33% down, possibly a data artefact. Grey network: IMF shipping-route layer, coarse.</span>
+            <span className="text-room-500">Filled diamond: main ports of BMZ partner countries; hollow, smaller: ports on the routes and around the Gulf. Dashed outline: change of more than 50% up or 33% down, possibly a data artefact. Grey network: IMF shipping-route layer, coarse.</span>
           </>
         )}
         {showSymShips && (

@@ -6,6 +6,8 @@
  * Output: src/data/routedLanes.json { laneId: [lon,lat][] }. Run: npx tsx scripts/route-lanes.ts
  */
 import { readFileSync, writeFileSync } from 'node:fs';
+import { geoContains, geoInterpolate } from 'd3-geo';
+import { feature } from 'topojson-client';
 import { tradeLanes } from '../src/data/tradeLanes';
 import { crisisData } from '../src/data/crisisData';
 
@@ -82,6 +84,19 @@ const corridor = (wp: P[], km: number) => {
   pts.forEach((q, i) => { for (const c of d) { if (Math.abs(q[1] - c[1]) < km / 100 && hav(q, c) <= km) { ok[i] = 1; break; } } });
   return ok;
 };
+const topo = JSON.parse(readFileSync(new URL('../node_modules/world-atlas/countries-50m.json', import.meta.url), 'utf8'));
+const land = feature(topo, topo.objects.land);
+/** Number of segments of a polyline that touch land (50 m Natural Earth), sampled every ~0.25 degrees. */
+const landHits = (wp: P[]) => {
+  let n = 0;
+  for (let i = 0; i < wp.length - 1; i++) {
+    const f = geoInterpolate(wp[i], wp[i + 1]);
+    const steps = Math.max(4, Math.ceil(Math.hypot(wp[i + 1][0] - wp[i][0], wp[i + 1][1] - wp[i][1]) / 0.25));
+    for (let k = 1; k < steps; k++) if (geoContains(land as never, f(k / steps))) { n++; break; }
+  }
+  return n;
+};
+const MAX_LAND_HITS = 1;
 const CORRIDOR_KM = Number(process.env.CORRIDOR_KM ?? 1500);
 const MAX_RATIO = 1.25;
 const MAX_TAIL_KM = 700;
@@ -102,8 +117,9 @@ for (const L of lanes) {
   const routed = path.map((n) => pts[n]);
   const full = [start, ...routed, end];
   const ratio = len(full) / base;
-  const ok = ratio <= MAX_RATIO && ds <= MAX_TAIL_KM && dt <= MAX_TAIL_KM;
-  console.log(`${L.id}: ${ok ? 'ACCEPT' : 'REJECT'} ratio ${ratio.toFixed(2)} tails ${Math.round(ds)}/${Math.round(dt)} km, ${routed.length} pts`);
+  const hits = landHits(thin(full));
+  const ok = ratio <= MAX_RATIO && ds <= MAX_TAIL_KM && dt <= MAX_TAIL_KM && hits <= MAX_LAND_HITS;
+  console.log(`${L.id}: ${ok ? 'ACCEPT' : 'REJECT'} ratio ${ratio.toFixed(2)} tails ${Math.round(ds)}/${Math.round(dt)} km, land hits ${hits}, ${routed.length} pts`);
   if (ok) out[L.id] = thin(full);
 }
 writeFileSync(new URL('../src/data/routedLanes.json', import.meta.url), JSON.stringify(out));
