@@ -20,6 +20,7 @@ export interface ShipLaneInput {
   name: string;
   waypoints: [number, number][];
   ships: number;
+  followsNetwork?: boolean;
   mix: Partial<Record<ShipClass, number>>;
   color: string;
   note: string;
@@ -119,7 +120,7 @@ export default function ShipLayer({
                 strokeWidth={6 / k}
                 className="cursor-help"
                 onMouseMove={(e) =>
-                  l.onHover(e, l.name, [`Schematic trade lane · ${l.ships} symbolic ships`, l.note], l.color)
+                  l.onHover(e, l.name, [`${l.followsNetwork ? 'Route from IMF network' : 'Schematic lane'} · ${l.ships} symbolic ships`, l.note], l.color)
                 }
               />
               <path d={toPath(s)} fill="none" stroke={l.color} strokeOpacity={0.14} strokeWidth={3.6 / k} strokeLinecap="round" pointerEvents="none" />
@@ -127,9 +128,9 @@ export default function ShipLayer({
                 d={toPath(s)}
                 fill="none"
                 stroke={l.color}
-                strokeOpacity={0.75}
-                strokeWidth={1 / k}
-                strokeDasharray={`${1.5 / k} ${3 / k}`}
+                strokeOpacity={l.followsNetwork ? 0.9 : 0.5}
+                strokeWidth={(l.followsNetwork ? 1.3 : 0.9) / k}
+                strokeDasharray={l.followsNetwork ? `${4 / k} ${2.5 / k}` : `${1.2 / k} ${3.2 / k}`}
                 strokeLinecap="round"
                 pointerEvents="none"
               />

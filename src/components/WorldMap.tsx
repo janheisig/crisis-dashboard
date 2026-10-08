@@ -10,6 +10,7 @@ import worldTopo from 'world-atlas/countries-50m.json';
 import { Layers, Minus, Plus, RotateCcw, Ship, Waypoints, Share2, Anchor } from 'lucide-react';
 import ShipLayer, { SHIP_COLOR, SHIP_LABEL, type ShipLaneInput } from './ShipLayer';
 import { tradeLanes } from '../data/tradeLanes';
+import routedLanesJson from '../data/routedLanes.json';
 import { isVolatile, portRatio, usePortData, useRouteNetwork } from '../hooks/usePortData';
 import type { LiveVessel, LiveVesselState, VesselKind } from '../hooks/useLiveVessels';
 import { bmzTypeOf, crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
@@ -69,6 +70,9 @@ export interface WorldMapProps {
 }
 
 /** Validated for the dark surface (dataviz validator: CVD dE 17.3). Other types use neutral grey. */
+/** Lanes snapped to the IMF Global_Shipping_Routes network (scripts/route-lanes.ts); all others stay schematic. */
+const routedLanes = routedLanesJson as unknown as Record<string, [number, number][]>;
+
 const VESSEL_COLOR: Record<VesselKind, string> = {
   tanker: '#9085e9',
   cargo: '#199e70',
@@ -129,11 +133,12 @@ export default function WorldMap({
     const trade: ShipLaneInput[] = tradeLanes.map((l) => ({
       id: l.id,
       name: l.name,
-      waypoints: l.waypoints,
+      waypoints: routedLanes[l.id] ?? l.waypoints,
+      followsNetwork: !!routedLanes[l.id],
       ships: Math.max(1, Math.round(l.baseShips * Math.min(2, ratioOf(l.gate)))),
       mix: l.mix,
       color: laneColor[l.group],
-      note: l.note + (l.gate ? ' Ship count scaled by the current PortWatch ratio.' : ''),
+      note: (routedLanes[l.id] ? 'Follows the IMF shipping-route network. ' : 'Schematic: the IMF network has no usable connection here. ') + l.note + (l.gate ? ' Ship count scaled by the current PortWatch ratio.' : ''),
       onHover: hover,
     }));
     const energyGate: Record<string, string | undefined> = { 'gulf-lane': 'hormuz', 'asia-lane': 'malacca', 'red-sea-lane': 'bab-el-mandeb', 'cape-lane': 'cape' };
@@ -142,11 +147,12 @@ export default function WorldMap({
       .map((r) => ({
         id: `e-${r.id}`,
         name: r.name,
-        waypoints: r.coordinates,
+        waypoints: routedLanes[`e-${r.id}`] ?? r.coordinates,
+        followsNetwork: !!routedLanes[`e-${r.id}`],
         ships: Math.max(1, Math.round(10 * Math.min(2, ratioOf(energyGate[r.id])))),
         mix: { tanker: 1 },
         color: '#ef8354',
-        note: 'Energy lane: symbolic tankers, number scaled by the PortWatch transit ratio of the gating strait. ' + r.note,
+        note: (routedLanes[`e-${r.id}`] ? 'Follows the IMF shipping-route network. ' : 'Schematic course. ') + 'Symbolic tankers, number scaled by the PortWatch transit ratio of the gating strait. ' + r.note,
         onHover: hover,
       }));
     return [...trade, ...energy];
@@ -339,7 +345,7 @@ export default function WorldMap({
           {showRoutes && (
             <g>
               {crisisData.routes.map((r) => {
-                const line: LineString = { type: 'LineString', coordinates: r.coordinates };
+                const line: LineString = { type: 'LineString', coordinates: routedLanes[`e-${r.id}`] ?? r.coordinates };
                 const d = path(line) ?? '';
                 const color = ROUTE_COLOR[r.status];
                 const isPipe = r.kind === 'pipeline';
@@ -595,7 +601,7 @@ export default function WorldMap({
             <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Trade lanes</span>
             <LegendSwatch color="#4cc9f0" label="Asia–LAC" />
             <LegendSwatch color="#b79cf0" label="Europe–LAC" />
-            <span className="text-room-500">Schematic corridors, not exact courses.</span>
+            <span className="text-room-500">Solid dashes follow the IMF route network (5 of 14 lanes: Europe–Brazil, Europe–Caribbean, Peru–Chile coast, Arabian Sea–East Asia, Arabian Sea–Europe); fine dots are schematic, because the IMF network has no usable connection there (Pacific, Panama, Gulf of Mexico, Persian Gulf, Cape).</span>
           </>
         )}
         {showPorts && (
