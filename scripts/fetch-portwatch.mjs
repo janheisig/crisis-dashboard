@@ -21,6 +21,8 @@ const CHOKEPOINTS = {
   chokepoint1: 'suez',
   chokepoint5: 'malacca',
   chokepoint7: 'cape',
+  chokepoint2: 'panama',
+  chokepoint21: 'magellan',
 };
 
 const SERIES_START = '2025-12-01';
