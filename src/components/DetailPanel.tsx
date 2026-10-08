@@ -11,6 +11,7 @@ import {
   Landmark,
   X,
 } from 'lucide-react';
+import { isVolatile, portRatio, usePortData, type PortRecord } from '../hooks/usePortData';
 import { bmzTypeOf, collectSources, crisisData } from '../data/crisisData';
 import { STATUS_COLOR } from './WorldMap';
 import { AbbrText } from './AbbrText';
@@ -128,6 +129,8 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
             ))}
           </div>
         )}
+
+        <PortsPanel iso3={country.iso3} />
 
         <div className="flex justify-end">
           <button
@@ -350,5 +353,58 @@ function SourceList({ sources }: { sources: ReturnType<typeof collectSources> })
         ))}
       </ol>
     </section>
+  );
+}
+
+
+function Spark({ values, color }: { values: number[]; color: string }) {
+  if (values.length < 2) return null;
+  const max = Math.max(...values, 1);
+  const pts = values.map((v, i) => `${(i / (values.length - 1)) * 56},${16 - (v / max) * 14}`).join(' ');
+  return (
+    <svg width="58" height="18" viewBox="0 0 58 18" aria-hidden>
+      <polyline points={pts} fill="none" stroke={color} strokeWidth="1.4" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Main seaports of the country with port calls against the pre-war baseline (IMF PortWatch). */
+function PortsPanel({ iso3 }: { iso3: string }) {
+  const data = usePortData();
+  const ports: PortRecord[] = data?.ports.filter((p) => p.iso3 === iso3) ?? [];
+  if (!data || ports.length === 0) return null;
+  return (
+    <div className="rounded-lg border border-room-700 bg-room-850 px-3 py-2.5">
+      <div className="flex items-baseline justify-between gap-2">
+        <h3 className="text-[11px] font-semibold uppercase tracking-wider text-room-300">Main seaports (port calls per day)</h3>
+        <span className="font-mono text-[10px] text-room-500">to {data.latestDate}</span>
+      </div>
+      <ul className="mt-2 divide-y divide-room-700/60">
+        {ports.map((p) => {
+          const r = portRatio(p);
+          const vol = isVolatile(p);
+          const color = r === null ? '#9aa5b5' : r < 0.8 ? '#f4c95d' : r > 1.25 ? '#6ea8fe' : '#5eead4';
+          return (
+            <li key={p.id} className="flex items-center gap-3 py-1.5 text-xs">
+              <span className="min-w-0 flex-1 truncate text-room-100" title={p.name}>
+                {p.name}
+                {p.importShare ? <span className="text-room-500"> · {p.importShare}% of imports</span> : null}
+              </span>
+              <Spark values={p.weekly} color={color} />
+              <span className="w-24 text-right font-mono text-[11px]" style={{ color }}>
+                {p.avg7} vs. {p.baseline}
+                {r !== null && <span className="text-room-400"> ({r >= 1 ? '+' : ''}{Math.round((r - 1) * 100)}%)</span>}
+                {vol && <span title="Large change, possibly a data artefact">{' '}⚠</span>}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="mt-2 text-[10px] leading-snug text-room-500">
+        7-day average against the mean of 3 Jan to 27 Feb 2026. Sparkline: weekly means of the last 12 weeks. Satellite AIS estimate, not customs data.
+        ⚠ marks changes above +50% or below -33%, which can come from changes in AIS coverage or method and need checking before use.{' '}
+        <a className="text-signal-cyan hover:underline" href={data.source.url} target="_blank" rel="noreferrer">IMF PortWatch</a>
+      </p>
+    </div>
   );
 }

@@ -7,9 +7,10 @@ import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry, LineString } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import worldTopo from 'world-atlas/countries-50m.json';
-import { Layers, Minus, Plus, RotateCcw, Ship, Waypoints } from 'lucide-react';
+import { Layers, Minus, Plus, RotateCcw, Ship, Waypoints, Share2, Anchor } from 'lucide-react';
 import ShipLayer, { SHIP_COLOR, SHIP_LABEL, type ShipLaneInput } from './ShipLayer';
 import { tradeLanes } from '../data/tradeLanes';
+import { isVolatile, portRatio, usePortData, useRouteNetwork } from '../hooks/usePortData';
 import type { LiveVessel, LiveVesselState, VesselKind } from '../hooks/useLiveVessels';
 import { bmzTypeOf, crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
 import {
@@ -113,6 +114,10 @@ export default function WorldMap({
   const showTipRef = useRef<((e: React.MouseEvent, t: Omit<TooltipState, 'x' | 'y'>) => void) | null>(null);
   const [showLanes, setShowLanes] = useState(true);
   const [showSymShips, setShowSymShips] = useState(true);
+  const [showNetwork, setShowNetwork] = useState(true);
+  const [showPorts, setShowPorts] = useState(true);
+  const portData = usePortData();
+  const network = useRouteNetwork();
 
   const ratioOf = (id?: string) => {
     const c = id ? transits?.chokepoints[id] : undefined;
@@ -161,6 +166,24 @@ export default function WorldMap({
     );
     return { countries: features, projection: proj, path: geoPath(proj), graticule: geoGraticule10() };
   }, []);
+
+  const networkPath = useMemo(() => {
+    if (!network) return '';
+    let d = '';
+    for (const line of network.lines) {
+      let pen = false;
+      let prev: [number, number] | null = null;
+      for (const c of line) {
+        const pt = projection(c);
+        if (!pt) { pen = false; prev = null; continue; }
+        if (prev && Math.abs(pt[0] - prev[0]) > 300) pen = false;
+        d += `${pen ? 'L' : 'M'}${pt[0].toFixed(1)},${pt[1].toFixed(1)}`;
+        pen = true;
+        prev = pt;
+      }
+    }
+    return d;
+  }, [network, projection]);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -404,9 +427,47 @@ export default function WorldMap({
               })}
             </g>
           )}
+          {showNetwork && networkPath && (
+            <path d={networkPath} fill="none" stroke="#5b6b82" strokeOpacity={0.45} strokeWidth={0.5 / k} strokeLinejoin="round" pointerEvents="none" />
+          )}
           {(showLanes || showSymShips) && (
             <ShipLayer lanes={shipLanes} projection={projection} k={k} showLines={showLanes} showShips={showSymShips} />
           )}
+          {showPorts && portData?.ports.map((pt) => {
+            const xy = projection([pt.lon, pt.lat]);
+            if (!xy) return null;
+            const r = portRatio(pt);
+            const vol = isVolatile(pt);
+            const color = r === null ? '#9aa5b5' : r < 0.8 ? '#f4c95d' : r > 1.25 ? '#6ea8fe' : '#5eead4';
+            return (
+              <g
+                key={pt.id}
+                transform={`translate(${xy[0]},${xy[1]})`}
+                className="cursor-help"
+                onClick={(e) => { e.stopPropagation(); onCountrySelect(pt.iso3 as never); }}
+                onMouseMove={(e) =>
+                  showTip(e, {
+                    title: `${pt.name} (port)`,
+                    accent: color,
+                    lines: [
+                      `Port calls per day, 7-day avg. to ${pt.latestDate}: ${pt.avg7} vs. ${pt.baseline} in Jan-Feb 2026${r !== null ? ` (${r >= 1 ? '+' : ''}${Math.round((r - 1) * 100)}%)` : ''}`,
+                      ...(pt.importShare ? [`Share of the country's seaborne imports: ${pt.importShare}%`] : []),
+                      ...(vol ? ['Large change: may reflect a change in AIS coverage or method rather than real traffic. Check before interpreting.'] : []),
+                      'Source: IMF PortWatch (satellite AIS estimate).',
+                    ],
+                  })
+                }
+              >
+                <rect x={-3 / k} y={-3 / k} width={6 / k} height={6 / k} transform="rotate(45)" fill="#0b0f15" stroke={color} strokeWidth={1.3 / k} strokeDasharray={vol ? `${1.4 / k} ${1 / k}` : undefined} />
+                <rect x={-1.2 / k} y={-1.2 / k} width={2.4 / k} height={2.4 / k} transform="rotate(45)" fill={color} />
+                {k >= 3 && (
+                  <text x={6 / k} y={3 / k} fontSize={8 / k} fill="#cdd3dc" stroke="#07090d" strokeWidth={2.2 / k} paintOrder="stroke" pointerEvents="none">
+                    {pt.name.replace(/ \(.*\)/, '')}
+                  </text>
+                )}
+              </g>
+            );
+          })}
           {showVessels && vessels?.status === 'ready' && (
             <g>
               {vessels.vessels.map((v: LiveVessel) => {
@@ -484,6 +545,12 @@ export default function WorldMap({
         <MapButton label={showLanes ? 'Hide trade lanes (Asia/Europe–LAC)' : 'Show trade lanes (Asia/Europe–LAC)'} active={showLanes} onClick={() => setShowLanes((v) => !v)}>
           <Waypoints size={15} />
         </MapButton>
+        <MapButton label={showNetwork ? 'Hide shipping route network' : 'Show shipping route network (IMF)'} active={showNetwork} onClick={() => setShowNetwork((v) => !v)}>
+          <Share2 size={15} />
+        </MapButton>
+        <MapButton label={showPorts ? 'Hide partner-country ports' : 'Show partner-country ports (PortWatch)'} active={showPorts} onClick={() => setShowPorts((v) => !v)}>
+          <Anchor size={15} />
+        </MapButton>
         <MapButton label={showSymShips ? 'Hide symbolic ships' : 'Show symbolic ships'} active={showSymShips} onClick={() => setShowSymShips((v) => !v)}>
           <Ship size={15} />
         </MapButton>
@@ -529,6 +596,15 @@ export default function WorldMap({
             <LegendSwatch color="#4cc9f0" label="Asia–LAC" />
             <LegendSwatch color="#b79cf0" label="Europe–LAC" />
             <span className="text-room-500">Schematic corridors, not exact courses.</span>
+          </>
+        )}
+        {showPorts && (
+          <>
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Ports (7-day vs. Jan-Feb)</span>
+            <LegendSwatch color="#f4c95d" label="below 80%" />
+            <LegendSwatch color="#5eead4" label="80 to 125%" />
+            <LegendSwatch color="#6ea8fe" label="above 125%" />
+            <span className="text-room-500">Dashed outline: change of more than 50% up or 33% down, possibly a data artefact. Grey network: IMF shipping-route layer, coarse.</span>
           </>
         )}
         {showSymShips && (

@@ -39,16 +39,21 @@ jobs:
         continue-on-error: true
         run: node scripts/fetch-portwatch.mjs
 
+      - name: Refresh IMF PortWatch port data
+        id: refresh-ports
+        continue-on-error: true
+        run: node scripts/fetch-ports.mjs
+
       - name: Commit refreshed data snapshot
-        if: steps.refresh.outcome == 'success'
+        if: steps.refresh.outcome == 'success' || steps.refresh-ports.outcome == 'success'
         run: |
-          if git diff --quiet -- public/data/chokepoints.json; then
+          if git diff --quiet -- public/data/chokepoints.json public/data/ports.json; then
             echo "Data unchanged."
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add public/data/chokepoints.json
-            git commit -m "data: refresh PortWatch chokepoint transits [skip ci]"
+            git add public/data/chokepoints.json public/data/ports.json
+            git commit -m "data: refresh PortWatch chokepoint and port data [skip ci]"
             git push
           fi
 
