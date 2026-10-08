@@ -155,6 +155,33 @@ const sources: CrisisDataset['sources'] = {
     date: '2026-09-29',
     type: 'reference',
   },
+  'seatrade-1001': {
+    id: 'seatrade-1001',
+    tag: '[Seatrade Maritime, 2 Oct 2026]',
+    publisher: 'Seatrade Maritime News (citing UKMTO, JMIC, US NCAGS)',
+    title: 'Tanker catches fire after first Hormuz attack in October',
+    url: 'https://www.seatrade-maritime.com/security/tanker-catches-fire-after-first-hormuz-attack-in-october',
+    date: '2026-10-02',
+    type: 'news',
+  },
+  'gcaptain-panama': {
+    id: 'gcaptain-panama',
+    tag: '[gCaptain, 6 Jul 2026]',
+    publisher: 'gCaptain',
+    title: 'Panama Canal deepens draft restrictions as El Niño strengthens',
+    url: 'https://gcaptain.com/panama-canal-deepens-draft-restrictions-as-el-nino-strengthens/',
+    date: '2026-07-06',
+    type: 'news',
+  },
+  'fbm-panama': {
+    id: 'fbm-panama',
+    tag: '[Food Business Middle East, Aug 2026]',
+    publisher: 'Food Business Middle East',
+    title: 'Panama Canal reduces Neopanamax draft to 47.5 feet amid El Niño water shortages',
+    url: 'https://www.foodbusinessmea.com/?p=2162675',
+    date: '2026-08',
+    type: 'news',
+  },
   'straits-0928': {
     id: 'straits-0928',
     tag: '[Straits / IMF PortWatch, 28 Sep 2026]',
@@ -461,18 +488,8 @@ const countryList: CountryProfile[] = [
     ],
     policy: [
       {
-        text: 'The trade ministry urged businesses to let employees work from home and removed import tariffs on fuel through the end of April.',
-        sourceIds: ['fox-vn'],
-        confidence: 'reported',
-      },
-      {
         text: 'The government drew on its fuel price stabilisation fund and accelerated the E10 ethanol blending rollout.',
         sourceIds: ['aj-sea', 'caseforsea'],
-        confidence: 'reported',
-      },
-      {
-        text: 'Government Resolution 34/2026/NQ-CP of 30 June set import duty and excise tax on fuels to zero and suspended the environmental protection tax and VAT on major fuels from 1 July to 30 September 2026.',
-        sourceIds: ['vnm-res34'],
         confidence: 'reported',
       },
     ],
@@ -1136,7 +1153,12 @@ const countryList: CountryProfile[] = [
 ];
 
 /** Countries that are BMZ bilateral partners in Asia and LAC (bmz.de, checked 4 Oct 2026) get the full profile. */
+/** Bilateral BMZ partner countries in Asia and LAC (verified against bmz.de country pages, Oct 2026). */
 const BMZ_PARTNERS = new Set<Iso3>(['BGD', 'KHM', 'LAO', 'NPL', 'PAK', 'UZB', 'MNG', 'BOL', 'COL', 'ECU']);
+/** BMZ global partner countries (focus on global public goods and climate). */
+const BMZ_GLOBAL = new Set<Iso3>(['IND', 'IDN', 'VNM', 'BRA', 'MEX', 'PER']);
+export const bmzTypeOf = (iso3: Iso3): 'bilateral' | 'global' | undefined =>
+  BMZ_PARTNERS.has(iso3) ? 'bilateral' : BMZ_GLOBAL.has(iso3) ? 'global' : undefined;
 
 const countries = Object.fromEntries(
   [...countryList, ...asiaCountries, ...lacCountries].map((c) => {
@@ -1144,7 +1166,7 @@ const countries = Object.fromEntries(
     if (!e) return [c.iso3, c];
     const merged: CountryProfile = {
       ...c,
-      tier: BMZ_PARTNERS.has(c.iso3) ? 'full' : c.tier,
+      tier: BMZ_PARTNERS.has(c.iso3) || BMZ_GLOBAL.has(c.iso3) || c.iso3 === 'AFG' ? 'full' : c.tier,
       environmental: [...c.environmental, ...(e.environmental ?? [])],
       energy: [...c.energy, ...(e.energy ?? [])],
       policy: [...c.policy, ...(e.policy ?? [])],
@@ -1325,7 +1347,7 @@ const regions: CrisisDataset['regions'] = {
 export const crisisData: CrisisDataset = {
   meta: {
     title: 'Crisis Room: El Niño 2026-27 x Strait of Hormuz',
-    asOf: '2026-09-29',
+    asOf: '2026-10-08',
     methodology:
       'Findings are compiled from official, intergovernmental, research and news sources with links. Each finding carries a confidence level. Status and risk ratings are editorial judgements based on these findings, not a computed index. Countries not listed are not assessed.',
     limitations: [
@@ -1334,12 +1356,12 @@ export const crisisData: CrisisDataset = {
       'Several values are in-season or single-source figures (marked preliminary) and must be updated once official data are released.',
       'Two Wikipedia pages are used as secondary compilations for timeline facts; their primary references should be checked before external use.',
       'Risk ratings are qualitative and not comparable to quantitative indices such as INFORM.',
-      'The situation in the Strait of Hormuz changes daily; the dataset reflects the state as of 29 September 2026.',
+      'The situation in the Strait of Hormuz changes daily; the dataset reflects the state as of 8 October 2026 (IMF PortWatch transit data to 4 October; country profiles last reviewed between 29 September and 8 October).',
     ],
   },
   sources: allSources,
   global: {
-    asOf: '2026-09-29',
+    asOf: '2026-10-08',
     elNino: [
       {
         text: 'NOAA maintains an El Niño Advisory and gives a greater than 90 percent chance of a very strong event in the northern hemisphere fall and winter 2026-27, and a 75 percent chance of a historic event in October-December.',
@@ -1361,6 +1383,11 @@ export const crisisData: CrisisDataset = {
       {
         text: 'Kpler ship-tracking data point to about 9.7 million barrels per day of crude through the strait in September, roughly half the February level of 19.5 million. Many tankers transit with transponders off, so AIS-based counts such as IMF PortWatch (about 4 transits per day in September) understate traffic.',
         sourceIds: ['euronews-kpler', 'portwatch'],
+        confidence: 'reported',
+      },
+      {
+        text: 'On 1 October an unidentified projectile hit the Kuwaiti VLCC Kazimah III in the strait and caused a fire; the crew was reported safe. At least 16 attacks, mostly on tankers, were counted in September. The Joint Maritime Information Center reported single-digit transits per day in independent tracking, while US naval data showed about 30 transits per day over four days, so counts differ widely by method.',
+        sourceIds: ['seatrade-1001'],
         confidence: 'reported',
       },
       {
@@ -1516,6 +1543,22 @@ export const crisisData: CrisisDataset = {
       status: 'diverted',
       note: 'Main diversion for Europe-bound traffic since the Red Sea crisis; daily transits are close to the January-February 2026 level.',
       sourceIds: ['wiki-hormuz'],
+    },
+    {
+      id: 'panama',
+      name: 'Panama Canal',
+      coordinates: [-79.7, 9.1],
+      status: 'disrupted',
+      note: 'Maximum Neopanamax draft cut to 47.5 feet from 3 September because of falling Gatun Lake levels in the strong El Niño; the number of daily transits was kept. Link between the Asia and Europe corridors and the west coast of South America.',
+      sourceIds: ['gcaptain-panama', 'fbm-panama'],
+    },
+    {
+      id: 'magellan',
+      name: 'Strait of Magellan',
+      coordinates: [-70.9, -53.6],
+      status: 'operating',
+      note: 'Open. PortWatch shows more transits than in the January-February 2026 baseline, which is consistent with some traffic avoiding the Panama Canal, but this link is an interpretation.',
+      sourceIds: ['portwatch'],
     },
   ],
 };

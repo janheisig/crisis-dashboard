@@ -212,7 +212,7 @@ export const asiaCountries: CountryProfile[] = [
     headline: 'Highest pump prices in South Asia and heavy reliance on Gulf remittances.',
     environmental: [f('The IFRC El Niño briefing expects a delayed and suppressed summer monsoon with prolonged drier or drought-like conditions across most of South Asia, naming India, Nepal and Pakistan.', ['ifrc'])],
     energy: [
-      f('Petrol rose from NPR 137 to NPR 219 per litre between January and April 2026, the highest price in South Asia.', ['gv-nepal']),
+      f('Petrol rose from NPR 137 to NPR 219 per litre between January and April 2026, the highest price in South Asia at the time; it was cut by Rs 20 on 1 July 2026.', ['gv-nepal']),
       f('Nepal has no domestic refining capacity; Nepal Oil Corporation reported daily losses of about NPR 930 million.', ['gv-nepal']),
     ],
     policy: [f('The World Bank projected growth to slow to 2.3 percent in fiscal year 2025-26, down from 4.6 percent.', ['gv-nepal'])],
@@ -308,7 +308,7 @@ export const asiaCountries: CountryProfile[] = [
     headline: 'Diesel up 110 percent; fully dependent on imported fuel.',
     environmental: [f('The IFRC El Niño briefing rates drought and below-average rainfall as very likely across Southeast Asia, naming Lao PDR, Viet Nam, Cambodia, Thailand, the Philippines, Indonesia and Malaysia.', ['ifrc'])],
     energy: [
-      f('Diesel rose from KHR 3,850 to KHR 8,100 per litre between the end of February and early April, an increase of 110 percent.', ['vnp-cambodia']),
+      f('Diesel rose from KHR 3,850 to a peak of KHR 8,100 per litre between the end of February and early April, an increase of 110 percent; prices have since eased (see the September figures).', ['vnp-cambodia']),
       f('Cambodia remains fully dependent on imported fuel products because its offshore reserves are not yet exploited.', ['vnp-cambodia']),
     ],
     policy: [
@@ -474,8 +474,8 @@ export const asiaCountries: CountryProfile[] = [
     tier: 'basic',
     status: 'minimal',
     risk: 'elevated',
-    riskRationale: 'Fuel stress stems mainly from Russian supply problems rather than the Gulf; no El Niño impact is documented for 2026 so far.',
-    headline: 'Fuel shortages driven by Russian refinery outages, not Hormuz.',
+    riskRationale: 'About 95 percent of transport fuel comes from Russia and reserves covered only 17 to 23 days in July; stress stems from Russian supply rather than the Gulf, and no El Niño impact is documented for 2026 so far.',
+    headline: 'Thin fuel stocks and high prices, driven by Russian supply problems rather than Hormuz.',
     environmental: [],
     energy: [
       f('Mongolia saw fuel queues and sales curbs in August; prices rose from about USD 1 to USD 1.5 to 2 per litre, linked to refinery attacks and demand in Russia, its dominant supplier.', ['hp-mongolia']),

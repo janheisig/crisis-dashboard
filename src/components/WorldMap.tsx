@@ -7,9 +7,11 @@ import { feature } from 'topojson-client';
 import type { Feature, FeatureCollection, Geometry, LineString } from 'geojson';
 import type { GeometryCollection, Topology } from 'topojson-specification';
 import worldTopo from 'world-atlas/countries-50m.json';
-import { Layers, Minus, Plus, RotateCcw, Ship } from 'lucide-react';
+import { Layers, Minus, Plus, RotateCcw, Ship, Waypoints } from 'lucide-react';
+import ShipLayer, { SHIP_COLOR, SHIP_LABEL, type ShipLaneInput } from './ShipLayer';
+import { tradeLanes } from '../data/tradeLanes';
 import type { LiveVessel, LiveVesselState, VesselKind } from '../hooks/useLiveVessels';
-import { crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
+import { bmzTypeOf, crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
 import {
   RISK_LABEL,
   ROUTE_STATUS_LABEL,
@@ -108,6 +110,43 @@ export default function WorldMap({
   const [transform, setTransform] = useState<ZoomTransform>(zoomIdentity);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
   const [showRoutes, setShowRoutes] = useState(true);
+  const showTipRef = useRef<((e: React.MouseEvent, t: Omit<TooltipState, 'x' | 'y'>) => void) | null>(null);
+  const [showLanes, setShowLanes] = useState(true);
+  const [showSymShips, setShowSymShips] = useState(true);
+
+  const ratioOf = (id?: string) => {
+    const c = id ? transits?.chokepoints[id] : undefined;
+    return c && c.baseline > 0 ? c.avg7 / c.baseline : 1;
+  };
+  const shipLanes: ShipLaneInput[] = useMemo(() => {
+    const laneColor = { 'asia-lac': '#4cc9f0', 'europe-lac': '#b79cf0', link: '#9aa5b5' } as const;
+    const hover = (e: React.MouseEvent, title: string, lines: string[], color: string) => showTipRef.current?.(e, { title, accent: color, lines });
+    const trade: ShipLaneInput[] = tradeLanes.map((l) => ({
+      id: l.id,
+      name: l.name,
+      waypoints: l.waypoints,
+      ships: Math.max(1, Math.round(l.baseShips * Math.min(2, ratioOf(l.gate)))),
+      mix: l.mix,
+      color: laneColor[l.group],
+      note: l.note + (l.gate ? ' Ship count scaled by the current PortWatch ratio.' : ''),
+      onHover: hover,
+    }));
+    const energyGate: Record<string, string | undefined> = { 'gulf-lane': 'hormuz', 'asia-lane': 'malacca', 'red-sea-lane': 'bab-el-mandeb', 'cape-lane': 'cape' };
+    const energy: ShipLaneInput[] = crisisData.routes
+      .filter((r) => r.kind === 'sea-lane' && energyGate[r.id])
+      .map((r) => ({
+        id: `e-${r.id}`,
+        name: r.name,
+        waypoints: r.coordinates,
+        ships: Math.max(1, Math.round(10 * Math.min(2, ratioOf(energyGate[r.id])))),
+        mix: { tanker: 1 },
+        color: '#ef8354',
+        note: 'Energy lane: symbolic tankers, number scaled by the PortWatch transit ratio of the gating strait. ' + r.note,
+        onHover: hover,
+      }));
+    return [...trade, ...energy];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transits]);
 
   const { countries, projection, path, graticule } = useMemo(() => {
     const topo = worldTopo as unknown as Topology<{ countries: GeometryCollection<CountryProps> }>;
@@ -174,6 +213,7 @@ export default function WorldMap({
     setTooltip({ ...t, x: evt.clientX - rect.left, y: evt.clientY - rect.top });
   };
 
+  showTipRef.current = showTip;
   const k = transform.k;
 
   return (
@@ -217,8 +257,8 @@ export default function WorldMap({
                 d={path(f) ?? ''}
                 fill={fill}
                 fillOpacity={profile ? (dimmed ? 0.28 : isSelected ? 1 : 0.82) : 1}
-                stroke={isSelected ? '#ffffff' : profile ? '#0a0d12' : '#2a3441'}
-                strokeWidth={(isSelected ? 1.6 : 0.4) / k}
+                stroke={isSelected ? '#ffffff' : iso3 && bmzTypeOf(iso3) ? '#38bdf8' : profile ? '#0a0d12' : '#2a3441'}
+                strokeWidth={(isSelected ? 1.6 : iso3 && bmzTypeOf(iso3) ? 1.1 : 0.4) / k}
                 className={profile ? 'cursor-pointer transition-[fill-opacity] duration-150 hover:fill-opacity-100' : ''}
                 style={isSelected ? { filter: 'url(#glow)' } : undefined}
                 onClick={(e) => {
@@ -364,6 +404,9 @@ export default function WorldMap({
               })}
             </g>
           )}
+          {(showLanes || showSymShips) && (
+            <ShipLayer lanes={shipLanes} projection={projection} k={k} showLines={showLanes} showShips={showSymShips} />
+          )}
           {showVessels && vessels?.status === 'ready' && (
             <g>
               {vessels.vessels.map((v: LiveVessel) => {
@@ -438,6 +481,12 @@ export default function WorldMap({
         <MapButton label={showRoutes ? 'Hide energy routes' : 'Show energy routes'} active={showRoutes} onClick={() => setShowRoutes((v) => !v)}>
           <Layers size={15} />
         </MapButton>
+        <MapButton label={showLanes ? 'Hide trade lanes (Asia/Europe–LAC)' : 'Show trade lanes (Asia/Europe–LAC)'} active={showLanes} onClick={() => setShowLanes((v) => !v)}>
+          <Waypoints size={15} />
+        </MapButton>
+        <MapButton label={showSymShips ? 'Hide symbolic ships' : 'Show symbolic ships'} active={showSymShips} onClick={() => setShowSymShips((v) => !v)}>
+          <Ship size={15} />
+        </MapButton>
         {onToggleVessels && (
           <MapButton label={showVessels ? 'Hide live vessels' : 'Show live vessels (AIS)'} active={showVessels} onClick={onToggleVessels}>
             <Ship size={15} />
@@ -457,6 +506,10 @@ export default function WorldMap({
           <LegendSwatch key={st} color={STATUS_COLOR[st]} label={STATUS_LABEL[st]} />
         ))}
         <LegendSwatch color={NOT_ASSESSED} label="Not assessed" border />
+        <span className="flex items-center gap-1.5">
+          <span className="inline-block h-2.5 w-2.5 rounded-sm border-2 border-sky-400" aria-hidden />
+          BMZ partner country
+        </span>
         {showRoutes && (
           <>
             <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Flows</span>
@@ -468,6 +521,23 @@ export default function WorldMap({
                 {ROUTE_STATUS_LABEL[st]}
               </span>
             ))}
+          </>
+        )}
+        {showLanes && (
+          <>
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Trade lanes</span>
+            <LegendSwatch color="#4cc9f0" label="Asia–LAC" />
+            <LegendSwatch color="#b79cf0" label="Europe–LAC" />
+            <span className="text-room-500">Schematic corridors, not exact courses.</span>
+          </>
+        )}
+        {showSymShips && (
+          <>
+            <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Symbolic ships</span>
+            {(Object.keys(SHIP_COLOR) as (keyof typeof SHIP_COLOR)[]).map((c) => (
+              <LegendSwatch key={c} color={SHIP_COLOR[c]} label={SHIP_LABEL[c]} />
+            ))}
+            <span className="text-room-500">Illustrative, not tracked: positions are invented, the number per lane follows the IMF PortWatch transit ratio of the strait (Hormuz: PortWatch shows about 3 per day, Lloyd’s List reports far more, see notes).</span>
           </>
         )}
         {showVessels && (

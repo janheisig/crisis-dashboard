@@ -5,7 +5,7 @@ import { AbbrText } from './AbbrText';
 import { pctVsBaseline, type TransitState } from '../hooks/useTransitData';
 import { ROUTE_STATUS_LABEL, type ChokepointTransits, type RouteStatus } from '../types/crisis';
 
-const ORDER = ['hormuz', 'bab-el-mandeb', 'suez', 'malacca', 'cape'] as const;
+const ORDER = ['hormuz', 'bab-el-mandeb', 'suez', 'malacca', 'cape', 'panama', 'magellan'] as const;
 const WAR_START = '2026-02-28';
 const SERIES_FROM = '2026-01-01';
 

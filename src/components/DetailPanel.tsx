@@ -11,7 +11,7 @@ import {
   Landmark,
   X,
 } from 'lucide-react';
-import { collectSources, crisisData } from '../data/crisisData';
+import { bmzTypeOf, collectSources, crisisData } from '../data/crisisData';
 import { STATUS_COLOR } from './WorldMap';
 import { AbbrText } from './AbbrText';
 import {
@@ -69,6 +69,11 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
               {crisisData.regions[country.region].name} · {country.iso3}
             </div>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-white">{country.name}</h2>
+            {bmzTypeOf(country.iso3) && (
+              <span className="mt-1.5 inline-block rounded border border-sky-400/40 bg-sky-400/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-sky-300">
+                BMZ partner country · {bmzTypeOf(country.iso3) === 'bilateral' ? 'bilateral' : 'global partnership'}
+              </span>
+            )}
           </div>
           <button
             type="button"

@@ -315,7 +315,7 @@ export const lacCountries: CountryProfile[] = [
       f('ENFEN raised the probability of an extraordinary coastal El Niño to 88 percent for October, 85 percent for November and 80 percent for December; heavy rain is expected on the northern and central coast.', ['enfen-rpp'], 'confirmed'),
       f('CEPAL estimates that an extreme event would cut Peru’s real GDP growth by 4.1 percentage points.', ['cepal-nino-countries']),
     ],
-    energy: [f('Fuel accounted for 2.5 percentage points of annual inflation of 4 percent in August, according to the Economy Minister.', ['infobae-peru-fuel'])],
+    energy: [],
     policy: [f('The government reactivated its fuel price stabilisation fund in August and reorganised the board of Petroperú.', ['infobae-peru-fuel'])],
     metrics: [{ label: 'Probability extraordinary coastal El Niño, Oct', value: '88%', sourceIds: ['enfen-rpp'], asOf: '2026-09-28' }],
   },
@@ -498,7 +498,7 @@ export const lacCountries: CountryProfile[] = [
     headline: 'Fuel price caps financed through foregone excise revenue.',
     environmental: [f('CEPAL names Mexico City, with Lima and São Paulo, among cities at high risk of electricity disruption and water scarcity.', ['cepal-nino'])],
     energy: [f('The government forwent about 5 billion pesos a month in excise revenue in early April to hold prices down.', ['forbes-mx'])],
-    policy: [f('Excise (IEPS) discounts keep regular gasoline below 24 and diesel at about 28.28 pesos per litre while oil stays above the budget assumption.', ['forbes-mx'], 'confirmed')],
+    policy: [f('Excise (IEPS) discounts keep regular gasoline below 24 pesos per litre while oil stays above the budget assumption.', ['forbes-mx'], 'confirmed')],
     metrics: [],
   },
   {
