@@ -1,0 +1,68 @@
+{
+ "iso3": "PHL",
+ "country": "Philippines",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "diplomacy",
+   "topics": [
+    "Regional organisations",
+    "Digitalisation"
+   ],
+   "headline": "Marcos visits Singapore and promotes an ASEAN Digital Economy Framework Agreement",
+   "summary": "President Ferdinand Marcos Jr. arrived in Singapore on 7 October for a five-day working visit to promote investment and meet Prime Minister Lawrence Wong. At the Forbes Global CEO Conference he said the Philippines, as ASEAN chair in 2026, will push for signing the ASEAN Digital Economy Framework Agreement at the next summit in Manila.",
+   "note": "No signed agreements or investment pledges had been reported by 8 October. Forbes places the summit about a month after the article.",
+   "sources": [
+    {
+     "publisher": "The Philippine Star",
+     "title": "Marcos arrives in Singapore for investment, regional talks",
+     "url": "https://www.philstar.com/headlines/2026/10/08/2561767/marcos-arrives-singapore-investment-regional-talks",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "I return to Singapore with a clear purpose: to build on one of our most important economic partnerships"
+    },
+    {
+     "publisher": "Forbes",
+     "title": "Forbes Global CEO Conference 2026: Philippine President Marcos Pushes For ASEAN Digital Economy Framework",
+     "url": "https://www.forbes.com/sites/jonathanburgos/2026/10/08/forbes-global-ceo-conference-2026-philippine-president-marcos-pushes-for-asean-digital-economy-framework/",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "puts together the different roles that the different countries in ASEAN can play in important developments such as AI"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "phl-20261008-01"
+  },
+  {
+   "date": "2026-10-06",
+   "category": "economy",
+   "topics": [],
+   "headline": "Philippine inflation rises to 7.2 percent in September, the highest in more than three years",
+   "summary": "The Philippine Statistics Authority reported on 6 October that headline inflation rose to 7.2 percent in September from 6.1 percent in August. Food and non-alcoholic beverages rose 6.7 percent year on year, up from 4.6 percent, and transport prices rose 14.6 percent.",
+   "note": "The characterisation as the highest since March 2023 comes from press reports in the search results; the official release itself was opened for the figures.",
+   "sources": [
+    {
+     "publisher": "Philippine Statistics Authority",
+     "title": "Summary Inflation Report, Consumer Price Index (2018=100): September 2026",
+     "url": "https://psa.gov.ph/content/summary-inflation-report-consumer-price-index-2018100-september-2026",
+     "type": "official",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "headline inflation or overall inflation increased to 7.2 percent in September 2026"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "phl-20261006-02"
+  }
+ ]
+}
