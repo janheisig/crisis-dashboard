@@ -1,0 +1,43 @@
+{
+ "iso3": "BOL",
+ "country": "Bolivia",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-07",
+   "category": "cooperation",
+   "topics": [],
+   "headline": "IMF Board approves credit for Bolivia and urges gradual removal of remaining fuel subsidies",
+   "summary": "The IMF Executive Board approved a credit of about 1.9 billion US dollars for Bolivia on 2 October, according to Visión 360. The Fund said the remaining fuel subsidies should be phased out gradually with an automatic pricing mechanism. El Diario reported that the IMF expects the subsidy cost to fall from 6.2 percent of GDP in 2025 to 2.9 percent in 2026 and to zero in early 2027.",
+   "note": "The facility type was not specified in the sources opened. The subsidy cost projection is reported by El Diario and was not checked against the IMF document.",
+   "translated": true,
+   "sources": [
+    {
+     "publisher": "Visión 360",
+     "title": "El FMI destaca esfuerzos de Bolivia y habla de eliminar progresivamente las subvenciones pendientes a los combustibles",
+     "url": "https://www.vision360.bo/noticias/2026/10/07/71325-el-fmi-destaca-esfuerzos-de-bolivia-y-habla-de-eliminar-progresivamente-las-subvenciones-pendientes-a-los-combustibles",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "eliminar progresivamente las subvenciones a los combustibles que aún permanecen vigentes"
+    },
+    {
+     "publisher": "El Diario",
+     "title": "FMI prevé en 2027 precios internacionales para combustibles en Bolivia",
+     "url": "https://www.eldiario.net/portal/2026/10/08/fmi-preve-en-2027-precios-internacionales-para-combustibles-en-bolivia/",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "Bolivia deberá completar la eliminación de los subsidios a los combustibles a comienzos de 2027"
+    }
+   ],
+   "confidence": "confirmed",
+   "id": "bol-20261007-01"
+  }
+ ]
+}
