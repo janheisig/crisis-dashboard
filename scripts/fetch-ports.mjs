@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fetches daily port-call data for the main ports of the BMZ partner countries from IMF PortWatch
+ * Fetches daily port-call data for the main ports of the covered countries from IMF PortWatch
  * (public ArcGIS feature services, no API key) and writes public/data/ports.json.
  * Run: node scripts/fetch-ports.mjs. Exits non-zero on failure and leaves the old snapshot untouched.
  */
@@ -9,11 +9,11 @@ import { fileURLToPath } from 'node:url';
 
 const BASE = 'https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services';
 const OUT = fileURLToPath(new URL('../public/data/ports.json', import.meta.url));
-/** Coastal BMZ partner countries (landlocked ones have no seaports). */
+/** Coastal covered countries (landlocked ones have no seaports). */
 const COUNTRIES = ['IND', 'PAK', 'BGD', 'VNM', 'KHM', 'IDN', 'BRA', 'MEX', 'PER', 'COL', 'ECU'];
 const PORTS_PER_COUNTRY = 4;
 /**
- * Context ports on the coloured routes and around the Hormuz and El Niño themes (not BMZ partners):
+ * Context ports on the coloured routes and around the Hormuz and El Niño themes (not covered countries):
  * Gulf and Hormuz exporters, Red Sea and Suez, East Africa and Cape, Asian hubs, European gateways, Panama and Pacific coast.
  * Entries are [ISO3, name fragment]; the busiest port of that country matching the fragment is used.
  */
@@ -60,7 +60,7 @@ async function main() {
     returnGeometry: 'false',
   });
   const chosen = [];
-  for (const iso of COUNTRIES) chosen.push(...meta.filter((m) => m.ISO3 === iso).slice(0, PORTS_PER_COUNTRY).map((m) => ({ ...m, group: 'bmz' })));
+  for (const iso of COUNTRIES) chosen.push(...meta.filter((m) => m.ISO3 === iso).slice(0, PORTS_PER_COUNTRY).map((m) => ({ ...m, group: 'focus' })));
   for (const [iso, frag] of CONTEXT) {
     const found = await query('PortWatch_ports_database', {
       where: `ISO3='${iso}' AND portname LIKE '%${frag}%'`,

@@ -54,7 +54,6 @@ export const GLOSSARY: Record<string, GlossaryEntry> = {
   'FEWS NET': { full: 'Famine Early Warning Systems Network', note: 'USAID-funded early warning network for food insecurity.' },
   GFDL: { full: 'Geophysical Fluid Dynamics Laboratory', note: 'NOAA laboratory that runs climate forecast models.' },
   GHACOF: { full: 'Greater Horn of Africa Climate Outlook Forum', note: 'Regional forum where ICPAC and national services agree the seasonal outlook.' },
-  GIZ: { full: 'Deutsche Gesellschaft für Internationale Zusammenarbeit', note: 'German federal enterprise for international cooperation.' },
   ICPAC: { full: 'IGAD Climate Prediction and Applications Centre', note: 'Regional climate centre for the Greater Horn of Africa, based in Nairobi.' },
   IEA: { full: 'International Energy Agency', note: 'Paris-based agency of 32 member countries; coordinates emergency oil stock releases.' },
   IFPRI: { full: 'International Food Policy Research Institute', note: 'Research institute on food policy, based in Washington, D.C.' },

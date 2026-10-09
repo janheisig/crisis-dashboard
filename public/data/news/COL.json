@@ -1,0 +1,277 @@
+{
+ "iso3": "COL",
+ "country": "Colombia",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "id": "col-20261008-01",
+   "date": "2026-10-08",
+   "headline": "Ideam declares El Niño present in Colombia at strong to very strong intensity",
+   "summary": "Colombia's weather agency Ideam confirmed on 8 October that El Niño is present, with an 83% probability of strong to very strong intensity until at least March 2027. It reported a Pacific sea surface temperature anomaly of +3.49 °C and said the rainfall deficit could worsen from December. The government set 30 November as the deadline for contingency plans.",
+   "category": "climate-energy",
+   "topics": [
+    "Disaster risk reduction"
+   ],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "The 83% probability and the temperature anomaly are attributed to Ideam in the Portafolio and El País reports; the government also announced an energy plan for the dry period.",
+   "sources": [
+    {
+     "publisher": "Portafolio",
+     "title": "Ideam confirma oficialmente presencia del fenómeno de El Niño en Colombia, con intensidad entre fuerte y muy fuerte",
+     "url": "https://www.portafolio.co/economia/gobierno/ideam-confirma-oficialmente-presencia-del-fenomeno-de-el-nino-en-colombia-con-intensidad-entre-fuerte-y-muy-fuerte-504147",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "83% de probabilidad de que El Niño mantenga una intensidad entre fuerte y muy fuerte al menos hasta marzo de 2027"
+    },
+    {
+     "publisher": "El Heraldo",
+     "title": "Ideam confirma la presencia del fenómeno de El Niño en el país: Su intensidad será entre fuerte y muy fuerte",
+     "url": "https://www.elheraldo.co/atlantico/2026/10/08/ideam-confirma-la-presencia-del-fenomeno-de-el-nino-en-el-pais-su-intensidad-sera-entre-fuerte-y-muy-fuerte/",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "el déficit de precipitaciones podría intensificarse a partir de diciembre"
+    },
+    {
+     "publisher": "El País Cali",
+     "title": "Pese a las lluvias, el Ideam confirma un fuerte fenómeno de El Niño en Colombia; este es el plan del Gobierno",
+     "url": "https://www.elpais.com.co/economia/pese-a-las-lluvias-el-ideam-confirma-un-fuerte-fenomeno-de-el-nino-en-colombia-este-es-el-plan-del-gobierno-0805.html",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "Este escenario exige una preparación integral para enfrentar simultáneamente los efectos de la sequía"
+    }
+   ]
+  },
+  {
+   "id": "col-20261008-02",
+   "date": "2026-10-08",
+   "headline": "Government prepares anti-terrorism statute with national registry of terrorist organisations",
+   "summary": "Interior Minister Rodrigo Lara said the draft statute, of more than 130 articles, would create a national registry of terrorist organisations and target their finances. Reports said it was due before the Criminal Policy Council on 8 October and would then go to Congress as a statutory law. Senator Iván Cepeda warned that a broad definition could reach social protest; the government says it is not meant to.",
+   "category": "security",
+   "topics": [
+    "Rule of law"
+   ],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Reports differ on the date: RTVC says the draft was presented on 1 October, Cambio and Portafolio say it was scheduled for 8 October. Presentation on 8 October was not confirmed in the sources reviewed. Lara did not name the groups that would be listed.",
+   "sources": [
+    {
+     "publisher": "Cambio",
+     "title": "Más de 130 artículos y una puerta de salida: así funcionará el estatuto antiterrorista que prepara el Gobierno",
+     "url": "https://cambiocolombia.com/mas-de-130-articulos-y-una-puerta-de-salida-asi-funcionara-el-estatuto-antiterrorista-que-prepara-el-gobierno",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "el texto tiene más de 130 artículos y busca atacar las finanzas de esos grupos."
+    },
+    {
+     "publisher": "Portafolio",
+     "title": "Estatuto Antiterrorista: así funcionaría la lista de grupos terroristas que propone el Gobierno De La Espriella",
+     "url": "https://www.portafolio.co/economia/gobierno/estatuto-antiterrorista-asi-funcionaria-la-lista-de-grupos-terroristas-que-propone-el-gobierno-de-la-espriella-504098",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "Por tratarse de una ley estatutaria, el proyecto tendrá un trámite más exigente en el Congreso."
+    },
+    {
+     "publisher": "RTVC Noticias",
+     "title": "Estatuto antiterrorista: más de 130 artículos para enfrentar a las organizaciones terroristas y sus finanzas",
+     "url": "https://www.rtvcnoticias.com/politica/gobierno/estatuto-antiterrorista-gobierno-presenta-nuevo-proyecto-para-atacar",
+     "type": "state",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "El ministro Lara no precisó qué estructuras u organizaciones harían parte del listado."
+    }
+   ]
+  },
+  {
+   "id": "col-20261007-01",
+   "date": "2026-10-07",
+   "headline": "Colombia's annual inflation rises to 6.29% in September, highest since July 2024",
+   "summary": "The statistics office DANE reported on 7 October that annual consumer price inflation reached 6.29% in September, up from 6.24% in August, with monthly inflation at 0.37%. El Tiempo described it as the highest annual rate since July 2024. Restaurants and hotels (9.44%) and health (7.79%) recorded the highest annual rates among spending divisions.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Figures are DANE data as reported by two outlets; the DANE release itself was not opened. Division rates are from El Tiempo only.",
+   "sources": [
+    {
+     "publisher": "El Tiempo",
+     "title": "Inflación en Colombia sigue aumentando y repunta a 6,29 % en septiembre: conozca los detalles que reveló el Dane",
+     "url": "https://www.eltiempo.com/economia/sectores/inflacion-en-colombia-sigue-aumentando-y-repunta-a-6-29-en-septiembre-3592053",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "Por segundo mes consecutivo, el costo de vida en Colombia volvió a acelerarse."
+    },
+    {
+     "publisher": "Portafolio",
+     "title": "Inflación en Colombia sigue subiendo: se ubicó en 6,29% en septiembre de 2026",
+     "url": "https://www.portafolio.co/economia/finanzas/inflacion-en-colombia-sigue-subiendo-se-ubico-en-6-29-en-septiembre-de-504077",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "La inflación en Colombia se ubicó en 6,29% anual el pasado mes de septiembre"
+    }
+   ]
+  },
+  {
+   "id": "col-20261007-02",
+   "date": "2026-10-07",
+   "headline": "Congress commission backs EUR 497 million in KfW loans for Colombia's 2026 budget",
+   "summary": "On 7 October the Finance Ministry reported a favourable opinion from the Interparliamentary Commission on Public Credit for three loans from Germany's development bank KfW, totalling up to 497 million euros, for general financing of the 2026 budget. The ministry said the rate is about 200 basis points below Colombia's euro sovereign curve. A ministerial resolution is still required; disbursement is expected by end 2026.",
+   "category": "cooperation",
+   "topics": [
+    "Climate and adaptation finance"
+   ],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "The loans are unrestricted budget financing. The Finance Ministry links them to inclusion and climate policy but names no specific programmes, so the climate topic tag reflects the ministry's framing only.",
+   "sources": [
+    {
+     "publisher": "Portafolio",
+     "title": "Hacienda emite concepto favorable para obtener préstamos con Banco de Desarrollo alemán por 497 millones de euros",
+     "url": "https://www.portafolio.co/economia/gobierno/hacienda-emite-concepto-favorable-para-obtener-prestamo-con-el-banco-de-desarrollo-aleman-por-497-millones-de-euros-504086",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "Los desembolsos están previstos para realizarse a finales de 2026."
+    },
+    {
+     "publisher": "La República",
+     "title": "MinHacienda tiene aval para pedir créditos a KfW y financiar Presupuesto 2026",
+     "url": "https://www.larepublica.co/economia/minhacienda-tiene-aval-para-pedir-creditos-a-kfw-y-financiar-presupuesto-2026-4499127",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "se ubica alrededor de 200 puntos básicos por debajo de la curva de bonos soberanos de Colombia en euros"
+    }
+   ]
+  },
+  {
+   "id": "col-20261006-01",
+   "date": "2026-10-06",
+   "headline": "Colombia activates earthquake reconstruction fund with a first 1 trillion pesos",
+   "summary": "Vice President José Manuel Restrepo said on 6 October that the Fondo Milagro, created after the magnitude 7.4 earthquake of 10 August, would begin using a first 1 trillion pesos from 7 October. An initial work plan of 627,000 million pesos covers demolition, debris removal and needs assessment. The trust company Fiducoldex will administer the fund.",
+   "category": "society",
+   "topics": [
+    "Disaster risk reduction"
+   ],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Amounts differ by source: a decree of 6 October added 624,656 million pesos from external credit to the 2026 budget (El Colombiano), while Portafolio cites the 627,000 million peso work plan. Portafolio also reports a further 2.7 trillion pesos planned for November, pending a budget change in Congress.",
+   "sources": [
+    {
+     "publisher": "Portafolio",
+     "title": "Gobierno de De La Espriella activa el Fondo Milagro: arranca con $1 billón para la reconstrucción",
+     "url": "https://www.portafolio.co/economia/gobierno/gobierno-de-de-la-espriella-activa-el-fondo-milagro-arranca-con-1-billon-para-la-reconstruccion-503977",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-06",
+     "evidence": "desde mañana arranca a disponer de recursos para atender la tragedia"
+    },
+    {
+     "publisher": "El Colombiano",
+     "title": "Fondo Milagro: recursos y Fiducoldex",
+     "url": "https://www.elcolombiano.com/negocios/fondo-milagro-recursos-y-fiducoldex-FH42010353",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "quedó legalmente constituido"
+    }
+   ]
+  },
+  {
+   "id": "col-20261006-02",
+   "date": "2026-10-06",
+   "headline": "Colombia stops commercial electricity exports to Ecuador as supply risk period begins",
+   "summary": "According to market operator XM, Colombian electricity flows to Ecuador under the short-term international transactions mechanism fell to zero from 7 September, when a supply-shortage risk period began. A regulator resolution requires domestic demand to be covered before exports. XM said the exports earned about 530,683 million pesos between January 2025 and August 2026.",
+   "category": "climate-energy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "The event dates from 7 September; reporting is dated 6 October. The interconnection remains operational and non-commercial technical flows may still occur.",
+   "sources": [
+    {
+     "publisher": "La República",
+     "title": "Colombia suspendió el suministro de energía eléctrica hacia Ecuador",
+     "url": "https://www.larepublica.co/economia/colombia-suspendio-oficialmente-suministro-de-energia-electrica-hacia-ecuador-4498078",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-06",
+     "evidence": "El flujo hacia el vecino país llegó a cero desde el pasado 7 de septiembre de 2026"
+    },
+    {
+     "publisher": "Noticias RCN",
+     "title": "Colombia suspende oficialmente el suministro de energía eléctrica a Ecuador",
+     "url": "https://www.noticiasrcn.com/economia/colombia-suspende-oficialmente-el-suministro-de-energia-electrica-a-ecuador-1069190",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-06",
+     "evidence": "las ventas de energía al exterior solo pueden realizarse una vez esté garantizada la atención del consumo interno."
+    }
+   ]
+  },
+  {
+   "id": "col-20261005-01",
+   "date": "2026-10-05",
+   "headline": "Central bank minutes: four of seven directors backed 25 point rate rise to 12.25%",
+   "summary": "Minutes published on 5 October show the Banco de la República board raised its policy rate by 25 basis points to 12.25%, with four votes in favour, two for holding and one for a 50 point rise. The majority said inflation expectations remain unanchored from the 3% target and that El Niño could push food and regulated prices higher.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "The decision itself was announced on 30 September; the minutes were published within the reporting window.",
+   "sources": [
+    {
+     "publisher": "Banco de la República",
+     "title": "Minutas de la reunión de la Junta Directiva de septiembre de 2026",
+     "url": "https://banrep.gov.co/es/noticias/junta-directiva/minutas-banrep-septiembre-2026",
+     "type": "official",
+     "language": "es",
+     "date": "2026-10-05",
+     "evidence": "decidió por mayoría aumentar en 25 puntos básicos (pbs) la tasa de interés de política monetaria a 12,25%"
+    }
+   ]
+  },
+  {
+   "id": "col-20261002-01",
+   "date": "2026-10-02",
+   "headline": "Colombia cancels planned 46 peso gasoline price rise after presidential order",
+   "summary": "The government announced on 30 September a gasoline increase of 46 pesos per gallon (0.29%) from 1 October, linked to the price paid to ethanol producers. President Abelardo de la Espriella ordered it reversed, and the energy and finance ministries said the state would cover the cost, reported at 8,300 to 8,500 million pesos. The reversal covers October only.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Reports differ on the date of the reversal announcement (late on 1 October per RCN, 2 October per the Rio Times) and on the subsidy cost (8,300 or 8,500 million pesos). A former minister criticised the decision as poorly coordinated, warning of a larger fuel price stabilisation fund deficit.",
+   "sources": [
+    {
+     "publisher": "Noticias RCN",
+     "title": "¿Era necesario subirle a la gasolina? Exministro cuestionó al Gobierno por reversar el aumento",
+     "url": "https://www.noticiasrcn.com/economia/exministro-alerto-lo-que-pasara-por-no-subirle-a-la-gasolina-1067828",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-02",
+     "evidence": "el Gobierno se iba a hacer cargo del costo de 8.500 millones de pesos correspondiente al subsidio"
+    },
+    {
+     "publisher": "The Rio Times",
+     "title": "Colombia reverses gasoline price increase",
+     "url": "https://www.riotimesonline.com/colombia-reverses-gasoline-price-increase-2026/",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "Colombia has cancelled a small gasoline price rise that was due on 1 October 2026."
+    }
+   ]
+  }
+ ]
+}

@@ -1152,13 +1152,8 @@ const countryList: CountryProfile[] = [
   },
 ];
 
-/** Countries that are BMZ bilateral partners in Asia and LAC (bmz.de, checked 4 Oct 2026) get the full profile. */
-/** Bilateral BMZ partner countries in Asia and LAC (verified against bmz.de country pages, Oct 2026). */
-const BMZ_PARTNERS = new Set<Iso3>(['BGD', 'KHM', 'LAO', 'NPL', 'PAK', 'UZB', 'MNG', 'BOL', 'COL', 'ECU']);
-/** BMZ global partner countries (focus on global public goods and climate). */
-const BMZ_GLOBAL = new Set<Iso3>(['IND', 'IDN', 'VNM', 'BRA', 'MEX', 'PER']);
-export const bmzTypeOf = (iso3: Iso3): 'bilateral' | 'global' | undefined =>
-  BMZ_PARTNERS.has(iso3) ? 'bilateral' : BMZ_GLOBAL.has(iso3) ? 'global' : undefined;
+/** The 19 countries covered with a full profile. */
+const COVERED = new Set<Iso3>(['BGD', 'KHM', 'LAO', 'NPL', 'PAK', 'UZB', 'MNG', 'BOL', 'COL', 'ECU', 'IND', 'IDN', 'VNM', 'BRA', 'MEX', 'PER', 'AFG']);
 
 const countries = Object.fromEntries(
   [...countryList, ...asiaCountries, ...lacCountries].map((c) => {
@@ -1166,7 +1161,7 @@ const countries = Object.fromEntries(
     if (!e) return [c.iso3, c];
     const merged: CountryProfile = {
       ...c,
-      tier: BMZ_PARTNERS.has(c.iso3) || BMZ_GLOBAL.has(c.iso3) || c.iso3 === 'AFG' ? 'full' : c.tier,
+      tier: COVERED.has(c.iso3) ? 'full' : c.tier,
       environmental: [...c.environmental, ...(e.environmental ?? [])],
       energy: [...c.energy, ...(e.energy ?? [])],
       policy: [...c.policy, ...(e.policy ?? [])],

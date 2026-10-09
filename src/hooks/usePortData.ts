@@ -4,8 +4,8 @@ export interface PortRecord {
   id: string;
   name: string;
   iso3: string;
-  /** 'bmz': main ports of BMZ partner countries; 'context': ports on the coloured routes and around Hormuz. */
-  group: 'bmz' | 'context';
+  /** 'focus': main ports of the covered countries; 'context': ports on the coloured routes and around Hormuz. */
+  group: 'focus' | 'context';
   lat: number;
   lon: number;
   importShare: number | null;

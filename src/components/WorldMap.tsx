@@ -13,7 +13,7 @@ import { tradeLanes } from '../data/tradeLanes';
 import routedLanesJson from '../data/routedLanes.json';
 import { isVolatile, portRatio, usePortData, useRouteNetwork } from '../hooks/usePortData';
 import type { LiveVessel, LiveVesselState, VesselKind } from '../hooks/useLiveVessels';
-import { bmzTypeOf, crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
+import { crisisData, NUMERIC_TO_ISO3 } from '../data/crisisData';
 import {
   RISK_LABEL,
   ROUTE_STATUS_LABEL,
@@ -286,8 +286,8 @@ export default function WorldMap({
                 d={path(f) ?? ''}
                 fill={fill}
                 fillOpacity={profile ? (dimmed ? 0.28 : isSelected ? 1 : 0.82) : 1}
-                stroke={isSelected ? '#ffffff' : iso3 && bmzTypeOf(iso3) ? '#38bdf8' : profile ? '#0a0d12' : '#2a3441'}
-                strokeWidth={(isSelected ? 1.6 : iso3 && bmzTypeOf(iso3) ? 1.1 : 0.4) / k}
+                stroke={isSelected ? '#ffffff' : profile ? '#0a0d12' : '#2a3441'}
+                strokeWidth={(isSelected ? 1.6 : 0.4) / k}
                 className={profile ? 'cursor-pointer transition-[fill-opacity] duration-150 hover:fill-opacity-100' : ''}
                 style={isSelected ? { filter: 'url(#glow)' } : undefined}
                 onClick={(e) => {
@@ -453,7 +453,7 @@ export default function WorldMap({
                 onClick={(e) => { e.stopPropagation(); if (crisisData.countries[pt.iso3 as never]) onCountrySelect(pt.iso3 as never); }}
                 onMouseMove={(e) =>
                   showTip(e, {
-                    title: `${pt.name} (${pt.group === 'bmz' ? 'port, BMZ partner country' : 'port on the routes / Gulf'})`,
+                    title: `${pt.name} (${pt.group === 'focus' ? 'port, covered country' : 'port on the routes / Gulf'})`,
                     accent: color,
                     lines: [
                       `Port calls per day, 7-day avg. to ${pt.latestDate}: ${pt.avg7} vs. ${pt.baseline} in Jan-Feb 2026${r !== null ? ` (${r >= 1 ? '+' : ''}${Math.round((r - 1) * 100)}%)` : ''}`,
@@ -465,11 +465,11 @@ export default function WorldMap({
                 }
               >
                 {(() => {
-                  const sz = pt.group === 'bmz' ? 1 : 0.75;
+                  const sz = pt.group === 'focus' ? 1 : 0.75;
                   return (
                     <>
                       <rect x={(-3 * sz) / k} y={(-3 * sz) / k} width={(6 * sz) / k} height={(6 * sz) / k} transform="rotate(45)" fill="#0b0f15" stroke={color} strokeWidth={1.3 / k} strokeDasharray={vol ? `${1.4 / k} ${1 / k}` : undefined} />
-                      <rect x={(-1.2 * sz) / k} y={(-1.2 * sz) / k} width={(2.4 * sz) / k} height={(2.4 * sz) / k} transform="rotate(45)" fill={pt.group === 'bmz' ? color : 'none'} />
+                      <rect x={(-1.2 * sz) / k} y={(-1.2 * sz) / k} width={(2.4 * sz) / k} height={(2.4 * sz) / k} transform="rotate(45)" fill={pt.group === 'focus' ? color : 'none'} />
                     </>
                   );
                 })()}
@@ -586,10 +586,6 @@ export default function WorldMap({
           <LegendSwatch key={st} color={STATUS_COLOR[st]} label={STATUS_LABEL[st]} />
         ))}
         <LegendSwatch color={NOT_ASSESSED} label="Not assessed" border />
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm border-2 border-sky-400" aria-hidden />
-          BMZ partner country
-        </span>
         {showRoutes && (
           <>
             <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Flows</span>
@@ -608,7 +604,7 @@ export default function WorldMap({
             <span className="ml-2 font-mono text-[10px] uppercase tracking-widest text-room-400">Trade lanes</span>
             <LegendSwatch color="#4cc9f0" label="Asia–LAC" />
             <LegendSwatch color="#b79cf0" label="Europe–LAC" />
-            <span className="text-room-500">Solid dashes follow the IMF route network (5 of 14 lanes: Europe–Brazil, Europe–Caribbean, Peru–Chile coast, Arabian Sea–East Asia, Arabian Sea–Europe); fine dots are schematic, because the IMF network has no usable connection there (Pacific, Panama, Gulf of Mexico, Persian Gulf, Cape).</span>
+            <span className="text-room-500">Solid dashes follow the IMF route network (4 of 14 lanes: Europe–Brazil, Europe–Caribbean, Peru–Chile coast, Arabian Sea–East Asia); fine dots are schematic, because the IMF network has no usable connection there (Pacific, Panama, Gulf of Mexico, Persian Gulf, Cape).</span>
           </>
         )}
         {showPorts && (
@@ -617,7 +613,7 @@ export default function WorldMap({
             <LegendSwatch color="#f4c95d" label="below 80%" />
             <LegendSwatch color="#5eead4" label="80 to 125%" />
             <LegendSwatch color="#6ea8fe" label="above 125%" />
-            <span className="text-room-500">Filled diamond: main ports of BMZ partner countries; hollow, smaller: ports on the routes and around the Gulf. Dashed outline: change of more than 50% up or 33% down, possibly a data artefact. Grey network: IMF shipping-route layer, coarse.</span>
+            <span className="text-room-500">Filled diamond: main ports of the covered countries; hollow, smaller: ports on the routes and around the Gulf. Dashed outline: change of more than 50% up or 33% down, possibly a data artefact. Grey network: IMF shipping-route layer, coarse.</span>
           </>
         )}
         {showSymShips && (

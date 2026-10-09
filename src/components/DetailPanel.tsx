@@ -12,9 +12,10 @@ import {
   X,
 } from 'lucide-react';
 import { isVolatile, portRatio, usePortData, type PortRecord } from '../hooks/usePortData';
-import { bmzTypeOf, collectSources, crisisData } from '../data/crisisData';
+import { collectSources, crisisData } from '../data/crisisData';
 import { STATUS_COLOR } from './WorldMap';
 import { AbbrText } from './AbbrText';
+import NewsPanel from './NewsPanel';
 import {
   RISK_LABEL,
   STATUS_LABEL,
@@ -60,6 +61,7 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
   // Reset to collapsed when another country is selected.
   useEffect(() => setOpen({ env: false, energy: false, policy: false }), [country.iso3]);
   const allOpen = open.env && open.energy && open.policy;
+  const [tab, setTab] = useState<'news' | 'lens'>('news');
 
   return (
     <>
@@ -70,11 +72,6 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
               {crisisData.regions[country.region].name} · {country.iso3}
             </div>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-white">{country.name}</h2>
-            {bmzTypeOf(country.iso3) && (
-              <span className="mt-1.5 inline-block rounded border border-sky-400/40 bg-sky-400/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-sky-300">
-                BMZ partner country · {bmzTypeOf(country.iso3) === 'bilateral' ? 'bilateral' : 'global partnership'}
-              </span>
-            )}
           </div>
           <button
             type="button"
@@ -113,6 +110,23 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
         </p>
       </header>
 
+      <div className="flex border-b border-room-700 px-5" role="tablist">
+        {([['news', 'Weekly news'], ['lens', 'Crisis lens']] as const).map(([k, l]) => (
+          <button
+            key={k}
+            type="button"
+            role="tab"
+            aria-selected={tab === k}
+            onClick={() => setTab(k)}
+            className={`-mb-px border-b-2 px-3 py-2 text-xs font-semibold ${tab === k ? 'border-signal-cyan text-white' : 'border-transparent text-room-400 hover:text-room-100'}`}
+          >
+            {l}
+          </button>
+        ))}
+      </div>
+      {tab === 'news' ? (
+        <NewsPanel iso3={country.iso3} name={country.name} />
+      ) : (
       <div className="flex-1 space-y-5 overflow-y-auto px-5 py-4">
         {country.metrics.length > 0 && (
           <div className="grid grid-cols-2 gap-2">
@@ -176,6 +190,7 @@ function CountryView({ country, onClose }: { country: CountryProfile; onClose: (
         <SourceList sources={sources} />
         <p className="font-mono text-[10px] text-room-500">Last reviewed {country.lastReviewed}</p>
       </div>
+      )}
     </>
   );
 }

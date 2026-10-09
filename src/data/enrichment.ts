@@ -1,7 +1,7 @@
 import type { Finding, Metric, Source, Iso3 } from '../types/crisis';
 
 /**
- * Additional verified findings and metrics for the BMZ partner countries, merged into the base profiles
+ * Additional verified findings and metrics for the covered countries, merged into the base profiles
  * in crisisData.ts. Every source URL was opened when the entry was written (4 Oct 2026).
  */
 export const enrichmentSources: Record<string, Source> = {
