@@ -65,7 +65,7 @@ export default function NewsPanel({ iso3, name }: { iso3: string; name: string }
     return (
       <div className="px-5 py-6 text-sm leading-relaxed text-room-300">
         <Newspaper size={18} className="mb-2 text-room-500" />
-        No weekly digest for {name} yet. The first three digests cover Viet Nam, Indonesia and Colombia; the remaining countries follow.
+        No weekly digest for {name} yet.
       </div>
     );
 
