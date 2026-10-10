@@ -1,0 +1,54 @@
+{
+ "iso3": "ECU",
+ "country": "Ecuador",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "climate-energy",
+   "topics": [
+    "Disaster risk reduction"
+   ],
+   "headline": "Ecuador extends scheduled power cuts for large industrial users to three days a week from 12 October",
+   "summary": "Ecuador's Ministry of Environment and Energy will extend scheduled disconnections for high-voltage and medium-voltage industrial users to three days a week from 12 October, reported Radio Pichincha and Infobae (EFE). The government says the cuts are meant to protect reservoir levels at hydropower plants during the dry season. President Daniel Noboa said on 5 October that no household will face power cuts.",
+   "note": "Technical reports cited by Radio Pichincha warn that residential rationing could follow if the dry season deepens. Industry groups warn that backup generation lasts less than 12 hours.",
+   "translated": true,
+   "sources": [
+    {
+     "publisher": "Infobae (EFE)",
+     "title": "Los cortes de energía para industrias en Ecuador suben a tres días desde la próxima semana",
+     "url": "https://www.infobae.com/america/agencias/2026/10/08/los-cortes-de-energia-para-industrias-en-ecuador-suben-a-tres-dias-desde-la-proxima-semana/",
+     "type": "international",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "se realizarán durante tres días a la semana, desde el próximo lunes 12 de octubre"
+    },
+    {
+     "publisher": "Radio Pichincha",
+     "title": "Golpe a la industria: cortes de energía programados afectarán a grandes consumidores tres días por semana",
+     "url": "https://radiopichincha.com/cortes-energia-industria-cenace-consumidores",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "el Ministerio de Ambiente y Energía aplicará desconexiones eléctricas programadas, de tres días a la semana"
+    },
+    {
+     "publisher": "Radio Pichincha",
+     "title": "Ninguna familia tendrá cortes de luz, promete Noboa",
+     "url": "https://www.radiopichincha.com/ninguna-familia-cortes-luz-noboa-industrias-apagones-horas/",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-05",
+     "evidence": "Ninguna familia ecuatoriana va a tener algún corte de luz"
+    }
+   ],
+   "confidence": "confirmed",
+   "id": "ecu-20261008-01"
+  }
+ ]
+}

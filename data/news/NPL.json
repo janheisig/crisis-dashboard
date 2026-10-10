@@ -1,0 +1,46 @@
+{
+ "iso3": "NPL",
+ "country": "Nepal",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "cooperation",
+   "topics": [
+    "Disaster risk reduction",
+    "Climate and adaptation finance"
+   ],
+   "headline": "Australia pledges additional AUD 15 million for Nepal flood recovery after foreign ministers meet",
+   "summary": "Nepal's Foreign Minister Shisir Khanal and Australian counterpart Penny Wong met in Melbourne on 8 October. Australia announced a further AUD 15 million for relief and early recovery, bringing recent humanitarian support to about AUD 26 million, according to Radio Nepal. The ministers also discussed climate adaptation, early warning, vocational training, labour mobility and trade.",
+   "note": "The AUD 26 million total is the sum of the new pledge and AUD 11 million reported earlier.",
+   "sources": [
+    {
+     "publisher": "myRepublica",
+     "title": "Australia announces additional AUD 15 million for Nepal's flood recovery",
+     "url": "https://myrepublica.nagariknetwork.com/news/australia-announces-additional-aud-15-million-for-nepals-flood-recovery-27-60.html",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Australia has announced an additional AUD 15 million in assistance for relief and early recovery efforts"
+    },
+    {
+     "publisher": "Radio Nepal",
+     "title": "Nepal-Australia Agree to Deepen Bilateral Cooperation",
+     "url": "https://radionepalonline.com/en/2026/10/08/437478.html",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "work toward translating the understandings reached into concrete outcomes"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "npl-20261008-01"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "iso3": "PER",
+ "country": "Peru",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-07",
+   "category": "economy",
+   "topics": [
+    "Disaster risk reduction"
+   ],
+   "headline": "Peru keeps 3.4 percent growth forecast for 2026 despite El Niño and seeks supplementary credit",
+   "summary": "Economy and Finance Minister Elmer Cuba said on 7 October that the ministry maintains its forecast of 3.4 percent growth for 2026 despite the expected effects of El Niño, and about 4 percent once it passes. He presented a supplementary credit request of S/ 8,228 million to Congress, including S/ 581 million for El Niño response. The central bank is more cautious at 3.2 percent.",
+   "note": "The 3.2 percent central bank forecast is from La República's report of the September revision. The supplementary credit details come from Infobae, dated 6 October.",
+   "translated": true,
+   "sources": [
+    {
+     "publisher": "La República",
+     "title": "MEF proyecta que la economía crecerá 3,4% en 2026 y espera una expansión de 4% tras el Fenómeno El Niño",
+     "url": "https://larepublica.pe/economia/2026/10/07/mef-proyecta-que-la-economia-crecera-34-en-2026-y-espera-una-expansion-de-4-tras-el-fenomeno-el-nino-hnews-682759",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "Hacia adelante, ya post Niño esperamos que sea alrededor de 4%. Eso pensamos en el MEF"
+    },
+    {
+     "publisher": "Diario Correo",
+     "title": "MEF proyecta que economía peruana crecerá 3,4% en 2026 pese al Fenómeno El Niño",
+     "url": "https://diariocorreo.pe/economia/mef-proyecta-que-economia-peruana-crecera-34-en-2026-pese-al-fenomeno-el-nino-noticia/",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "pese al impacto esperado del Fenómeno El Niño durante los últimos meses del año"
+    },
+    {
+     "publisher": "Infobae",
+     "title": "El cobre salva el plan del MEF ante el Fenómeno El Niño y Elmer Cuba pide más de S/8.000 millones al Congreso",
+     "url": "https://www.infobae.com/peru/2026/10/06/el-cobre-salva-el-plan-del-mef-ante-el-fenomeno-el-nino-y-elmer-cuba-pide-mas-de-s8000-millones-al-congreso-a-donde-iran/",
+     "type": "international",
+     "language": "es",
+     "date": "2026-10-06",
+     "evidence": "La posición fiscal permite atender prioridades adicionales a través de un crédito suplementario"
+    }
+   ],
+   "confidence": "confirmed",
+   "id": "per-20261007-01"
+  }
+ ]
+}
