@@ -1,0 +1,45 @@
+{
+ "iso3": "KHM",
+ "country": "Cambodia",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-09",
+   "category": "diplomacy",
+   "topics": [
+    "Regional organisations"
+   ],
+   "headline": "Viet Nam's prime minister begins official visit to Cambodia at Hun Manet's invitation",
+   "summary": "Vietnamese Prime Minister Le Minh Hung arrived in Phnom Penh on 9 October for an official visit running to 10 October. Cambodia's foreign ministry said on 6 October that the two leaders would discuss strengthening bilateral relations, cooperation and regional and international issues. No outcomes had been reported at the time of writing.",
+   "note": "Both sources are Vietnamese state outlets; the underlying announcement is an official Cambodian foreign ministry statement. Outcomes of the talks are not yet known.",
+   "sources": [
+    {
+     "publisher": "Nhan Dan",
+     "title": "Vietnamese PM's visit to further consolidate bilateral ties: Cambodian ministry",
+     "url": "https://en.nhandan.vn/vietnamese-pms-visit-to-further-consolidate-bilateral-ties-cambodian-ministry-post167404.html",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "further consolidate the cordial relations between Viet Nam and Cambodia"
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Prime Minister begins official visit to Cambodia",
+     "url": "https://en.vietnamplus.vn/prime-minister-begins-official-visit-to-cambodia-post353358.vnp",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "beginning his official visit to Cambodia, at the invitation of Cambodian Prime Minister Hun Manet"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "khm-20261009-01"
+  }
+ ]
+}

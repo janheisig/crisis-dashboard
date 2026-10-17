@@ -1,0 +1,85 @@
+{
+ "iso3": "IND",
+ "country": "India",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-07",
+   "category": "economy",
+   "topics": [],
+   "headline": "Reserve Bank of India raises repo rate by 25 basis points to 5.50 percent",
+   "summary": "On 7 October the Reserve Bank of India's Monetary Policy Committee unanimously raised the repo rate from 5.25 to 5.50 percent, the first increase since February 2023 according to Business Standard. The committee changed its stance to calibrated tightening, citing inflation that is no longer as benign as last year. It projects real GDP growth of 7.1 percent for 2026-27.",
+   "note": "Inflation projections are reported differently by the two outlets and are therefore not quoted. The stance change was decided by a 4 to 2 vote.",
+   "sources": [
+    {
+     "publisher": "Business Standard",
+     "title": "RBI policy highlights: Repo rate rises 25 bps as inflation risks broaden",
+     "url": "https://www.business-standard.com/amp/finance/news/rbi-policy-highlights-repo-rate-rises-25-bps-as-inflation-risks-broaden-126100700304_1.html",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "The RBI said inflation and its outlook are no longer as benign as they were last year."
+    },
+    {
+     "publisher": "ETV Bharat",
+     "title": "RBI MPC Meeting: Repo Rate Hiked By 25 BPS, GDP Projected At 7.1% For FY27",
+     "url": "https://www.etvbharat.com/en/business/rbi-mpc-meeting-october-2026-sanjay-malhotra-25-basis-points-repo-rate-hike-inflation-india-gdp-enn26100701116",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "The MPC unanimously voted to increase the policy repo rate by 25 basis points to 5.5%."
+    },
+    {
+     "publisher": "SCC Online",
+     "title": "RBI repo rate hike: 25 bps to 5.50% in October 2026",
+     "url": "https://www.scconline.com/blog/post/2026/10/09/rbi-hikes-repo-rate-to-5-50-percent-october-2026/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "policy recalibration has become necessary"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "ind-20261007-01"
+  },
+  {
+   "date": "2026-10-07",
+   "category": "economy",
+   "topics": [
+    "Trade agreements and tariffs"
+   ],
+   "headline": "India and the United States remain without a trade agreement as talks reach a plateau",
+   "summary": "Reuters reported on 7 October that efforts to conclude a bilateral trade agreement between India and the United States have stalled again, with Finance Minister Nirmala Sitharaman describing the talks as at a plateau. Open issues are Indian purchases of Russian oil, farm market access and uncertainty over US tariff levels. Modern Diplomacy reported that officials on both sides see a standstill.",
+   "note": "The two reports may share information; Modern Diplomacy is an analysis outlet. Neither government has published detailed reasons for the delay.",
+   "sources": [
+    {
+     "publisher": "Reuters (via TimesLIVE)",
+     "title": "Explainer: Why India-US trade talks have stalled again",
+     "url": "https://timeslive.co.za/news/world/2026-10-07-explainer-why-india-us-trade-talks-have-stalled-again",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "long-running efforts to finalise a bilateral trade agreement have stalled again"
+    },
+    {
+     "publisher": "Modern Diplomacy",
+     "title": "Why Are India and the US Still Struggling to Close a Trade Deal?",
+     "url": "https://moderndiplomacy.eu/2026/10/07/why-are-india-and-the-us-still-struggling-to-close-a-trade-deal",
+     "type": "research",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Senior officials on both sides have signalled that negotiations have effectively reached a standstill."
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "ind-20261007-02"
+  }
+ ]
+}
