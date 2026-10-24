@@ -1,0 +1,227 @@
+{
+ "iso3": "LAO",
+ "country": "Lao PDR",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "id": "lao-20261008-01",
+   "date": "2026-10-08",
+   "headline": "Vietnamese Prime Minister visits Laos with over 10 cooperation documents expected",
+   "summary": "Vietnamese Prime Minister Le Minh Hung began an official visit to Laos on 8 October at the invitation of Prime Minister Saleumxay Kommasith, scheduled to run to 9 October. Both sides expected to sign or exchange more than 10 cooperation documents and hold an investment promotion conference. Reporting before the visit cited cooperation on road, rail and energy links; outcomes were not yet confirmed at the time of writing.",
+   "category": "diplomacy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Based on reporting from the eve and first day of the visit; the signed documents were not verified. Two of the three publishers are Vietnamese.",
+   "sources": [
+    {
+     "publisher": "Vientiane Times",
+     "title": "Vietnam PM's Laos visit to cement ties, over 10 pacts to be signed",
+     "url": "https://www.vientianetimes.org.la/freefreenews/freecontent_194_Vietnam_y26.php",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "More than 10 cooperation documents are expected to be signed between ministries, sectors, and local authorities."
+    },
+    {
+     "publisher": "Viet Nam News",
+     "title": "Việt Nam seeks stronger, more substantive ties with Laos, Cambodia",
+     "url": "https://vietnamnews.vn/politics-laws/1801399/viet-nam-seeks-stronger-more-substantive-ties-with-laos-cambodia.html",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "The visits will be Hưng's first official trips to the two neighbouring countries as Prime Minister."
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Prime Minister to pay official visits to Laos, Cambodia",
+     "url": "https://en.vietnamplus.vn/prime-minister-to-pay-official-visits-to-laos-cambodia-post353123.vnp",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "official visits to Laos and Cambodia from October 8 to 10"
+    }
+   ]
+  },
+  {
+   "id": "lao-20261008-02",
+   "date": "2026-10-08",
+   "headline": "Bank of the Lao PDR announces tighter credit and foreign exchange measures against inflation",
+   "summary": "The central bank governor told the National Assembly that inflation averaged 7.9 percent in the first nine months of 2026, against a 5 percent target. The bank plans to cap annual credit growth at 16 percent, down from 17.6 percent, tighten foreign exchange rules and study a 10-year strategy to make the kip the sole currency.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Laotian Times also reports September inflation at 7.8 percent. Measures are plans announced to parliament, not yet implemented rules.",
+   "sources": [
+    {
+     "publisher": "Vientiane Times",
+     "title": "BOL takes tougher measures to curb inflation, strengthen kip",
+     "url": "https://www.vientianetimes.org.la/freefreenews/freecontent_194_BOL_y26.php",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Credit growth will be kept at no more than 16 percent annually, compared with the current rate of 17.6 percent."
+    },
+    {
+     "publisher": "Laotian Times",
+     "title": "Laos Economy Grows 4.8 percent in Nine Months, but Inflation, Tourism Lag",
+     "url": "https://laotiantimes.com/2026/10/06/laos-economy-grows-4-8-percent-in-nine-months-but-inflation-tourism-lag/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "Inflation averaged 7.9 percent over the period and stood at 7.8 percent in September."
+    }
+   ]
+  },
+  {
+   "id": "lao-20261007-01",
+   "date": "2026-10-07",
+   "headline": "Laos plans to phase out raw mineral exports and require domestic processing",
+   "summary": "Industry and Commerce Minister Malaithong Kommasith told the National Assembly that the government plans to ban raw mineral exports by 2030, according to Vientiane Times. A Prime Minister's directive is being drafted to require processing plants at new mining projects. Tien Phong, citing the Lao news agency, describes the policy as a gradual restriction of raw mineral and ore concentrate exports.",
+   "category": "economy",
+   "topics": [
+    "Critical raw materials and supply chains"
+   ],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Wording differs between sources: a ban by 2030 (Vientiane Times) versus gradual restriction leading to an end of exports (Tien Phong). The directive is still in draft. Tien Phong text was translated from Vietnamese.",
+   "sources": [
+    {
+     "publisher": "Vientiane Times",
+     "title": "Govt moves to end raw mineral exports, pushes processing",
+     "url": "https://www.vientianetimes.org.la/freefreenews/freecontent_194_Govt_moves_y26.php",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "The government will ban all raw mineral exports by 2030"
+    },
+    {
+     "publisher": "Tiền Phong",
+     "title": "Tân Thủ tướng Lào đặt mục tiêu hạn chế xuất khẩu khoáng sản thô",
+     "url": "https://tienphong.vn/tan-thu-tuong-lao-dat-muc-tieu-han-che-xuat-khau-khoang-san-tho-post1883117.tpo",
+     "type": "regional",
+     "language": "vi",
+     "date": "2026-10-07",
+     "evidence": "Chính phủ cũng có kế hoạch từng bước hạn chế và tiến tới chấm dứt xuất khẩu khoáng sản thô và quặng tinh"
+    },
+    {
+     "publisher": "The Star (ASEAN+)",
+     "title": "Lao National Assembly members press government on roads, drug trade, resource use",
+     "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/07/lao-national-assembly-members-press-government-on-roads-drug-trade-resource-use",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "The country should shift from exporting raw materials to processing them domestically,"
+    }
+   ]
+  },
+  {
+   "id": "lao-20261005-01",
+   "date": "2026-10-05",
+   "headline": "National Assembly approves Saleumxay Kommasith as prime minister and names Sonexay Siphandone its president",
+   "summary": "On 5 October the National Assembly, at its second ordinary session of the 10th legislature, approved Saleumxay Kommasith as prime minister, reportedly with all 158 lawmakers present voting in favour. Outgoing Prime Minister Sonexay Siphandone was appointed National Assembly president. The post had been vacant since the death of Xaysomphone Phomvihane on 8 August.",
+   "category": "politics",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Vote count reported by Laotian Times only.",
+   "sources": [
+    {
+     "publisher": "Laotian Times",
+     "title": "Saleumxay Kommasith Becomes Laos New Prime Minister, Sonexay Takes National Assembly Helm",
+     "url": "https://laotiantimes.com/2026/10/05/saleumxay-kommasith-becomes-laos-new-prime-minister-sonexay-takes-national-assembly-helm/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "All 158 lawmakers present voted in favor of Saleumxay."
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Vietnam offers congratulations to newly elected leaders of Laos",
+     "url": "https://en.vietnamplus.vn/vietnam-offers-congratulations-to-newly-elected-leaders-of-laos-post353110.vnp",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "Sonexay Siphandone was elected President of the Lao NA. Saleumxay Kommasith was elected Prime Minister of Laos."
+    }
+   ]
+  },
+  {
+   "id": "lao-20261005-02",
+   "date": "2026-10-05",
+   "headline": "Government reports 4.8 percent growth in nine months, forecasts 5.1 percent for 2026",
+   "summary": "Prime Minister Saleumxay Kommasith told the National Assembly on 5 October that the economy grew 4.8 percent in the first nine months of 2026, with full-year growth forecast at 5.1 percent against a 5.5 percent target. Laotian Times notes that the World Bank and Asian Development Bank forecast 4.1 percent and 4 percent for 2026.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Growth figures are government figures; independent forecasts are lower. Tien Phong text was translated from Vietnamese.",
+   "sources": [
+    {
+     "publisher": "Laotian Times",
+     "title": "Laos Economy Grows 4.8 percent in Nine Months, but Inflation, Tourism Lag",
+     "url": "https://laotiantimes.com/2026/10/06/laos-economy-grows-4-8-percent-in-nine-months-but-inflation-tourism-lag/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The government expects full-year growth of 5.1 percent, which would still miss its 5.5 percent target."
+    },
+    {
+     "publisher": "Tiền Phong",
+     "title": "Tân Thủ tướng Lào đặt mục tiêu hạn chế xuất khẩu khoáng sản thô",
+     "url": "https://tienphong.vn/tan-thu-tuong-lao-dat-muc-tieu-han-che-xuat-khau-khoang-san-tho-post1883117.tpo",
+     "type": "regional",
+     "language": "vi",
+     "date": "2026-10-07",
+     "evidence": "nền kinh tế Lào tăng trưởng 4,8% trong 9 tháng đầu năm 2026, dự báo sẽ đạt 5,1% trong cả năm."
+    }
+   ]
+  },
+  {
+   "id": "lao-20261002-01",
+   "date": "2026-10-02",
+   "headline": "Laos and Thailand hold 23rd Joint Commission on economic, energy and border cooperation",
+   "summary": "Laos and Thailand held the 23rd Joint Commission meeting on 2 October, led by Foreign Ministers Thongsavan Phomvihane and Sihasak Phuangketkeow. According to Thai reporting, both sides intend to set up working committees on connectivity and energy. Bilateral trade reached US$4.39 billion in the first eight months of 2026, excluding electricity, according to The Star.",
+   "category": "diplomacy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Reports differ on the venue (Luang Prabang per The Star and Laotian Times; Bangkok per Pattaya Mail), so none is stated. The trade figure comes from one publisher.",
+   "sources": [
+    {
+     "publisher": "The Star (ASEAN+)",
+     "title": "Laos, Thailand seek stronger economic, border ties",
+     "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/02/laos-thailand-seek-stronger-economic-border-ties",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-02",
+     "evidence": "The governments of Laos and Thailand are seeking to strengthen economic, energy and border cooperation."
+    },
+    {
+     "publisher": "Pattaya Mail (NNT)",
+     "title": "Thailand and Laos seek stronger partnership on borders, trade and energy",
+     "url": "https://www.pattayamail.com/thailandnews/thailand-and-laos-seek-stronger-partnership-on-borders-trade-and-energy-567371",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "Thailand and Lao PDR aim to establish working committees to advance these areas in the future"
+    },
+    {
+     "publisher": "Laotian Times",
+     "title": "Laos, Thailand Move Luang Prabang Bridge Toward Construction",
+     "url": "https://laotiantimes.com/2026/10/05/laos-thailand-move-luang-prabang-bridge-toward-construction/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "Foreign Ministers Thongsavanh Phomvihane (Laos) and Sihasak Phuangketkeow (Thailand) witnessed the exchange."
+    }
+   ]
+  }
+ ]
+}

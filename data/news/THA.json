@@ -1,0 +1,79 @@
+{
+ "iso3": "THA",
+ "country": "Thailand",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "politics",
+   "topics": [
+    "Rule of law"
+   ],
+   "headline": "Opposition files no-confidence motion against Prime Minister Anutin and cabinet ministers",
+   "summary": "The People's Party and allied opposition parties filed a no-confidence motion against Prime Minister Anutin Charnvirakul and other ministers, mostly from Bhumjaithai, according to Thai Enquirer. The Nation reported on 8 October that Anutin said the government is ready and that each minister will answer for their portfolio. The debate is expected to last three to four days; its date has not been set.",
+   "note": "The number of signatories (145 MPs) and the list of grounds come from Thai Enquirer only. The Nation gives 18 ministers; Thai Enquirer gives 17 plus the prime minister.",
+   "sources": [
+    {
+     "publisher": "Thai Enquirer",
+     "title": "Thai Enquirer News Summary, October 9, 2026",
+     "url": "https://www.thaienquirer.com/75057/thai-enquirer-news-summary-october-9-2026/",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "against Prime Minister Anutin Charnvirakul and 17 other ministers"
+    },
+    {
+     "publisher": "Nation Thailand",
+     "title": "Anutin ready for censure debate",
+     "url": "https://www.nationthailand.com/news/politics/40072028",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "I want to stress that we are explaining this to the public, not to anyone else, and not to the opposition"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "tha-20261008-01"
+  },
+  {
+   "date": "2026-10-08",
+   "category": "economy",
+   "topics": [
+    "Climate and adaptation finance",
+    "Digitalisation"
+   ],
+   "headline": "Bangkok prepares to host IMF and World Bank Annual Meetings from 12 to 18 October",
+   "summary": "Thailand hosts the 2026 IMF and World Bank Annual Meetings in Bangkok from 12 to 18 October, the first time in over 35 years. Finance Minister Ekniti Nitithanprapas said Thailand will propose a Bangkok Declaration, drawing on a digital finance framework and a dialogue. Themes include digital and AI transformation, climate adaptation finance and resilience.",
+   "note": "The declaration is a proposal; its content and adoption are not yet decided. The Nation cites more than 16,000 registered participants.",
+   "sources": [
+    {
+     "publisher": "Thai PBS World",
+     "title": "Bangkok readies for global financial heavyweights attending 2026 IMF-World Bank meetings",
+     "url": "https://www.thaipbsworld.com/economy/563011",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "This flagship global event marks the return of the summit to Thailand for the first time in over 35 years"
+    },
+    {
+     "publisher": "Nation Thailand",
+     "title": "Bangkok Declaration at the IMF-World Bank Annual Meetings",
+     "url": "https://www.nationthailand.com/business/economy/40072018",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "seeking to contribute to discussions on the future direction of the global economy and financial system"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "tha-20261008-02"
+  }
+ ]
+}

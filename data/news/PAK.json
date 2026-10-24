@@ -1,0 +1,268 @@
+{
+ "iso3": "PAK",
+ "country": "Pakistan",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "id": "pak-20261008-01",
+   "date": "2026-10-08",
+   "headline": "IMF and Pakistan reach staff-level agreement on about $1.2 billion in reviews",
+   "summary": "The IMF said on 7 October that staff and Pakistan reached a staff-level agreement on the fourth review of the Extended Fund Facility and the third review of the Resilience and Sustainability Facility. Upon Executive Board approval, Pakistan would receive about $1.0 billion and about $210 million, bringing total disbursements to about $5.7 billion. The Fund called for phasing out the fuel support scheme.",
+   "category": "cooperation",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "IMF statement dated 7 October; reported by both outlets on 8 October. Subject to IMF Executive Board approval. The IMF page itself could not be opened, so the statement is cited via two independent outlets.",
+   "sources": [
+    {
+     "publisher": "Dawn",
+     "title": "Pakistan, IMF reach staff-level agreement for $1.2bn tranche",
+     "url": "https://www.dawn.com/news/2035602/pakistan-imf-reach-staff-level-agreement-for-12bn-tranche",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "The SLA is subject to approval by the IMF Executive Board. The fund called for phasing out the fuel support scheme promptly, given its high cost and broad targeting."
+    },
+    {
+     "publisher": "Business Recorder",
+     "title": "IMF, Pakistan reach staff-level agreement on EFF, RSF reviews",
+     "url": "https://www.brecorder.com/news/40443228/imf-pakistan-reach-staff-level-agreement-on-eff-rsf-reviews",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "The staff-level agreement is subject to approval by the IMF Executive Board. Upon approval, Pakistan will have access to about $1.0 billion (SDR 760 million) under the EFF"
+    }
+   ]
+  },
+  {
+   "id": "pak-20261007-01",
+   "date": "2026-10-07",
+   "headline": "World Bank says Pakistan accounts for 48 percent of extreme poor in MENAAP region",
+   "summary": "According to a World Bank regional report, Pakistan accounts for about 48 percent of people living on less than $3 a day in the Middle East, North Africa, Afghanistan and Pakistan region. Pakistan's poverty rate rose 6.4 percentage points at the $3.00 line between 2018-19 and 2024-25. The Bank projects GDP growth of 3.8 percent for 2027.",
+   "category": "society",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Figures are World Bank estimates as reported by the two outlets; the Bank's own report page was not opened.",
+   "sources": [
+    {
+     "publisher": "Business Recorder",
+     "title": "Pakistan accounts for nearly half of MENAAP's extreme poor: World Bank",
+     "url": "https://www.brecorder.com/news/40443037/pakistan-accounts-for-nearly-half-of-menaaps-extreme-poor-world-bank",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Pakistan accounts for 48% of people living on under USD 3 a day in the MENAAP region."
+    },
+    {
+     "publisher": "The Express Tribune",
+     "title": "Pakistan bears region's biggest poverty burden",
+     "url": "https://tribune.com.pk/story/2633400/pakistan-bears-regions-biggest-poverty-burden",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Pakistan accounts for about 48% of people in the MENAAP region living below $3 a day. Pakistan's poverty rate rose by 6.4 percentage points at the $3 line and 3.2 points at the $4.2 line."
+    }
+   ]
+  },
+  {
+   "id": "pak-20261007-02",
+   "date": "2026-10-07",
+   "headline": "UN Secretary-General visits Pakistan and praises its mediation role in US-Iran conflict",
+   "summary": "UN Secretary-General Antonio Guterres visited Pakistan from 6 to 8 October. He credited Pakistan's efforts with the Islamabad Memorandum of Understanding and a ceasefire framework, and called on developed countries to meet climate finance commitments. Prime Minister Sharif described India's suspension of the Indus Waters Treaty as lacking legal basis; India's position is not covered in these reports.",
+   "category": "diplomacy",
+   "topics": [
+    "Climate and adaptation finance"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Indus Waters Treaty position is Pakistan's; India's view is not reflected in the sources.",
+   "sources": [
+    {
+     "publisher": "The Express Tribune",
+     "title": "Outgoing UN chief lauds Pakistan's mediation role in US-Iran conflict",
+     "url": "https://tribune.com.pk/story/2633248/un-chief-arrives-in-pakistan-for-three-day-visit",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "leadership from vulnerable developing countries cannot substitute for responsibility from developed countries."
+    },
+    {
+     "publisher": "Business Recorder",
+     "title": "UN chief meets PM Sharif, Field Marshal Munir, discusses international peace efforts",
+     "url": "https://www.brecorder.com/news/40443109/un-chief-meets-pm-sharif-field-marshal-munir-discusses-international-peace-efforts",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Sharif said dialogue and diplomacy remain the only viable way to resolve disputes and prevent escalation."
+    }
+   ]
+  },
+  {
+   "id": "pak-20261007-03",
+   "date": "2026-10-07",
+   "headline": "German ambassador urges Pakistan to turn GSP Plus reforms into measurable results",
+   "summary": "German Ambassador Ina Lepel met Commerce Minister Jam Kamal Khan in Islamabad, according to Pakistani outlets. She acknowledged legislative progress and called for effective implementation ahead of Pakistan's next GSP Plus application to the EU. The minister invited German firms to the FoodAg exhibition in Karachi in November.",
+   "category": "diplomacy",
+   "topics": [
+    "Trade agreements and tariffs"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Meeting reported on 7 October; Business Recorder places it on Tuesday (6 October). The GSP Plus decision rests with the EU, not Germany.",
+   "sources": [
+    {
+     "publisher": "Business Recorder",
+     "title": "Germany asks Pakistan to implement GSP Plus reforms",
+     "url": "https://www.brecorder.com/news/40443079/germany-asks-pakistan-to-implement-gsp-plus-reforms",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Germany has called for effective implementation of Pakistan's legislative reforms"
+    },
+    {
+     "publisher": "Associated Press of Pakistan",
+     "title": "Jam Kamal invites German firms to invest in Pakistan",
+     "url": "https://www.app.com.pk/?p=1287454",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "welcomed Pakistan's structured approach towards the next GSP Plus application."
+    }
+   ]
+  },
+  {
+   "id": "pak-20261006-01",
+   "date": "2026-10-06",
+   "headline": "Government and PTI talks end without deal as prime minister urges end to long march",
+   "summary": "Talks between the government and the opposition PTI on a planned long march ended without agreement on 3 and 4 October, according to The Express Tribune. On 6 October Prime Minister Shehbaz Sharif urged PTI to call off the protest, citing economic risks. PTI said the talks stalled over access to jailed former prime minister Imran Khan and counterterrorism policy in Khyber Pakhtunkhwa.",
+   "category": "politics",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Positions are those of the government and PTI as reported; the later status of the march is not covered here.",
+   "sources": [
+    {
+     "publisher": "The Express Tribune",
+     "title": "No breakthrough after marathon PTI-govt talks",
+     "url": "https://tribune.com.pk/story/2632853/no-breakthrough-after-marathon-pti-govt-talks",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-04",
+     "evidence": "PTI leader Asad Qaiser confirmed that the talks ended without reaching an agreement"
+    },
+    {
+     "publisher": "Business Recorder",
+     "title": "PM Shehbaz says protests could hurt economic gains, urges PTI to withdraw long march call",
+     "url": "https://www.brecorder.com/news/40442897/pm-shehbaz-says-protests-could-hurt-economic-gains-urges-pti-to-withdraw-long-march-call",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The first victim of politics of marches and protests would be your economy."
+    }
+   ]
+  },
+  {
+   "id": "pak-20261006-02",
+   "date": "2026-10-06",
+   "headline": "VEON raises planned Pakistan investment to $1.5 billion over three years, finance minister says",
+   "summary": "Finance Minister Muhammad Aurangzeb said the telecom operator VEON has raised its planned investment in Pakistan to $1.5 billion over three years, up from $1 billion. He spoke in a virtual address at the SDGs Investment Fair 2026 in Karachi, organised by UNDP Pakistan.",
+   "category": "economy",
+   "topics": [
+    "Digitalisation"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Figure announced by the minister; no company statement was opened.",
+   "sources": [
+    {
+     "publisher": "Business Recorder",
+     "title": "Global telecom operator VEON raises Pakistan investment plan to $1.5bn from $1bn, says Aurangzeb",
+     "url": "https://www.brecorder.com/news/40442868/veon-raises-pakistan-investment-plan-to-15bn-from-1bn-says-aurangzeb",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "Aurangzeb said: \"This is a significant jump.\""
+    },
+    {
+     "publisher": "Bol News",
+     "title": "VEON raises planned Pakistan investment to $1.5bn over three years: FM says",
+     "url": "https://bolnews.com/business/veon-raises-planned-pakistan-investment-to-15bn-over-three-years-fm-says",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "This is a significant jump,"
+    }
+   ]
+  },
+  {
+   "id": "pak-20261005-01",
+   "date": "2026-10-05",
+   "headline": "Pakistan, Saudi Arabia and Türkiye agree to activate collective defence commitments",
+   "summary": "At a committee meeting in Riyadh on 5 October, the three states agreed to put commitments under the Makkah defence agreement into immediate effect, including deployment of agreed forces to Saudi Arabia, according to a joint statement. Retired Lt Gen Nauman Mahmood of Pakistan was named first secretary-general for three years.",
+   "category": "security",
+   "topics": [
+    "Regional organisations"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Scale and timing of deployments were not specified in the reports.",
+   "sources": [
+    {
+     "publisher": "Business Recorder",
+     "title": "Pakistan, Saudi Arabia, Türkiye agree to activate Makkah defence pact, extend military support to Riyadh",
+     "url": "https://www.brecorder.com/news/40442706/pakistan-saudi-arabia-turkiye-agree-to-activate-makkah-defence-pact-extend-military-support-to-riyadh",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "the security of each country is inseparable from the collective security of all three"
+    },
+    {
+     "publisher": "Arab News",
+     "title": "Saudi Arabia, Pakistan and Turkiye to activate collective defense commitments amid ongoing threats",
+     "url": "https://www.arabnews.pk/saudi-arabia/saudi-arabia-pakistan-turkiye-activate-collective-defense-commitments-amid-ongoing-threats-3003272",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "agreed to immediately implement collective-defense commitments under the previously agreed Makkah Defense Alliance"
+    }
+   ]
+  },
+  {
+   "id": "pak-20261005-02",
+   "date": "2026-10-05",
+   "headline": "Thar Block II coal mine expansion raises capacity to 11.2 million tonnes a year",
+   "summary": "Pakistan inaugurated the third phase of the Thar Block II mine in Sindh on 5 October. Annual capacity rises from 7.6 to 11.2 million tonnes, with the additional coal for the 660 MW Lucky Electric plant. Sindh authorities estimate savings of about $220 million a year in foreign exchange.",
+   "category": "climate-energy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Savings figures are estimates from Sindh authorities and the operator as reported.",
+   "sources": [
+    {
+     "publisher": "Arab News",
+     "title": "Pakistan expands Thar coal mine as US-Iran war deepens energy import risks",
+     "url": "https://www.arabnews.pk/pakistan/pakistan-expands-thar-coal-mine-as-us-iran-war-deepens-energy-import-risks-3003234",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-05",
+     "evidence": "Annual capacity rises 47%, from 7.6 million to 11.2 million tons"
+    },
+    {
+     "publisher": "The Express Tribune",
+     "title": "Thar coalmine begins third expansion",
+     "url": "https://tribune.com.pk/story/2633176/thar-coalmine-begins-third-expansion",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The third-phase expansion of the Thar Block-II coalmine has commenced in Sindh's Tharparkar district"
+    }
+   ]
+  }
+ ]
+}
