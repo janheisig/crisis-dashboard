@@ -1,0 +1,45 @@
+{
+ "iso3": "MEX",
+ "country": "Mexico",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "economy",
+   "topics": [
+    "Trade agreements and tariffs"
+   ],
+   "headline": "Sheinbaum meets US ambassador and business leaders on investment, USMCA and security",
+   "summary": "President Claudia Sheinbaum received US Ambassador Ronald Johnson and representatives of US and Mexican business groups at the National Palace on 8 October. Topics were investment, the USMCA (T-MEC) review, tariffs and border security. Business council head José Medina Mora said Johnson recognised Mexico's security progress; no tariff changes were announced.",
+   "note": "No official readout had been published at the time of reporting; statements by participants are attributed. The Rio Times reports that the meeting lasted about two and a half hours, citing El Universal.",
+   "translated": true,
+   "sources": [
+    {
+     "publisher": "Crónica",
+     "title": "Reunión entre Sheinbaum y Ronald Johnson aborda seguridad e inversiones con empresarios de EU",
+     "url": "https://www.cronica.com.mx/nacional/2026/10/08/reunion-entre-sheinbaum-y-ronald-johnson-aborda-seguridad-e-inversiones-con-empresarios-de-eu/",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-08",
+     "evidence": "Se anunciaron buenos proyectos, buenas inversiones, muy seguramente algunas saldrán en mañaneras"
+    },
+    {
+     "publisher": "The Rio Times",
+     "title": "Mexico's Sheinbaum Meets US Envoy, CEOs on 8 October",
+     "url": "https://riotimesonline.com/mexico-sheinbaum-meets-us-ambassador-johnson-ceos-2026",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "Sheinbaum said the talks covered the confidence in Mexico that secures investment by US companies"
+    }
+   ],
+   "confidence": "confirmed",
+   "id": "mex-20261008-01"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "iso3": "UZB",
+ "country": "Uzbekistan",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "diplomacy",
+   "topics": [
+    "Regional organisations"
+   ],
+   "headline": "Uzbekistan and Turkmenistan sign treaty creating a Supreme Council of Strategic Partnership",
+   "summary": "Presidents Shavkat Mirziyoyev and Serdar Berdimuhamedov signed a treaty on 8 October establishing a Supreme Council of Strategic Partnership, on the sidelines of the Central Asia and Azerbaijan consultative meeting in Avaza. The Uzbek presidential press service said the council is meant to institutionalise political dialogue and practical cooperation. Both sides called for an action plan to expand bilateral trade.",
+   "note": "Both reports rely on the Uzbek presidential press service. No trade figures were published.",
+   "sources": [
+    {
+     "publisher": "Spot.uz",
+     "title": "Uzbekistan and Turkmenistan agree to establish Supreme Council of Strategic Partnership",
+     "url": "https://www.spot.uz/en/2026/10/08/uz-tm-treaty",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "the two leaders signed an agreement establishing a Supreme Council of Strategic Partnership"
+    },
+    {
+     "publisher": "Vzglyad.uz",
+     "title": "Uzbekistan and Turkmenistan sign treaty on a supreme council",
+     "url": "https://vzglyad.uz/en/2026/10/08/uzbekistan-and-turkmenistan-sign-treaty-on-a-supreme-council",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "The treaty establishing a Supreme Council of Strategic Partnership was signed following a meeting between the two presidents"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "uzb-20261008-01"
+  }
+ ]
+}

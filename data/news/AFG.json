@@ -1,0 +1,43 @@
+{
+ "iso3": "AFG",
+ "country": "Afghanistan",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-06",
+   "category": "diplomacy",
+   "topics": [],
+   "headline": "UN chief in Islamabad backs voluntary Afghan returns as Pakistan raises cross-border militancy",
+   "summary": "UN Secretary-General António Guterres said on 6 October in Islamabad that the UN will work with Pakistan so that returns of Afghans proceed in a voluntary, safe and dignified way. The same day Pakistan's President Asif Ali Zardari told him that Afghanistan-based militant groups continue to target Pakistan, according to Afghanistan International.",
+   "note": "The Pakistani allegation is the government's position; the sources do not report a response from the Taliban authorities. Return figures in the Kabul Now article are background and come from Pakistani officials and UN agencies.",
+   "sources": [
+    {
+     "publisher": "KabulNow",
+     "title": "UN working with Pakistan to ensure voluntary and dignified return of Afghans, Guterres says",
+     "url": "https://kabulnow.com/2026/10/un-working-with-pakistan-to-ensure-voluntary-and-dignified-return-of-afghans-guterres-says",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "ensure that returns of Afghans proceed in a voluntary, safe and dignified way"
+    },
+    {
+     "publisher": "Afghanistan International",
+     "title": "Afghanistan Must Not Be Used To Target Pakistan, Says Pakistan President To UN Chief",
+     "url": "https://afintl.com/en/202610072634",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "militant groups based in Afghanistan continue to target Pakistan"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "afg-20261006-01"
+  }
+ ]
+}
