@@ -1,0 +1,107 @@
+{
+ "iso3": "BGD",
+ "country": "Bangladesh",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "economy",
+   "topics": [],
+   "headline": "Chattogram Port Authority signs 15-year concession with DP World for New Mooring terminal",
+   "summary": "On 8 October the Chattogram Port Authority and the UAE operator DP World signed a 15-year concession to run and modernise the New Mooring Container Terminal. Arab News reported investment of up to 10 billion taka over ten years and an upfront fee of 6 billion taka. TBS reported that the full agreement has not been published and that workers' leaders have questioned its value.",
+   "note": "Investment figures differ in wording between outlets (TBS also cites a wider package of about 150 million US dollars).",
+   "sources": [
+    {
+     "publisher": "Arab News",
+     "title": "UAE's DP World to operate major terminal in Bangladesh's largest port",
+     "url": "https://www.arabnews.com/world/uaes-dp-world-to-operate-major-terminal-in-bangladeshs-largest-port-3005271",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Investment: up to 10 billion taka over the first 10 years; upfront fee of 6 billion taka"
+    },
+    {
+     "publisher": "The Business Standard",
+     "title": "DP World gets 15-year concession to operate New Mooring Container Terminal",
+     "url": "https://www.tbsnews.net/economy/ctg-port-authority-dp-world-sign-15-yr-new-mooring-terminal-deal-1566291",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "the full concession agreement has not been made public"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "bgd-20261008-01"
+  },
+  {
+   "date": "2026-10-08",
+   "category": "climate-energy",
+   "topics": [
+    "JETP and energy transition"
+   ],
+   "headline": "Regulator clears Rooppur nuclear Unit-1 to start first controlled reaction",
+   "summary": "Bangladesh's Atomic Energy Regulatory Authority approved the B-2 licence on 8 October, allowing Unit-1 of the 1,200 MW Rooppur plant to reach first criticality. Its chairman said two further approvals are required before grid connection and that authorities hope to supply power by the end of the year.",
+   "note": "The end-of-year grid date is a stated hope of the regulator, not a commitment.",
+   "sources": [
+    {
+     "publisher": "The Daily Star",
+     "title": "Authorities approve Rooppur Unit-1 to begin fission",
+     "url": "https://www.thedailystar.net/news/bangladesh/news/authorities-approve-rooppur-unit-1-begin-fission-4294261",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "we are hopeful about starting power supply to the national grid by the end of this year"
+    },
+    {
+     "publisher": "Bangladesh Post",
+     "title": "Rooppur Unit-1 cleared for first nuclear reaction",
+     "url": "https://bangladeshpost.net/posts/rooppur-unit-1-cleared-for-first-nuclear-reaction-174221",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "two more regulatory approvals would be required"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "bgd-20261008-02"
+  },
+  {
+   "date": "2026-10-08",
+   "category": "diplomacy",
+   "topics": [],
+   "headline": "Dhaka seeks new Ganges water treaty with India before the current one expires on 12 December",
+   "summary": "Water Resources Minister Shahiduddin Chowdhury Anee said on 8 October that a new Ganges water-sharing treaty should be concluded before 12 December, when the 30-year agreement ends. He named restoring the guarantee clause of the 1977 agreement a priority. Talks continue through the Joint Rivers Commission, and he said Bangladesh is optimistic.",
+   "note": "Only the Bangladeshi position is reported; India's stance is not covered in these sources.",
+   "sources": [
+    {
+     "publisher": "The Daily Star",
+     "title": "Ganges treaty by Dec, work on Padma Barrage to start by Mar",
+     "url": "https://www.thedailystar.net/news/bangladesh/news/ganges-treaty-dec-work-padma-barrage-start-mar-4294211",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-09",
+     "evidence": "We must conclude a new Ganges water treaty before December 12"
+    },
+    {
+     "publisher": "Dhaka Tribune (UNB)",
+     "title": "Minister Anee expects new Ganges water sharing treaty before December 12",
+     "url": "https://www.dhakatribune.com/bangladesh/421621/minister-anee-expects-new-ganges-water-sharing",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "We must conclude a new Ganges water treaty before December 12"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "bgd-20261008-03"
+  }
+ ]
+}

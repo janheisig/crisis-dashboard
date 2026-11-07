@@ -1,0 +1,307 @@
+{
+ "iso3": "IDN",
+ "country": "Indonesia",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "id": "idn-20261008-01",
+   "date": "2026-10-08",
+   "headline": "China congratulates Indonesia's new foreign minister Arrmanatha Nasir after cabinet reshuffle",
+   "summary": "Arrmanatha Nasir, previously deputy foreign minister, was inaugurated as foreign minister on 1 October, replacing Sugiono, who moved to a coordinating ministry. On 8 October a Chinese Foreign Ministry spokesperson said Beijing wants to deepen cooperation with Jakarta.",
+   "category": "diplomacy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Swearing-in took place on 1 October; the reporting used here is dated 3 and 8 October.",
+   "sources": [
+    {
+     "publisher": "ANTARA News",
+     "title": "China welcomes Arrmanatha Nasir as Indonesia's new foreign minister",
+     "url": "https://en.antaranews.com/news/434704",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Foreign Minister Wang Yi has sent his congratulations to Indonesian Foreign Minister Arrmanatha Nasir,"
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "A ministry restored",
+     "url": "https://www.thejakartapost.com/opinion/2026/10/03/a-ministry-restored",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "handed the foreign affairs portfolio to Arrmanatha “Tata” Nasir"
+    }
+   ]
+  },
+  {
+   "id": "idn-20261007-01",
+   "date": "2026-10-07",
+   "headline": "Indonesia weighs moratorium on new plants making semi-processed nickel",
+   "summary": "Coordinating Minister Bahlil Lahadalia said on 7 October that the government is discussing a moratorium on new facilities producing semi-processed nickel, citing oversupply and weak prices. The Jakarta Post reported he put the supply surplus at about 2.5 million tonnes. No decision has been announced.",
+   "category": "economy",
+   "topics": [
+    "Critical raw materials and supply chains"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Plan under discussion, not a decision. Surplus figure as reported by The Jakarta Post.",
+   "sources": [
+    {
+     "publisher": "Mining Weekly (Reuters)",
+     "title": "Indonesia plans to impose a moratorium on new plants making partly processed nickel",
+     "url": "https://www.miningweekly.com/article/indonesia-plans-to-impose-a-moratorium-on-new-plants-making-partly-processed-nickel-2026-10-07",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Indonesia is discussing a plan to impose a moratorium on development of new nickel processing facilities"
+    },
+    {
+     "publisher": "Katadata",
+     "title": "Bahlil Buka Peluang Moratorium Pembangunan Smelter Produk Setengah Jadi",
+     "url": "https://katadata.co.id/berita/industri/6ac62da35dbe7/bahlil-buka-peluang-moratorium-pembangunan-smelter-produk-setengah-jadi",
+     "type": "national",
+     "language": "id",
+     "date": "2026-10-07",
+     "evidence": "saya dengan tim mulai memilih mana (smelter) yang dibiarkan lanjut, mana yang perlu dimoratorium."
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "Indonesia mulls nickel smelter moratorium as global supply swells",
+     "url": "https://www.thejakartapost.com/business/2026/10/08/indonesia-mulls-nickel-smelter-moratorium-as-global-supply-swells",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "We want to start choosing which industries should continue and which need a moratorium"
+    }
+   ]
+  },
+  {
+   "id": "idn-20261007-02",
+   "date": "2026-10-07",
+   "headline": "Pontianak court opens class action against Indonesian state over forest fires and haze",
+   "summary": "A court in Pontianak, West Kalimantan, opened a class action on 7 October accusing the president and nine other officials of gross negligence over recurring fires. None of the defendants attended and judges adjourned the hearing to 21 October. Plaintiffs ask for a declaration of a national disaster.",
+   "category": "climate-energy",
+   "topics": [
+    "Disaster risk reduction",
+    "Rule of law"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Allegations are those of the plaintiffs. A similar suit in South Sumatra was dismissed last year, according to AFP.",
+   "sources": [
+    {
+     "publisher": "The Star (AFP)",
+     "title": "Indonesian court hears 'negligence' complaint against state over fires, haze",
+     "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/07/indonesian-court-hears-039negligence039-complaint-against-state-over-fires-haze",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "the government was negligent in failing to prevent and adequately deal with forest and land fires"
+    },
+    {
+     "publisher": "Reuters (via internazionale.it)",
+     "title": "Indonesian groups criticise government's no-show at forest-fire class-action hearing",
+     "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/10/07/indonesian-groups-criticise-government-s-no-show-at-forest-fire-class-action-hearing",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Judges adjourned the hearing on Wednesday until October 21"
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "Plaintiffs criticize government's no-show at forest-fire class-action hearing in Pontianak",
+     "url": "https://www.thejakartapost.com/indonesia/2026/10/08/plaintiffs-criticize-governments-no-show-at-forest-fire-class-action-hearing-in-pontianak",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "They did not show up."
+    }
+   ]
+  },
+  {
+   "id": "idn-20261006-01",
+   "date": "2026-10-06",
+   "headline": "House of Representatives passes new Employment Protection Law",
+   "summary": "Indonesia's House of Representatives passed the Employment Protection Bill into law on 6 October after all factions agreed. It has 23 chapters and 313 articles. The Jakarta Post reported that it replaces labour provisions of the Job Creation Law and that unions welcomed it, while the committee chair said the balance among stakeholders is not yet ideal.",
+   "category": "politics",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Provisions as described by The Jakarta Post and unions; the final text had not been published at the time of reporting.",
+   "sources": [
+    {
+     "publisher": "Okezone",
+     "title": "Tok! DPR Sahkan RUU Pelindungan Ketenagakerjaan Hari Ini",
+     "url": "https://economy.okezone.com/read/2026/10/06/320/3246234/tok-dpr-sahkan-ruu-pelindungan-ketenagakerjaan-hari-ini",
+     "type": "national",
+     "language": "id",
+     "date": "2026-10-06",
+     "evidence": "RUU Perlindungan Ketenagakerjaan terdiri dari 23 Bab dan 313 Pasal."
+    },
+    {
+     "publisher": "Bloomberg Technoz",
+     "title": "DPR Resmi Sahkan RUU Pelindungan Ketenagakerjaan",
+     "url": "https://www.bloombergtechnoz.com/detail-news/123736/dpr-resmi-sahkan-ruu-pelindungan-ketenagakerjaan",
+     "type": "national",
+     "language": "id",
+     "date": "2026-10-06",
+     "evidence": "resmi mengesahkan Rancangan Undang-undang (RUU) Pelindungan Ketenagakerjaan menjadi UU"
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "New manpower law to tilt balance to labor",
+     "url": "https://www.thejakartapost.com/business/2026/10/08/new-manpower-law-to-tilt-balance-to-labor",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Unions say the bill is far better than the Job Creation Law"
+    }
+   ]
+  },
+  {
+   "id": "idn-20261006-02",
+   "date": "2026-10-06",
+   "headline": "Constitutional Court dismisses petition challenging Vice President Gibran's candidacy",
+   "summary": "On 6 October the Constitutional Court unanimously dismissed a petition over Vice President Gibran Rakabuming Raka's 2024 election, saying it could not disqualify him from office. Justices said no graduation certificate had been presented. The petitioners' lawyer said the ruling could give parliament grounds for impeachment.",
+   "category": "politics",
+   "topics": [
+    "Rule of law"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "The impeachment view is the petitioners' lawyer's; no impeachment process has been announced.",
+   "sources": [
+    {
+     "publisher": "Reuters (via internazionale.it)",
+     "title": "Indonesia's Constitutional Court dismisses challenge to Vice President over education credentials",
+     "url": "https://www.internazionale.it/ultime-notizie-reuters/2026/10/07/indonesia-s-constitutional-court-dismisses-challenge-to-vice-president-over-education-credentials",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "All nine judges dismissed the petition"
+    },
+    {
+     "publisher": "AsiaNews",
+     "title": "Constitutional Court rejects challenge to Gibran's eligibility",
+     "url": "https://www.asianews.it/en/south-east-asia/indonesia/constitutional-court-rejects-challenge-to-gibran-s-eligibility",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "neither disqualifies Gibran nor affects the office he currently holds"
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "Top court quashes petition to disqualify Gibran",
+     "url": "https://www.thejakartapost.com/indonesia/2026/10/07/top-court-quashes-petition-to-disqualify-gibran",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "The court cannot disqualify Gibran from his position as vice president."
+    }
+   ]
+  },
+  {
+   "id": "idn-20261006-03",
+   "date": "2026-10-06",
+   "headline": "Government says it will not clear forest areas for new rice fields",
+   "summary": "At the Indonesia International Sustainability Forum on 6 October, climate and energy envoy Hashim Djojohadikusumo said the government sees no further need to expand rice cultivation into forest areas. The Forestry Ministry said it could not yet confirm that all existing activities in the affected regions will stop.",
+   "category": "climate-energy",
+   "topics": [
+    "Climate and adaptation finance"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Scale of the earlier plan differs by outlet: about 2 million ha (The Jakarta Post), 3 million ha (AFP). Implementation timing is unclear.",
+   "sources": [
+    {
+     "publisher": "The Star (AFP)",
+     "title": "Indonesia says will halt forest destruction for rice paddies",
+     "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/06/indonesia-says-will-halt-forest-destruction-for-rice-paddies",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The government sees no further need for expanding rice cultivation areas in the so-called forest areas"
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "Next steps unclear after Indonesia's pledge to stop clearing forests for rice fields",
+     "url": "https://www.thejakartapost.com/business/2026/10/08/next-steps-unclear-after-indonesias-pledge-to-stop-clearing-forests-for-rice-fields",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "We will not embark on extensification (clearing) of arable areas."
+    }
+   ]
+  },
+  {
+   "id": "idn-20261006-04",
+   "date": "2026-10-06",
+   "headline": "Indonesia reports 7 GW nuclear target in national energy master plan",
+   "summary": "Climate and energy envoy Hashim Djojohadikusumo said on 6 October that a 7 gigawatt nuclear capacity target is included in the national energy master plan, alongside a 100 GWp solar target. An economic ministry official said sites should be chosen by 2026 or 2027 and offers from US, South Korean, Japanese and Russian providers are being evaluated.",
+   "category": "climate-energy",
+   "topics": [
+    "JETP and energy transition"
+   ],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Targets and plans, not approved projects. Statements by government officials.",
+   "sources": [
+    {
+     "publisher": "ANTARA News",
+     "title": "Indonesia targets 7 GW nuclear power capacity for energy security",
+     "url": "https://en.antaranews.com/news/434385",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "Indonesia is targeting the construction of 7 gigawatts (GW) of nuclear power capacity."
+    },
+    {
+     "publisher": "Republika",
+     "title": "Hashim: Indonesia Siapkan Program Nuklir Ambisius",
+     "url": "https://ekonomi.republika.co.id/berita/tmgz90423/hashim-indonesia-siapkan-program-nuklir-ambisius",
+     "type": "national",
+     "language": "id",
+     "date": "2026-10-06",
+     "evidence": "target 7 gigawatt sudah masuk ke dalam rencana induk (master plan) energi kita"
+    }
+   ]
+  },
+  {
+   "id": "idn-20261006-05",
+   "date": "2026-10-06",
+   "headline": "Sovereign fund Danantara invests US$250 million in US oil producer HighPeak Energy",
+   "summary": "Danantara Indonesia announced on 6 October a US$250 million investment in Texas-based HighPeak Energy through staged convertible preferred stock. The Jakarta Post reported that a listed Indonesian company, Energi Mega Persada, separately invested US$200 million. HighPeak is to develop training programmes for Indonesian workers.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "The US$200 million from Energi Mega Persada is reported by The Jakarta Post only.",
+   "sources": [
+    {
+     "publisher": "ANTARA News",
+     "title": "Indonesia's Danantara invests US$250 million in US oil firm HighPeak",
+     "url": "https://en.antaranews.com/news/434437",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The transaction is being executed through the issuance of convertible preferred stock across multiple tranches."
+    },
+    {
+     "publisher": "The Jakarta Post",
+     "title": "Danantara invests $250m in US oil producer HighPeak Energy",
+     "url": "https://www.thejakartapost.com/business/2026/10/07/danantara-invests-250m-in-us-oil-producer-highpeak-energy",
+     "type": "national",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "it is investing US$250 million in United States-based oil and gas producer HighPeak Energy Inc."
+    }
+   ]
+  }
+ ]
+}

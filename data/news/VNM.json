@@ -1,0 +1,238 @@
+{
+ "iso3": "VNM",
+ "country": "Viet Nam",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "id": "vnm-20261008-01",
+   "date": "2026-10-08",
+   "headline": "Prime Minister Hung holds talks in Vientiane on first Laos and Cambodia trip",
+   "summary": "Prime Minister Le Minh Hung began an official visit to Laos on 8 October, the first leg of a trip to Laos and Cambodia running 8 to 10 October, according to Viet Nam's foreign ministry. Viet Nam News reported that 11 cooperation documents were signed. Cambodia's foreign ministry confirmed the Cambodia leg for 9 and 10 October.",
+   "category": "diplomacy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "The figure of 11 documents comes from Viet Nam News only. Outcomes of the Cambodia leg were not yet reported at the time of writing.",
+   "sources": [
+    {
+     "publisher": "Viet Nam News",
+     "title": "Vietnamese Prime Minister meets with top Lao leader in Vientiane",
+     "url": "https://vietnamnews.vn/politics-laws/1801559/vietnamese-prime-minister-meets-with-top-lao-leader-in-vientiane.html",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "The two sides signed 11 cooperation documents on this occasion."
+    },
+    {
+     "publisher": "The Star (Malaysia)",
+     "title": "Vietnam PM to pay official visits to Laos, Cambodia",
+     "url": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/06/vietnam-pm-to-pay-official-visits-to-laos-cambodia",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "will lead a high-level Vietnamese delegation on official visits to Laos and Cambodia."
+    },
+    {
+     "publisher": "Cambodianess",
+     "title": "Cambodia Urges UN to Take Stronger Role in Return of 20,000 Displaced Border Residents (Foreign Ministry confirms Vietnamese PM's visit)",
+     "url": "https://cambodianess.com/article/foreign-ministry-confirms-vietnamese-pms-visit",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "has confirmed the upcoming official visit of Vietnam's Prime Minister Le Minh Hung this weekend."
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261008-02",
+   "date": "2026-10-08",
+   "headline": "Party Central Committee closes fourth plenum with talent strategy and 2027 targets",
+   "summary": "The 14th Party Central Committee closed its fourth plenum in Hanoi on 8 October after four days, according to Viet Nam News. It adopted a personnel resolution and a national strategy on attracting talent in key sectors, and discussed 2027 targets of GDP growth of at least 10 percent and average inflation of about 4.5 percent.",
+   "category": "politics",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": true,
+   "note": "Closing outcomes and 2027 target figures are from Viet Nam News (state-run). The other sources confirm the agenda, including the talent strategy and 2027 plan, not the final figures.",
+   "sources": [
+    {
+     "publisher": "Viet Nam News",
+     "title": "14th Party Central Committee wraps up fourth meeting",
+     "url": "https://vietnamnews.vn/politics-laws/1801543/14th-party-central-committee-wraps-up-fourth-meeting.html",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "its decisions must be fully concretised and promptly institutionalised"
+    },
+    {
+     "publisher": "Tap chi Kinh te Tai chinh Viet Nam",
+     "title": "Trung uong thao luan ve thu hut nhan tai, kinh te xa hoi va ngan sach nam 2027",
+     "url": "https://tapchikinhtetaichinh.vn/trung-uong-thao-luan-ve-thu-hut-nhan-tai-kinh-te-xa-hoi-va-ngan-sach-nam-2027-168959.html",
+     "type": "national",
+     "language": "vi",
+     "date": "2026-10-07",
+     "evidence": "Chiến lược quốc gia về thu hút, trọng dụng nhân tài trong các ngành, lĩnh vực mũi nhọn"
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Second working day of 14th Party Central Committee's fourth plenum",
+     "url": "https://en.vietnamplus.vn/second-working-day-of-14th-party-central-committees-fourth-plenum-post353176.vnp",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-06",
+     "evidence": "The CPV Central Committee will continue its agenda on October 7."
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261007-01",
+   "date": "2026-10-07",
+   "headline": "Viet Nam and Panama issue joint statement after presidential visit",
+   "summary": "Panama's President Jose Raul Mulino made an official visit to Viet Nam from 5 to 8 October, and the two sides issued a joint statement on 7 October. VietnamPlus reported that ten cooperation documents were exchanged or signed, covering maritime transport, customs, agriculture and tourism, and that talks on an investment promotion and protection agreement will follow.",
+   "category": "diplomacy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Panama America reports nine agreements and memoranda signed by the foreign ministers, while VietnamPlus reports ten documents. The count differs by source.",
+   "sources": [
+    {
+     "publisher": "VietnamPlus",
+     "title": "Vietnam, Panama issue Joint Statement",
+     "url": "https://en.vietnamplus.vn/vietnam-panama-issue-joint-statement-post353243.vnp",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "the second official visit to Vietnam by a Head of State of the Republic of Panama"
+    },
+    {
+     "publisher": "Panama America",
+     "title": "Mulino firma acuerdos con Vietnam para agro y turismo",
+     "url": "https://www.panamaamerica.com.pa/nacion/mulino-firma-acuerdos-con-vietnam-para-agro-y-turismo-1267171",
+     "type": "national",
+     "language": "es",
+     "date": "2026-10-07",
+     "evidence": "Durante la visita, los cancilleres de ambos países firmaron nueve acuerdos y memorandos en áreas clave."
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261003-01",
+   "date": "2026-10-03",
+   "headline": "Viet Nam records third-quarter GDP growth of 9.95 percent",
+   "summary": "According to the National Statistics Office, GDP grew 9.95 percent year on year in the third quarter of 2026 and 9.01 percent in the first nine months. The Nation (Thailand) reported that the Q3 figure exceeded the 8.65 percent median in a Bloomberg survey of economists, and that the government targets full-year growth of at least 10 percent.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Figures are preliminary estimates of the statistics office.",
+   "sources": [
+    {
+     "publisher": "National Statistics Office of Viet Nam",
+     "title": "Socio-economic performance, 3rd quarter and the first 9 months of 2026 (headline infographic)",
+     "url": "https://www.nso.gov.vn/wp-content/uploads/2026/10/EN-T9.2026-2.10-final.pdf",
+     "type": "official",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "GDP growth rate in the first 9 months of 2025 - 2026 (YoY) ... 9.01 %"
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Vietnam posts GDP growth of 9.95% in Q3",
+     "url": "https://en.vietnamplus.vn/vietnam-posts-gdp-growth-of-995-in-q3-post353039.vnp",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "was estimated to expand 9.95% year-on-year"
+    },
+    {
+     "publisher": "The Nation (Thailand)",
+     "title": "Vietnam GDP growth hits 9.95% in Q3 2026 beating forecasts",
+     "url": "https://www.nationthailand.com/news/asean/40071822",
+     "type": "international",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "exceeded the 8.65% median forecast in a Bloomberg survey of eight economists"
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261003-02",
+   "date": "2026-10-03",
+   "headline": "Goods trade turns to surplus in September, nine-month deficit at 19.42 billion dollars",
+   "summary": "The National Statistics Office reported a goods trade surplus of 1.27 billion US dollars in September after nine consecutive monthly deficits. For January to September, exports were 434.30 billion dollars and imports 453.72 billion, leaving a deficit of 19.42 billion dollars on total turnover of 888.02 billion, up 30.4 percent.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Preliminary figures of the statistics office. The September surplus figure is from VietnamPlus citing the office.",
+   "sources": [
+    {
+     "publisher": "National Statistics Office of Viet Nam",
+     "title": "Socio-economic performance, 3rd quarter and the first 9 months of 2026 (headline infographic)",
+     "url": "https://www.nso.gov.vn/wp-content/uploads/2026/10/EN-T9.2026-2.10-final.pdf",
+     "type": "official",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "EXPORT AND IMPORT OF GOODS IN THE FIRST 9 MONTHS OF 2026 (YoY) ... EXPORT- IMPORT TURNOVER 888.02 bill.USD 30.4% ... TRADE DEFICIT 19.42 bill.USD"
+    },
+    {
+     "publisher": "VietnamPlus",
+     "title": "Vietnam posts trade surplus after nine months of deficit",
+     "url": "https://en.vietnamplus.vn/vietnam-posts-trade-surplus-after-nine-months-of-deficit-post353028.vnp",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "the goods trade balance returned to a surplus of 1.27 billion USD after nine consecutive months of deficit."
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261003-03",
+   "date": "2026-10-03",
+   "headline": "Viet Nam consumer prices rise 5.08 percent year on year in September",
+   "summary": "According to the National Statistics Office, consumer prices in September 2026 were 5.08 percent higher than a year earlier and 0.62 percent higher than in August. The average index for the first nine months was 4.52 percent above the same period of 2025. The government's stated inflation target for the year is 4.5 percent, per Viet Nam News.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Index values of 105.08, 100.62 and 104.52 were converted to percentage changes. The 4.5 percent target is cited by Viet Nam News on 28 September, outside the reporting window.",
+   "sources": [
+    {
+     "publisher": "National Statistics Office of Viet Nam",
+     "title": "Socio-economic performance, 3rd quarter and the first 9 months of 2026 (headline infographic)",
+     "url": "https://www.nso.gov.vn/wp-content/uploads/2026/10/EN-T9.2026-2.10-final.pdf",
+     "type": "official",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "PRICE INDEX ... CPI in September 2026 (YoY) 105.08 % ... Average CPI in the first 9 months of 2026 (YoY) 104.52 %"
+    }
+   ]
+  },
+  {
+   "id": "vnm-20261003-04",
+   "date": "2026-10-03",
+   "headline": "Registered foreign direct investment rises 76.4 percent in first nine months",
+   "summary": "According to the National Statistics Office, total registered inward foreign direct investment reached 50.36 billion US dollars from 1 January to 30 September 2026, up 76.4 percent year on year. Disbursed foreign investment was 21.07 billion dollars, up 12.1 percent.",
+   "category": "economy",
+   "topics": [],
+   "confidence": "confirmed",
+   "translated": false,
+   "note": "Preliminary figures of one agency. Registered capital covers pledges and may differ from realised investment.",
+   "sources": [
+    {
+     "publisher": "National Statistics Office of Viet Nam",
+     "title": "Socio-economic performance, 3rd quarter and the first 9 months of 2026 (headline infographic)",
+     "url": "https://www.nso.gov.vn/wp-content/uploads/2026/10/EN-T9.2026-2.10-final.pdf",
+     "type": "official",
+     "language": "en",
+     "date": "2026-10-03",
+     "evidence": "Inward FDI from 1st January to 30th September 2026 ... Total registered inward FDI 50.36 bill.USD 76.4% ... Total disbursed FDI 21.07 bill.USD 12.1%"
+    }
+   ]
+  }
+ ]
+}
