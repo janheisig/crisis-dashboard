@@ -1,0 +1,52 @@
+{
+ "iso3": "MNG",
+ "country": "Mongolia",
+ "period": {
+  "from": "2026-10-02",
+  "to": "2026-10-09"
+ },
+ "generatedAt": "2026-10-09",
+ "method": "Items are published only when an official primary source or at least two independent publishers support them.",
+ "items": [
+  {
+   "date": "2026-10-08",
+   "category": "economy",
+   "topics": [],
+   "headline": "Mongolia reports export revenue of 16.6 billion US dollars in nine months and record reserves",
+   "summary": "Economy Minister Enkhbayar Jadamba said export revenue reached 16.6 billion US dollars in the first nine months of 2026, up 54 percent on a year earlier. Xinhua, citing the government press office, reported that foreign currency reserves rose to a record of about 8.9 billion US dollars at the end of September, driven mainly by export earnings.",
+   "note": "Both figures originate from Mongolian government statements. One open.kg lead paragraph mixes up the two figures; the body text was used.",
+   "sources": [
+    {
+     "publisher": "AKIpress",
+     "title": "Mongolia's export revenue reaches US$16.6 billion",
+     "url": "https://akipress.com/news:923735:Mongolia_s_export_revenue_reaches_US$16_6_billion/",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "Export revenue reached US$16.6 billion in nine months, an increase of 54% from the same period last year."
+    },
+    {
+     "publisher": "open.kg",
+     "title": "Mongolia's Export Revenue Reached 16.6 Billion USD",
+     "url": "https://open.kg/en/news/in-the-world/127702-jeksportnaja-vyruchka-mongolii-dostigla-166-mlrd-dollarov-ssha.html",
+     "type": "regional",
+     "language": "en",
+     "date": "2026-10-08",
+     "evidence": "export revenue has risen to 16.6 billion US dollars, which is 54% higher than the same period last year."
+    },
+    {
+     "publisher": "Xinhua",
+     "title": "Mongolia's forex reserves hit record 8.9 bln USD on strong export earnings",
+     "url": "https://english.news.cn/20261007/8d4942aeaa414d1b814281ceffeb51f4/c.html",
+     "type": "state",
+     "language": "en",
+     "date": "2026-10-07",
+     "evidence": "Export earnings were the main driver of the increase in foreign exchange reserves"
+    }
+   ],
+   "translated": false,
+   "confidence": "confirmed",
+   "id": "mng-20261008-01"
+  }
+ ]
+}
